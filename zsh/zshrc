@@ -1,0 +1,15 @@
+## My zsh.
+## ~/.zshrc
+## 08 Nov 2020
+
+export GPG_TTY=$(tty)
+
+# Bindings
+bindkey "^[[1;3A" history-beginning-search-backward
+bindkey "^[[1;3B" history-beginning-search-forward
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
+
+source ~/.config/zsh/priv.checkout.zsh
+source ~/.config/zsh/autosuggestions.zsh
