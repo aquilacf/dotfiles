@@ -13,3 +13,4 @@ bindkey "^[[1;3D" backward-word
 
 source ~/.config/zsh/priv.checkout.zsh
 source ~/.config/zsh/autosuggestions.zsh
+source ~/.config/zsh/syntax-highlighting.zsh
