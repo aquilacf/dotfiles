@@ -1,0 +1,458 @@
+#+TITLE: This is my personal emacs configuration.
+#+AUTHOR: Áquila Freitas
+
+* Early Initialization
+  :PROPERTIES:
+  :header-args: :tangle ~/.emacs.d/early-init.el
+  :END:
+** Boost startup
+*** GC Threshold
+    Brief description about the GC threshold.
+    #+begin_src emacs-lisp
+      (setq gc-cons-threshold most-positive-fixnum
+	    gc-cons-percentage 0.6)
+    #+end_src
+
+    Brief description about filename handler list.
+    #+begin_src emacs-lisp
+      (defvar file-name-handler-alist-original file-name-handler-alist)
+      (setq file-name-handler-alist nil)
+    #+end_src
+
+    Reset GC
+    #+begin_src emacs-lisp
+      (add-hook 'after-init-hook
+		`(lambda ()
+		   (setq gc-cons-threshold 67108864
+			 gc-cons-percentage 0.1
+			 file-name-handler-alist file-name-handler-alist-original)
+		   (garbage-collect)) t)
+    #+end_src
+
+** Settings
+*** Define variables
+    #+begin_src emacs-lisp
+      (defconst dir-root (expand-file-name user-emacs-directory))
+      (defconst dir-cache (concat dir-root "cache/"))
+      (defconst dir-snippets (concat dir-root "snippets/"))
+
+      (setq url-history-file (concat dir-cache "url-history"))
+      (setq custom-file (concat dir-cache "custom.el"))
+    #+end_src
+
+**** OS Specific
+     Define OS.
+     #+begin_src emacs-lisp
+       (defconst IS-MAC     (eq system-type 'darwin))
+       (defconst IS-LINUX   (eq system-type 'gnu/linux))
+       (defconst IS-WINDOWS (memq system-type '(cygwin windows-nt ms-dos)))
+     #+end_src
+     Clean up unnecessary option list.
+     #+begin_src emacs-lisp
+       (unless IS-MAC   (setq command-line-ns-option-alist nil))
+       (unless IS-LINUX (setq command-line-x-option-alist nil))
+     #+end_src
+
+*** Packages
+    Disable packages at startup.
+    #+begin_src emacs-lisp
+      (setq package-enable-at-startup nil)
+    #+end_src
+
+    #+begin_src emacs-lisp
+      (setq package-user-dir (concat dir-cache "packages/"))
+    #+end_src
+
+*** Backups
+    #+begin_src emacs-lisp
+      (defconst dir-backups (concat dir-root "backups/"))
+      (setq backup-inhibited t)
+      (setq make-backup-files nil)
+    #+end_src
+
+*** Autosaves
+    #+begin_src emacs-lisp
+      (defconst dir-autosaves (concat dir-root "autosaves/"))
+      (setq auto-save-default nil)
+      (setq auto-save-list-file-prefix nil)
+    #+end_src
+
+*** Startup
+    #+begin_src emacs-lisp
+      (defun display-startup-echo-area-message()
+	(message (concat "Loaded in " (emacs-init-time) "."))
+	)
+
+
+      (setq inhibit-startup-message t
+	    inhibit-default-init t
+	    initial-scratch-message nil
+	    initial-major-mode 'fundamental-mode
+	    inhibit-splash-screen t)
+
+    #+end_src
+
+*** File
+    #+begin_src emacs-lisp
+      (global-auto-revert-mode t)
+      (setq create-lockfiles nil)
+
+      (set-charset-priority 'unicode)
+      (prefer-coding-system 'utf-8)
+      (setq locale-coding-system 'utf-8)
+    #+end_src
+
+*** Key bindings
+    #+begin_src emacs-lisp
+
+      (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+      (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+      (global-set-key (kbd "<mouse-3>") (kbd "C-y"))
+      (global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
+      (global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
+
+      (global-unset-key (kbd "C-t"))
+
+    #+end_src
+
+*** Other
+
+    #+begin_src emacs-lisp
+      (menu-bar-mode -1)
+					      ; Some general performance improvemnts
+      (setq auto-mode-case-fold nil)
+      (setq-default bidi-display-reordering 'left-to-right
+		    bidi-paragraph-direction 'left-to-right)
+      (setq bidi-inhibit-bpa t)
+      (setq-default cursor-in-non-selected-windows nil)
+      (setq highlight-nonselected-windows nil)
+      (setq fast-but-imprecise-scrolling t)
+      (setq ffap-machine-p-known 'reject)
+      (setq frame-inhibit-implied-resize t)
+
+
+      (setq idle-update-delay 1.0)
+      (setq inhibit-compacting-font-caches t)
+      (setq redisplay-skip-fontification-on-input t)
+
+					      ;(global-display-line-numbers-mode)
+      (global-visual-line-mode)
+      (fset 'yes-or-no-p 'y-or-n-p)
+
+					      ;(set-face-attribute 'show-paren-match nil :foreground 'unspecified :background 'unspecified :weight 'extra-bold :underline t)
+      (setq show-paren-delay 0)
+      (show-paren-mode t)
+      (setq show-paren-style 'parenthesis)
+
+      (xterm-mouse-mode t)
+
+
+      (dolist (mode '(text-mode-hook
+		      prog-mode-hook
+		      conf-mode-hook))
+	(add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+
+      (dolist (mode '(org-mode-hook))
+	(add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+
+      (setq large-file-warning-threshold nil)
+      (setq vc-follow-symlinks t)
+
+      (setq tramp-default-method "ssh")
+
+    #+end_src
+
+
+* Initialization
+  :PROPERTIES:
+  :header-args: :tangle ~/.emacs.d/init.el
+  :END:
+** Packages
+   #+begin_src emacs-lisp
+     (require 'package)
+     (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			      ("org" . "https://orgmode.org/elpa/")
+			      ("gnu" . "https://elpa.gnu.org/packages/")))
+     (package-initialize)
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package)
+       )
+     (require 'use-package)
+
+     (setq use-package-always-ensure t)
+     (use-package use-package-ensure-system-package)
+   #+end_src
+
+   #+RESULTS:
+
+*** Minor Modes
+**** Which Key
+     #+begin_src emacs-lisp
+       (use-package which-key
+	 :init (which-key-mode)
+	 :config
+	 (setq which-key-idle-delay 0.3))
+     #+end_src
+
+**** Rainbow
+     #+begin_src emacs-lisp
+       (use-package rainbow-mode   :config (rainbow-mode))
+     #+end_src
+
+
+**** Editorconfig
+     #+begin_src emacs-lisp
+       (use-package editorconfig   :config (editorconfig-mode))
+     #+end_src
+
+
+**** Smartparens
+     #+begin_src emacs-lisp
+       (use-package smartparens    :config (smartparens-global-mode))
+     #+end_src
+
+
+*** Major Modes
+**** C#
+     #+begin_src emacs-lisp
+       (use-package tree-sitter)
+       (use-package tree-sitter-langs)
+       (use-package csharp-mode
+	 :config
+	 (setq lsp-csharp-server-path "/usr/local/bin/omnisharp")
+	 (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+	 :ensure-system-package
+	 (
+	  (dotnet . dotnet)
+	  (omnisharp . "brew tap aquilacf/homebrew-omnisharp-roslyn && brew install omnisharp-mono")
+	  ))
+     #+end_src
+
+**** Powershell
+     #+begin_src emacs-lisp
+       (use-package powershell)
+     #+end_src
+
+**** TOML
+     #+begin_src emacs-lisp
+       (use-package toml-mode)
+     #+end_src
+
+**** Markdown
+     #+begin_src emacs-lisp
+       (use-package markdown-mode)
+     #+end_src
+
+**** TypeScript
+     #+begin_src emacs-lisp
+       (use-package typescript-mode
+	 :custom
+	 (lsp-clients-typescript-server-args '("--stdio" "--tsserver-log-file" "/tmp/tsserver.log"))
+	 :mode
+	 ("\\.ts[x]?\\'" . typescript-mode)
+	 :ensure-system-package
+	 (
+	  (typescript-language-server . "yarn global add typescript-language-server")
+	  (tsc . "yarn global add typescript")
+	  )
+	 )
+     #+end_src
+
+**** YAML
+     #+begin_src emacs-lisp
+       (use-package yaml-mode
+	 :ensure-system-package (yaml-language-server . "yarn global add yaml-language-server")
+	 :custom (lsp-yaml-schemas t))
+     #+end_src
+
+**** JSON
+     #+begin_src emacs-lisp
+       (use-package json-mode
+	 :ensure-system-package (vscode-json-languageserver . "yarn global add vscode-json-languageserver")
+	 :custom (lsp-json-schemas t))
+     #+end_src
+
+**** GraphQL
+     #+begin_src emacs-lisp
+       (use-package graphql-mode :ensure-system-package (graphql-lsp . "yarn global add graphql-language-service-cli graphql"))
+     #+end_src
+
+**** PHP
+     #+begin_src emacs-lisp
+       (use-package php-mode)
+     #+end_src
+
+**** Terraform
+     #+begin_src emacs-lisp
+       (use-package terraform-mode
+	 :config (setq lsp-terraform-server "terraform-ls")
+	 :ensure-system-package
+	 (
+	  (terraform . terraform)
+	  (terraform-ls . "brew install hashicorp/tap/terraform-ls")
+	  )
+	 )
+     #+end_src
+
+**** Org
+     #+begin_src emacs-lisp
+       (use-package org)
+     #+end_src
+
+***** Org Bullets
+      Add nice ASCII bullet points to Org.
+      #+begin_src emacs-lisp
+       (use-package org-bullets :hook (org-mode . org-bullets-mode))
+      #+end_src
+
+**** PlantUML
+     #+begin_src emacs-lisp
+       (use-package plantuml-mode
+	 :config
+	 (setq plantuml-executable-path "plantuml")
+	 (setq plantuml-default-exec-mode 'executable)
+	 :ensure-system-package (plantuml . plantuml)
+	 :mode
+	 ("\\.p[lant]?uml\\'" . plantuml-mode)
+	 )
+     #+end_src
+
+
+*** Utilities
+**** Git
+     #+begin_src emacs-lisp
+       (use-package git-gutter
+	 :custom
+	 (
+	  (git-gutter:added-sign " +")
+	  (git-gutter:deleted-sign " -")
+	  (git-gutter:modified-sign " \u2502")
+	  (git-gutter:separator-sign nil)
+	  (git-gutter:unchanged-sign nil)
+	  (git-gutter:lighter nil)
+	  (git-gutter:window-width 2)
+	  (git-gutter:visual-line t)
+	  (git-gutter:update-interval 2)
+
+	  )
+	 :config
+	 (set-face-attribute 'git-gutter:added nil :inherit 'default :foreground "green1" :background 'unspecified)
+	 (set-face-attribute 'git-gutter:deleted nil :inherit 'default :foreground "red" :background 'unspecified)
+	 (set-face-attribute 'git-gutter:modified nil :inherit 'default :foreground "yellow" :background 'unspecified)
+	 (set-face-attribute 'git-gutter:unchanged nil :inherit 'default :foreground 'unspecified :background 'unspecified)
+	 (global-git-gutter-mode)
+	 )
+     #+end_src
+
+**** Projectile
+     #+begin_src emacs-lisp
+       (use-package projectile
+	 :custom
+	 (projectile-known-projects-file (concat dir-cache "projectile-bookmarks.eld"))
+	 :config
+	 (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
+	 (projectile-mode)
+	 )
+     #+end_src
+
+***** Yarn/NPM Project
+     #+begin_src emacs-lisp
+       (projectile-register-project-type 'npm '("package.json")
+					 :compile "yarn install"
+					 :test "yarn test"
+					 :run "yarn start"
+					 :test-suffix ".spec"
+					 )
+     #+end_src
+
+**** Treemacs
+     #+begin_src emacs-lisp
+       (use-package treemacs
+	 :custom
+	 (treemacs-follow-mode t)
+	 (treemacs-filewatch-mode t)
+	 (treemacs-fringe-indicator-mode t)
+	 (treemacs-persist-file (concat dir-cache "treemacs-persist"))
+
+	 :bind
+	 ("§" . treemacs)
+
+	 )
+     #+end_src
+
+***** Projectile integration
+     #+begin_src emacs-lisp
+       (use-package treemacs-projectile
+	 :after (treemacs projectile)
+	 :config
+	 (advice-add 'projectile-switch-project-by-name :after #'(lambda (&rest args)
+								   (let* ((path (car args))
+									  (name (treemacs--filename path)))
+								     (treemacs-do-add-project-to-workspace path name))))
+	 )
+     #+end_src
+
+**** Language Server Protocol
+     #+begin_src emacs-lisp
+       (use-package lsp-mode
+	 :custom
+	 (lsp-session-file (concat dir-cache "lsp-session"))
+	 (lsp-keymap-prefix "C-c l")
+	 (lsp-auto-guess-root t)
+	 :hook
+	 (
+	  (yaml-mode        . lsp-deferred)
+	  (json-mode        . lsp-deferred)
+	  (typescript-mode  . lsp-deferred)
+	  (js-mode          . lsp-deferred)
+	  (sh-mode          . lsp-deferred)
+	  (graphql-mode     . lsp-deferred)
+	  (terraform-mode   . lsp-deferred)
+	  (csharp-tree-sitter-mode      . lsp-deferred)
+
+	  (lsp-mode . lsp-enable-which-key-integration)
+	  )
+	 :config
+	 (lsp-register-client
+	  (make-lsp-client  :new-connection (lsp-stdio-connection '("graphql-lsp" "server" "--method" "stream"))
+			    :major-modes '(graphql-mode)
+			    :server-id 'graphql-lsp
+			    )
+	  )
+	 (add-to-list 'lsp-language-id-configuration '(graphql-mode . "graphql"))
+	 :commands (lsp lsp-deferred)
+	 :ensure-system-package
+	 (bash-language-server . "yarn global add bash-language-server")
+	 )
+
+       (use-package lsp-ui :commands lsp-ui-mode)
+					       ;(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+       ;; optionally if you want to use debugger
+					       ;(use-package dap-mode)
+       ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+     #+end_src
+
+**** Theme
+     #+begin_src emacs-lisp
+       (use-package doom-themes
+	 :config
+	 (setq doom-themes-enable-bold t
+	       doom-themes-enable-italic t)
+	 (load-theme 'doom-one t)
+
+	 ;; Enable flashing mode-line on errors
+					       ;(doom-themes-visual-bell-config)
+
+
+
+
+					       ;(setq doom-themes-treemacs-theme "doom-colors")
+					       ;(doom-themes-treemacs-config)
+
+	 ;; Corrects (and improves) org-mode's native fontification.
+	 (doom-themes-org-config))
+     #+end_src
