@@ -3,6 +3,7 @@
 ## 08 Nov 2020
 
 export GPG_TTY=$(tty)
+autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
 
 # Bindings
 bindkey "^[[1;3A" history-beginning-search-backward
