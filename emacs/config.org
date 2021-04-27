@@ -3,7 +3,7 @@
 
 * Early Initialization
   :PROPERTIES:
-  :header-args: :tangle ~/.emacs.d/early-init.el
+  :header-args: :tangle ~/.config/emacs/early-init.el
   :END:
 ** Boost startup
 *** GC Threshold
@@ -167,7 +167,7 @@
 
 * Initialization
   :PROPERTIES:
-  :header-args: :tangle ~/.emacs.d/init.el
+  :header-args: :tangle ~/.config/emacs/init.el
   :END:
 ** Packages
    #+begin_src emacs-lisp

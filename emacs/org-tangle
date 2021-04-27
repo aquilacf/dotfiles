@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for file in $@; do
+	emacs -q -nw --batch --eval "(require 'org)" --eval "(org-babel-tangle-file \"$file\")"
+done
