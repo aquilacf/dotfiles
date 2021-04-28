@@ -370,15 +370,13 @@
 **** Treemacs
      #+begin_src emacs-lisp
        (use-package treemacs
-	; :custom
-	; (treemacs-follow-mode t)
-	; (treemacs-filewatch-mode t)
-	; (treemacs-fringe-indicator-mode t)
-	; (treemacs-persist-file (concat dir-cache "treemacs-persist"))
-
-	; :bind
-	; ("§" . treemacs)
-
+	 :custom
+	 (treemacs-persist-file (concat dir-cache "treemacs-persist"))
+	 :bind
+	 ("§" . treemacs)
+	 :config
+	 (treemacs-filewatch-mode)
+	 (treemacs-follow-mode)
 	 )
      #+end_src
 
