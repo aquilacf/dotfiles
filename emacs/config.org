@@ -3,7 +3,7 @@
 
 * Early Initialization
   :PROPERTIES:
-  :header-args: :tangle ~/.config/emacs/early-init.el
+  :header-args: :tangle ~/.config/emacs/early-init.el :results none
   :END:
 ** Boost startup
 *** GC Threshold
@@ -167,7 +167,7 @@
 
 * Initialization
   :PROPERTIES:
-  :header-args: :tangle ~/.config/emacs/init.el
+  :header-args: :tangle ~/.config/emacs/init.el :results none
   :END:
 ** Packages
    #+begin_src emacs-lisp
@@ -186,7 +186,6 @@
      (use-package use-package-ensure-system-package)
    #+end_src
 
-   #+RESULTS:
 
 *** Minor Modes
 **** Which Key
@@ -371,14 +370,14 @@
 **** Treemacs
      #+begin_src emacs-lisp
        (use-package treemacs
-	 :custom
-	 (treemacs-follow-mode t)
-	 (treemacs-filewatch-mode t)
-	 (treemacs-fringe-indicator-mode t)
-	 (treemacs-persist-file (concat dir-cache "treemacs-persist"))
+	; :custom
+	; (treemacs-follow-mode t)
+	; (treemacs-filewatch-mode t)
+	; (treemacs-fringe-indicator-mode t)
+	; (treemacs-persist-file (concat dir-cache "treemacs-persist"))
 
-	 :bind
-	 ("§" . treemacs)
+	; :bind
+	; ("§" . treemacs)
 
 	 )
      #+end_src
