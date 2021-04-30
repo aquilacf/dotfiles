@@ -459,3 +459,15 @@
 	     (disable-theme 'doom-one) (load-theme 'doom-one-light t) (setq custom-theme-name "d"))
 	   ))
      #+end_src
+
+**** Smart Comments
+
+     #+begin_src emacs-lisp
+       (use-package comment-dwim-2
+	 :defer t
+	 :bind (:map org-mode-map
+		     ("M-;" . org-comment-dwim-2)
+		     :map prog-mode-map
+		     ("M-;" . comment-dwim-2))
+	 )
+     #+end_src
