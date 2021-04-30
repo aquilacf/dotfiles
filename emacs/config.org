@@ -471,3 +471,29 @@
 		     ("M-;" . comment-dwim-2))
 	 )
      #+end_src
+
+**** Company
+
+     #+begin_src emacs-lisp
+       (use-package company :defer t :config (global-company-mode))
+     #+end_src
+
+     #+begin_src emacs-lisp
+       (use-package company-statistics
+	 :after (company)
+	 :custom (company-statistics-file (concat dir-cache "company-statistics-cache.el"))
+	 :hook (company-mode . company-statistics-mode)
+	 )
+     #+end_src
+
+     #+begin_src emacs-lisp
+     #+end_src
+
+     #+begin_src emacs-lisp
+     #+end_src
+
+     #+begin_src emacs-lisp
+     #+end_src
+
+     #+begin_src emacs-lisp
+     #+end_src
