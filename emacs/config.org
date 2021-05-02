@@ -192,8 +192,8 @@
      #+begin_src emacs-lisp
        (use-package which-key
 	 :init (which-key-mode)
-	 :config
-	 (setq which-key-idle-delay 0.3))
+	 :custom (which-key-idle-delay 0.3))
+
      #+end_src
 
 **** Rainbow
@@ -302,7 +302,9 @@
      #+end_src
 
 ***** Org Bullets
+
       Add nice ASCII bullet points to Org.
+
       #+begin_src emacs-lisp
        (use-package org-bullets :hook (org-mode . org-bullets-mode))
       #+end_src
@@ -349,6 +351,7 @@
 **** Projectile
      #+begin_src emacs-lisp
        (use-package projectile
+	 :defer t
 	 :custom
 	 (projectile-known-projects-file (concat dir-cache "projectile-bookmarks.eld"))
 	 :config
@@ -358,16 +361,19 @@
      #+end_src
 
 ***** Yarn/NPM Project
-     #+begin_src emacs-lisp
-       (projectile-register-project-type 'npm '("package.json")
-					 :compile "yarn install"
-					 :test "yarn test"
-					 :run "yarn start"
-					 :test-suffix ".spec"
-					 )
-     #+end_src
+      #+begin_src emacs-lisp
+	(projectile-register-project-type 'npm '("package.json")
+					  :compile "yarn install"
+					  :test "yarn test"
+					  :run "yarn start"
+					  :test-suffix ".spec"
+					  )
+      #+end_src
 
 **** Treemacs
+
+     Enable visual file tree.
+
      #+begin_src emacs-lisp
        (use-package treemacs
 	 :custom
@@ -440,12 +446,14 @@
 	 :custom
 	 (doom-themes-enable-bold t)
 	 (doom-themes-enable-italic t)
-	 (custom-theme-name "dark")
+	 (custom-theme-name "d")
 	 :config
 	 (load-theme 'doom-one t)
 	 (doom-themes-org-config)
 	 )
      #+end_src
+
+***** Toggle theme
 
      Quickly toggle themes.
 
@@ -454,13 +462,15 @@
 	 (interactive)
 	 (if (string-equal custom-theme-name "d")
 	     (progn
-	       (disable-theme 'doom-one-light) (load-theme 'doom-one t) (setq custom-theme-name "l"))
+	       (disable-theme 'doom-one) (load-theme 'doom-one-light t) (setq custom-theme-name "l"))
 	   (progn
-	     (disable-theme 'doom-one) (load-theme 'doom-one-light t) (setq custom-theme-name "d"))
+	     (disable-theme 'doom-one-light) (load-theme 'doom-one t) (setq custom-theme-name "d"))
 	   ))
      #+end_src
 
 **** Smart Comments
+
+     Enable good commenting.
 
      #+begin_src emacs-lisp
        (use-package comment-dwim-2
@@ -475,8 +485,13 @@
 **** Company
 
      #+begin_src emacs-lisp
-       (use-package company :defer t :config (global-company-mode))
+       (use-package company :config (global-company-mode))
      #+end_src
+
+
+***** Statistics
+
+     Sort company suggestions smarter.
 
      #+begin_src emacs-lisp
        (use-package company-statistics
