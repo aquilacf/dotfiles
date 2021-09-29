@@ -381,9 +381,9 @@ shell:
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-mouse:
-    url:
-        modifiers: Control
+#mouse:
+    # url:
+      #  modifiers: Control
 
 # Mouse bindings
 #
