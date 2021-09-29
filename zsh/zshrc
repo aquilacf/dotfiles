@@ -15,3 +15,13 @@ bindkey "^[[1;3D" backward-word
 source ~/.config/zsh/priv.checkout.zsh
 source ~/.config/zsh/autosuggestions.zsh
 source ~/.config/zsh/syntax-highlighting.zsh
+
+# History
+export HISTSIZE=10000000
+export SAVEHIST=$HISTSIZE
+
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt inc_append_history
+setopt hist_reduce_blanks
