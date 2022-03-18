@@ -1,6 +1,6 @@
 ## My zsh.
 ## ~/.zshrc
-## 08 Nov 2020
+## 18 Mar 2022
 
 export GPG_TTY=$(tty)
 autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
@@ -11,8 +11,7 @@ bindkey "^[[1;3B" history-beginning-search-forward
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-
-source ~/.config/zsh/priv.checkout.zsh
+source ~/.config/zsh/priv.personal.zsh
 source ~/.config/zsh/autosuggestions.zsh
 source ~/.config/zsh/syntax-highlighting.zsh
 

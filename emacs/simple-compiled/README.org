@@ -1,0 +1,13 @@
+#+TITLE: My personal emacs configuration.
+#+AUTHOR: Áquila Freitas
+
+* Introduction
+  After trying multiple ways to configure I have come to the conclusion to build simple settings in pure Elisp and have it compilied with Github Actions. You can check the git history to my old configuration. The reasons
+
+  The reasons I moved away from the framework design was the implementation of `early-init` and `init`; also, I never really liked the idea to be honest.
+  I also gave up the `org-mode` configuration because found myself never writing the documentation to justify its usage.
+
+  This configuration consists of only `early-init` and `init` files. It creates a `.cache` directory in your `user-emacs-directory` and stores the all litter. Early initialization will load `priv.personal`
+ for things that are not committed or custom code.
+
+ Hopefully, my configuration won't grow to the point I need to use one of the setup styles I mentioned above.

@@ -9,8 +9,8 @@
 *** GC Threshold
     Brief description about the GC threshold.
     #+begin_src emacs-lisp
-      (setq gc-cons-threshold most-positive-fixnum
-	    gc-cons-percentage 0.6)
+      (defvar gc-cons-threshold-original gc-cons-threshold)
+      (setq gc-cons-threshold most-positive-fixnum)
     #+end_src
 
     Brief description about filename handler list.
@@ -23,10 +23,14 @@
     #+begin_src emacs-lisp
       (add-hook 'after-init-hook
 		`(lambda ()
-		   (setq gc-cons-threshold 67108864
-			 gc-cons-percentage 0.1
-			 file-name-handler-alist file-name-handler-alist-original)
-		   (garbage-collect)) t)
+		   (setq gc-cons-threshold gc-cons-threshold-original
+			 	 file-name-handler-alist file-name-handler-alist-original)
+		   ) t)
+    #+end_src
+
+    Run Garbage Collection if emacs goes idle.
+    #+begin_src emacs-lisp
+    	(run-with-idle-timer 5 t #'garbage-collect)
     #+end_src
 
 ** Settings
@@ -43,9 +47,10 @@
 **** OS Specific
      Define OS.
      #+begin_src emacs-lisp
-       (defconst IS-MAC     (eq system-type 'darwin))
-       (defconst IS-LINUX   (eq system-type 'gnu/linux))
-       (defconst IS-WINDOWS (memq system-type '(cygwin windows-nt ms-dos)))
+       (defconst IS-TERMINAL	(not (display-graphic-p)))
+       (defconst IS-MAC     	(eq system-type 'darwin))
+       (defconst IS-LINUX   	(eq system-type 'gnu/linux))
+       (defconst IS-WINDOWS 	(memq system-type '(cygwin windows-nt ms-dos)))
      #+end_src
      Clean up unnecessary option list.
      #+begin_src emacs-lisp
@@ -191,6 +196,7 @@
 **** Which Key
      #+begin_src emacs-lisp
        (use-package which-key
+  :defer 3
 	 :init (which-key-mode)
 	 :custom (which-key-idle-delay 0.3))
 
@@ -296,6 +302,14 @@
 	 )
      #+end_src
 
+***** Company integration
+
+      #+begin_src emacs-lisp
+	(use-package company-terraform
+	  :after (terraform-mode company)
+	  :hook (terraform-mode . company-terraform-init))
+      #+end_src
+
 **** Org
      #+begin_src emacs-lisp
        (use-package org)
@@ -351,7 +365,6 @@
 **** Projectile
      #+begin_src emacs-lisp
        (use-package projectile
-	 :defer t
 	 :custom
 	 (projectile-known-projects-file (concat dir-cache "projectile-bookmarks.eld"))
 	 :config
@@ -401,6 +414,7 @@
 **** Language Server Protocol
      #+begin_src emacs-lisp
        (use-package lsp-mode
+  :defer 3
 	 :custom
 	 (lsp-session-file (concat dir-cache "lsp-session"))
 	 (lsp-keymap-prefix "C-c l")
@@ -485,7 +499,7 @@
 **** Company
 
      #+begin_src emacs-lisp
-       (use-package company :config (global-company-mode))
+       (use-package company :defer 3 :config (global-company-mode))
      #+end_src
 
 
@@ -501,14 +515,25 @@
 	 )
      #+end_src
 
-     #+begin_src emacs-lisp
-     #+end_src
+***** Box
 
-     #+begin_src emacs-lisp
-     #+end_src
+      #+begin_src emacs-lisp
+	(use-package company-box  :hook (company-mode . company-box-mode))
+      #+end_src
 
-     #+begin_src emacs-lisp
-     #+end_src
+***** Quick help
 
-     #+begin_src emacs-lisp
-     #+end_src
+      #+begin_src emacs-lisp
+	(use-package company-quickhelp
+	  :after (company)
+	  :custom (company-quickhelp-delay 0)
+	  :hook (company-mode . company-quickhelp-mode))
+      #+end_src
+
+****** Terminal
+
+       #+begin_src emacs-lisp
+	 (use-package company-quickhelp-terminal
+	   :after (company-quickhelp)
+	   :hook (company-quickhelp-mode . company-quickhelp-terminal-mode))
+       #+end_src
