@@ -200,7 +200,9 @@
 
 (use-package csharp-mode
 	:after (tree-sitter)
-	:hook (csharp-mode . my-csharp-mode-hook)
+	:hook
+	(csharp-mode . my-csharp-mode-hook)
+	(csharp-tree-sitter-mode . lsp-deferred)
 	:mode
 		("\\.cs\\'" . csharp-tree-sitter-mode)
 		("\\.cake\\'" . csharp-tree-sitter-mode)
@@ -228,6 +230,7 @@
 ;; Terraform ;;
 ;;;;;;;;;;;;;;;
 (use-package terraform-mode
+  :hook (lsp-deferred)
 	:config (setq lsp-terraform-server "terraform-ls")
 	:ensure-system-package (
 		(terraform . terraform)
@@ -241,6 +244,7 @@
 ;; TypeScript ;;
 ;;;;;;;;;;;;;;;;
 (use-package typescript-mode
+  :hook (lsp-deferred)
 	:mode ("\\.ts[x]?\\'" . typescript-mode)
 	:ensure-system-package (
 	  (typescript-language-server . "yarn global add typescript-language-server")
@@ -267,6 +271,7 @@
 ;; GraphQL ;;
 ;;;;;;;;;;;;;
 (use-package graphql-mode
+  :hook (lsp-deferred)
 	 :ensure-system-package (graphql-lsp . "yarn global add graphql-language-service-cli graphql"))
 
 ;;;;;;;;;;;;;;
@@ -295,14 +300,9 @@
 		(lsp-auto-guess-root t)
 	:hook
 	 (
-	  ;(yaml-mode        . lsp-deferred)
 	  (json-mode        . lsp-deferred)
-	  (typescript-mode  . lsp-deferred)
 	  (js-mode          . lsp-deferred)
 	  (sh-mode          . lsp-deferred)
-	  (graphql-mode     . lsp-deferred)
-	  (terraform-mode   . lsp-deferred)
-	  ;(csharp-tree-sitter-mode 	. lsp-deferred)
 	  (lsp-mode . lsp-enable-which-key-integration)
 	  )
 	:commands (lsp lsp-deferred)
