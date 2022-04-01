@@ -118,6 +118,24 @@
 	:run "yarn start"
 	:test-suffix ".spec" )
 
+;;;;;;;;;;;;;;
+;; Treemacs ;;
+;;;;;;;;;;;;;;
+(use-package treemacs
+	:custom (treemacs-persist-file (concat DIR_CACHE "treemacs-persist"))
+	:bind ("§" . treemacs)
+	:config
+	 (treemacs-filewatch-mode)
+	 (treemacs-follow-mode))
+
+(use-package treemacs-projectile
+	:after (treemacs projectile)
+	:config
+	(advice-add 'projectile-switch-project-by-name :after #'(lambda (&rest args)
+								   (let* ((path (car args))
+									  (name (treemacs--filename path)))
+								     (treemacs-do-add-project-to-workspace path name)))))
+
 ;;;;;;;;;;;;;
 ;; Company ;;
 ;;;;;;;;;;;;;
@@ -169,9 +187,9 @@
 ;;;;;;;;
 ;; C# ;;
 ;;;;;;;;
-(use-package tree-sitter)
-(use-package tree-sitter-langs)
-(use-package tree-sitter-indent)
+(use-package tree-sitter :defer 3)
+(use-package tree-sitter-langs :defer 3)
+(use-package tree-sitter-indent :defer 3)
 
 (defun my-csharp-mode-hook ()
  ;; enable the stuff you want for C# here
@@ -232,8 +250,9 @@
 ;; YAML ;;
 ;;;;;;;;;;
 (use-package yaml-mode
-	 :ensure-system-package (yaml-language-server . "yarn global add yaml-language-server")
-	 :custom (lsp-yaml-schemas t))
+	:hook (lsp-deferred)
+	:ensure-system-package (yaml-language-server . "yarn global add yaml-language-server")
+	:custom (lsp-yaml-schemas t))
 
 (use-package toml-mode)
 
@@ -276,7 +295,7 @@
 		(lsp-auto-guess-root t)
 	:hook
 	 (
-	  (yaml-mode        . lsp-deferred)
+	  ;(yaml-mode        . lsp-deferred)
 	  (json-mode        . lsp-deferred)
 	  (typescript-mode  . lsp-deferred)
 	  (js-mode          . lsp-deferred)
@@ -286,18 +305,10 @@
 	  ;(csharp-tree-sitter-mode 	. lsp-deferred)
 	  (lsp-mode . lsp-enable-which-key-integration)
 	  )
-	:config
-	 (lsp-register-client
-	  (make-lsp-client  :new-connection (lsp-stdio-connection '("graphql-lsp" "server" "--method" "stream"))
-			    :major-modes '(graphql-mode)
-			    :server-id 'graphql-lsp
-			    )
-	  )
-	 (add-to-list 'lsp-language-id-configuration '(graphql-mode . "graphql"))
 	:commands (lsp lsp-deferred)
 	:ensure-system-package (bash-language-server . "yarn global add bash-language-server"))
 
-;(use-package lsp-ui :commands lsp-ui-mode)
-;(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;(use-package dap-mode)
 ;(use-package dap-LANGUAGE) to load the dap adapter for your language

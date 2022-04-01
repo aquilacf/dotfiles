@@ -39,6 +39,8 @@
 (mkdir DIR_CACHE t)
 ;(mkdir DIR_SNIPPETS)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; Handling Files ;;
 ;;;;;;;;;;;;;;;;;;;;
@@ -70,7 +72,7 @@
 (setq history-length 30)
 (setq savehist-file (concat DIR_CACHE "history"))
 (savehist-mode t)
-
+(setq url-history-file (concat DIR_CACHE "url-history"))
 
 ;; Backups
 (defconst DIR_BACKUPS (concat DIR_ROOT "backups/"))
@@ -96,7 +98,7 @@
 (setq inhibit-startup-message t)
 (setq inhibit-default-init t)
 (setq initial-scratch-message nil)
-(setq initial-major-mode 'text-mode)
+(setq initial-major-mode 'fundamental-mode)
 (setq inhibit-splash-screen t)
 
 
@@ -126,6 +128,24 @@
 ; Tramp
 (setq tramp-default-method "ssh")
 
+;;;;;;;;;;;
+;; Other ;;
+;;;;;;;;;;;
+(setq large-file-warning-threshold nil)
+(setq vc-follow-symlinks t)
+(setq idle-update-delay 1.0)
+(setq inhibit-compacting-font-caches t)
+(setq redisplay-skip-fontification-on-input t)
+(setq auto-mode-case-fold nil)
+(setq-default 	bidi-display-reordering 'left-to-right
+		    	bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+(setq fast-but-imprecise-scrolling t)
+(setq ffap-machine-p-known 'reject)
+(setq frame-inhibit-implied-resize t)
+
 ;;;;;;;;;;;;;;;;;;
 ;; Key Bindings ;;
 ;;;;;;;;;;;;;;;;;;
@@ -133,8 +153,19 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
 ;; Mouse wheel
+(xterm-mouse-mode t)
 (global-set-key (kbd "<mouse-3>") (kbd "C-y"))
 (global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
 (global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
 
 (global-unset-key (kbd "C-t")) ; This is reserved to tmux
+
+
+(dolist (mode '(text-mode-hook
+		      prog-mode-hook
+		      conf-mode-hook))
+	(add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+
+      (dolist (mode '(org-mode-hook))
+	(add-hook mode (lambda () (display-line-numbers-mode 0))))
