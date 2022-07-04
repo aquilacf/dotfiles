@@ -1,707 +1,83 @@
-## My alacritty config. Still work in progress.
-## ~/.config/alacritty/alacritty.yml
-## 11 Mar 2022
-
-env:
-    TERM: xterm-24bit
+## My alacritty config. Still work in progress. Requires FiraCode Nerd Font.
+## ~/.config/alacritty.conf
+## 04 Jul 2022
 
 window:
-    opacity: 0.9
-    title: Terminal
-    dynamic_title: true
+  opacity: 0.9
+  title: Terminal
+  dynamic_title: true
 
+  
 scrolling:
-    history: 0
+  history: 0
 
+  
 font:
-    normal:
-        family: Menlo
+  normal:
+    family: FiraCode Nerd Font
 
-    size: 14.0
+  bold:
+    family: FiraCode Nerd Font
+    style: Bold
 
+  italic:
+    family: FiraCode Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: FiraCode Nerd Font
+    style: Bold Italic
+
+  size: 14.0
+
+  
+# Colors (One Dark)
 colors:
-    primary:
-        background: "#222222" # Grey-ish
-        foreground: "#fcfcfa" # White
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
 
-            # Bright and dim foreground colors
-            #
-            # The dimmed foreground color is calculated automatically if it is not present.
-            # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-            # is `false`, the normal foreground color will be used.
-            #dim_foreground: '#828482'
-            #bright_foreground: '#eaeaea'
+  cursor:
+    text:       CellBackground
+    cursor:     '#528bff' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background: '#3e4451' # syntax-selection-color
 
-    # Cursor colors
-    #
-    # Colors which should be used to draw the terminal cursor.
-    #
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    #cursor:
-    #  text: CellBackground
-    #  cursor: CellForeground
+  normal:
+    black:      '#5c6370' # mono-3
+    red:        '#e06c75' # red 1
+    green:      '#98c379'
+    yellow:     '#e5c07b' # orange 2
+    blue:       '#61afef'
+    magenta:    '#c678dd'
+    cyan:       '#56b6c2'
+    white:      '#828997' # mono-2
 
-    # Vi mode cursor colors
-    #
-    # Colors for the cursor when the vi mode is active.
-    #
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    #vi_mode_cursor:
-    #  text: CellBackground
-    #  cursor: CellForeground
+  bright:
+    black:   '#5c6370'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#d19a66'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#ffffff'
 
-    # Selection colors
-    #
-    # Colors which should be used to draw the selection area.
-    #
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    selection:
-        text: CellBackground
-        background: CellForeground
-
-    # Search colors
-    #
-    # Colors used for the search bar and match highlighting.
-    #search:
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    #matches:
-    #  foreground: '#000000'
-    #  background: '#ffffff'
-
-    #bar:
-    #  background: '#c5c8c6'
-    #  foreground: '#1d1f21'
-
-    # Normal colors
-    normal:
-        black: "#222222"
-        red: "#ff6188"
-        green: "#a9dc76"
-        yellow: "#ffd866"
-        blue: "#78dce8"
-        magenta: "#fd5ff0" # ?
-        cyan: "#8abeb7" # ?
-        white: "#fcfcfa"
-
-    # Bright colors
-    bright:
-       black:   '#000000'
-       red:     '#d54e53' # ?
-       green:   '#b9ca4a' # ?
-       yellow:  '#e7c547' # ?
-       blue:    '#7aa6da' # ?
-       magenta: '#c397d8' # ?
-       cyan:    '#70c0b1' # ?
-       white:   '#ffffff'
-
-    # Dim colors
-    #
-    # If the dim colors are not set, they will be calculated automatically based
-    # on the `normal` colors.
-    #dim:
-    #  black:   '#131415'
-    #  red:     '#864343'
-    #  green:   '#777c44'
-    #  yellow:  '#9e824c'
-    #  blue:    '#556a7d'
-    #  magenta: '#75617b'
-    #  cyan:    '#5b7d78'
-    #  white:   '#828482'
-    # Indexed Colors
-    #
-    # The indexed colors include all colors from 16 to 256.
-    # When these are not set, they're filled with sensible defaults.
-    #
-    # Example:
-    #   `- { index: 16, color: '#ff00ff' }`
-    #
-    #indexed_colors: []
-
-# Bell
-#
-# The bell is rung every time the BEL control character is received.
-#bell:
-# Visual Bell Animation
-#
-# Animation effect for flashing the screen when the visual bell is rung.
-#
-# Values for `animation`:
-#   - Ease
-#   - EaseOut
-#   - EaseOutSine
-#   - EaseOutQuad
-#   - EaseOutCubic
-#   - EaseOutQuart
-#   - EaseOutQuint
-#   - EaseOutExpo
-#   - EaseOutCirc
-#   - Linear
-#animation: EaseOutExpo
-
-# Duration of the visual bell flash. A `duration` of `0` will disable the
-# visual bell animation.
-#duration: 0
-
-# Visual bell animation color.
-#color: '#ffffff'
-
-# Bell Command
-#
-# This program is executed whenever the bell is rung.
-#
-# When set to `command: None`, no command will be executed.
-#
-# Example:
-#   command:
-#     program: notify-send
-#     args: ["Hello, World!"]
-#
-#command: None
-
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-
-#selection:
-#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-
-# When set to `true`, selected text will be copied to the primary clipboard.
-#save_to_clipboard: false
 
 cursor:
-    # Cursor style
-    #
-    # Values for `style`:
-    #   - ▇ Block
-    #   - _ Underline
-    #   - | Beam
-    style: Underline
+  style:
+    shape: Block
+    blinking: On
 
-    # Vi mode cursor style
-    #
-    # If the vi mode cursor style is `None` or not specified, it will fall back to
-    # the style of the active value of the normal cursor.
-    #
-    # See `cursor.style` for available options.
-    #vi_mode_style: None
+live_config_reload: true
 
-    # If this is `true`, the cursor will be rendered as a hollow box when the
-    # window is not focused.
-    unfocused_hollow: false
 
-    # Thickness of the cursor relative to the cell width as floating point number
-    # from `0.0` to `1.0`.
-    thickness: 0.3
-
-# Live config reload (changes require restart)
-live_config_reload: false
-
-# Shell
-#
-# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
-# Entries in `shell.args` are passed unmodified as arguments to the shell.
-#
-# Default:
-#   - (macOS) /bin/bash --login
-#   - (Linux/BSD) user login shell
-#   - (Windows) powershell
 shell:
-  program: /bin/zsh
+  program: /opt/homebrew/bin/tmux
   args:
-    - -l
-    - -c
-    - "tmux attach || tmux"
-
-# Startup directory
-#
-# Directory the shell is started in. If this is unset, or `None`, the working
-# directory of the parent process will be used.
-#working_directory: None
-
-# WinPTY backend (Windows only)
-#
-# Alacritty defaults to using the newer ConPTY backend if it is available,
-# since it resolves a lot of bugs and is quite a bit faster. If it is not
-# available, the WinPTY backend will be used instead.
-#
-# Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
-# even if the ConPTY backend is available.
-#winpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
-
-#mouse:
-    # url:
-      #  modifiers: Control
-
-# Mouse bindings
-#
-# Mouse bindings are specified as a list of objects, much like the key
-# bindings further below.
-#
-# To trigger mouse bindings when an application running within Alacritty captures the mouse, the
-# `Shift` modifier is automatically added as a requirement.
-#
-# Each mouse binding will specify a:
-#
-# - `mouse`:
-#
-#   - Middle
-#   - Left
-#   - Right
-#   - Numeric identifier such as `5`
-#
-# - `action` (see key bindings)
-#
-# And optionally:
-#
-# - `mods` (see key bindings)
-#mouse_bindings:
-#  - { mouse: Middle, action: PasteSelection }
-
-key_bindings:
-    #- { key: Paste,                                action: Paste          }
-    #- { key: Copy,                                 action: Copy           }
-    #- { key: L,         mods: Control,             action: ClearLogNotice }
-    #- { key: L,         mods: Control, mode: ~Vi,  chars: "\x0c"          }
-    #- { key: PageUp,    mods: Shift,   mode: ~Alt, action: ScrollPageUp,  }
-    #- { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
-    #- { key: Home,      mods: Shift,   mode: ~Alt, action: ScrollToTop,   }
-    #- { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom }
-
-    #################
-    # "Vimacs" Mode #
-    #################
-
-    # - { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          } # ?
-    # - { key: Space,  mods: Shift|Control,           action: ToggleViMode            }
-    # - { key: Escape,                      mode: Vi, action: ClearSelection          }
-    # - { key: I,                           mode: Vi, action: ScrollToBottom          }
-    # - { key: I,                           mode: Vi, action: ToggleViMode            }
-    - { key: P, mods: Alt, mode: Vi, action: ScrollLineUp }
-    - { key: N, mods: Alt, mode: Vi, action: ScrollLineDown }
-    - { key: Comma, mods: Shift|Control, mode: Vi, action: ScrollToTop }
-    - { key: Period, mods: Shift|Control, mode: Vi, action: ScrollToBottom }
-    - { key: V, mods: Alt, mode: Vi, action: ScrollPageUp }
-    - { key: V, mods: Control, mode: Vi, action: ScrollPageDown }
-    # - { key: U,      mods: Control,       mode: Vi, action: ScrollHalfPageUp        }
-    # - { key: D,      mods: Control,       mode: Vi, action: ScrollHalfPageDown      }
-    - { key: W, mods: Alt, mode: Vi, action: Copy }
-    # - { key: Y,                           mode: Vi, action: ClearSelection          }
-    - { key: Space, mods: Control, mode: Vi, action: ToggleNormalSelection }
-    # - { key: V,      mods: Shift,         mode: Vi, action: ToggleLineSelection     }
-    # - { key: V,      mods: Control,       mode: Vi, action: ToggleBlockSelection    }
-    # - { key: V,      mods: Alt,           mode: Vi, action: ToggleSemanticSelection }
-    # - { key: Return,                      mode: Vi, action: Open                    }
-    - { key: P, mods: Control, mode: Vi, action: Up }
-    - { key: N, mods: Control, mode: Vi, action: Down }
-    - { key: B, mods: Control, mode: Vi, action: Left }
-    - { key: F, mods: Control, mode: Vi, action: Right }
-    - { key: Up, mode: Vi, action: Up }
-    - { key: Down, mode: Vi, action: Down }
-    - { key: Left, mode: Vi, action: Left }
-    - { key: Right, mode: Vi, action: Right }
-    # - { key: Key0,                        mode: Vi, action: First                   }
-    # - { key: Key4,   mods: Shift,         mode: Vi, action: Last                    }
-    # - { key: Key6,   mods: Shift,         mode: Vi, action: FirstOccupied           }
-    # - { key: H,      mods: Shift,         mode: Vi, action: High                    }
-    # - { key: M,      mods: Shift,         mode: Vi, action: Middle                  }
-    # - { key: L,      mods: Shift,         mode: Vi, action: Low                     }
-    # - { key: B,                           mode: Vi, action: SemanticLeft            }
-    - { key: B, mods: Alt, mode: Vi, action: SemanticLeft }
-    # - { key: ?,                           mode: Vi, action: SemanticRight         }
-    - { key: F, mods: Alt, mode: Vi, action: SemanticRightEnd }
-    - { key: Left, mods: Alt, mode: Vi, action: SemanticLeft }
-    - { key: Right, mods: Alt, mode: Vi, action: SemanticRightEnd }
-    - { key: Left, mods: Alt, mode: Vi, action: SemanticLeft }
-    - { key: Right, mods: Alt, mode: Vi, action: SemanticRightEnd }
-    - { key: Left, mods: Control, mode: Vi, action: WordLeft }
-    - { key: Right, mods: Control, mode: Vi, action: WordRight }
-    # - { key: B,      mods: Shift,         mode: Vi, action: WordLeft                }
-    # - { key: W,      mods: Shift,         mode: Vi, action: WordRight               }
-    # - { key: E,      mods: Shift,         mode: Vi, action: WordRightEnd            }
-    # - { key: Key5,   mods: Shift,         mode: Vi, action: Bracket                 }
-    # - { key: Slash,                       mode: Vi, action: SearchForward           }
-    # - { key: Slash,  mods: Shift,         mode: Vi, action: SearchBackward          }
-    # - { key: N,                           mode: Vi, action: SearchNext              }
-    # - { key: N,      mods: Shift,         mode: Vi, action: SearchPrevious          }
-
-    # (Windows, Linux, and BSD only)
-    #- { key: V,        mods: Control|Shift,           action: Paste            }
-    #- { key: C,        mods: Control|Shift,           action: Copy             }
-    #- { key: F,        mods: Control|Shift,           action: SearchForward    }
-    #- { key: B,        mods: Control|Shift,           action: SearchBackward   }
-    #- { key: C,        mods: Control|Shift, mode: Vi, action: ClearSelection   }
-    #- { key: Insert,   mods: Shift,                   action: PasteSelection   }
-    #- { key: Key0,     mods: Control,                 action: ResetFontSize    }
-    #- { key: Equals,   mods: Control,                 action: IncreaseFontSize }
-    #- { key: Add,      mods: Control,                 action: IncreaseFontSize }
-    #- { key: Subtract, mods: Control,                 action: DecreaseFontSize }
-    #- { key: Minus,    mods: Control,                 action: DecreaseFontSize }
-
-    # (Windows only)
-    #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
-
-    # (macOS only)
-    # - { key: K, mods: Command, mode: ~Vi, chars: "\x0c" }
-    # - { key: Key0, mods: Command, action: ResetFontSize }
-    # - { key: Equals, mods: Command, action: IncreaseFontSize }
-    # - { key: Add, mods: Command, action: IncreaseFontSize }
-    # - { key: Minus, mods: Command, action: DecreaseFontSize }
-    # - { key: K, mods: Command, action: ClearHistory }
-    # - { key: V, mods: Command, action: Paste }
-    # - { key: C, mods: Command, action: Copy }
-    # - { key: C, mods: Command, mode: Vi, action: ClearSelection }
-    # - { key: H, mods: Command, action: Hide }
-    # - { key: M, mods: Command, action: Minimize }
-    # - { key: Q, mods: Command, action: Quit }
-    # - { key: W, mods: Command, action: Quit }
-    # - { key: N, mods: Command, action: SpawnNewInstance }
-    # - { key: F, mods: Command|Control, action: ToggleFullscreen }
-    # - { key: F, mods: Command, action: SearchForward }
-    # - { key: B, mods: Command, action: SearchBackward }
-
-    #####################################################################################
-    #                           @todo: Conflict-free shortcuts                          #
-    #                               "\e" = "\033" = "\x1b"                              #
-    # https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-PC-Style-Function-Keys #
-    #####################################################################################
-
-    - { key: A, mods: Alt, chars: "\ea" }
-    - { key: B, mods: Alt, chars: "\eb" }
-    - { key: C, mods: Alt, chars: "\ec" }
-    - { key: D, mods: Alt, chars: "\ed" }
-    - { key: E, mods: Alt, chars: "\ee" }
-    - { key: F, mods: Alt, chars: "\ef" }
-    - { key: G, mods: Alt, chars: "\eg" }
-    - { key: H, mods: Alt, chars: "\eh" }
-    - { key: I, mods: Alt, chars: "\ei" }
-    - { key: J, mods: Alt, chars: "\ej" }
-    - { key: K, mods: Alt, chars: "\ek" }
-    - { key: L, mods: Alt, chars: "\el" }
-    - { key: M, mods: Alt, chars: "\em" }
-    - { key: N, mods: Alt, chars: "\en" }
-    - { key: O, mods: Alt, chars: "\eo" }
-    - { key: P, mods: Alt, chars: "\ep" }
-    - { key: Q, mods: Alt, chars: "\eq" }
-    - { key: R, mods: Alt, chars: "\er" }
-    - { key: S, mods: Alt, chars: "\es" }
-    - { key: T, mods: Alt, chars: "\et" }
-    - { key: U, mods: Alt, chars: "\eu" }
-    - { key: V, mods: Alt, chars: "\ev" }
-    - { key: W, mods: Alt, chars: "\ew" }
-    - { key: X, mods: Alt, chars: "\ex" }
-    - { key: Y, mods: Alt, chars: "\ey" }
-    - { key: Z, mods: Alt, chars: "\ez" }
-
-    - { key: Key1, mods: Alt, chars: "\e1" }
-    - { key: Key2, mods: Alt, chars: "\e2" }
-    - { key: Key3, mods: Alt, chars: "\e3" }
-    - { key: Key4, mods: Alt, chars: "\e4" }
-    - { key: Key5, mods: Alt, chars: "\e5" }
-    - { key: Key6, mods: Alt, chars: "\e6" }
-    - { key: Key7, mods: Alt, chars: "\e7" }
-    - { key: Key8, mods: Alt, chars: "\e8" }
-    - { key: Key9, mods: Alt, chars: "\e9" }
-    - { key: Key0, mods: Alt, chars: "\e0" }
-
-    - { key: Caret, mods: Alt, chars: "\e§" } # Alt + §
-    - { key: Minus, mods: Alt, chars: "\e-" } # Alt + -
-    - { key: Equals, mods: Alt, chars: "\e=" } # Alt + =
-    # - { key: Back, mods: Alt, chars: "\e\x7f" } # Alt + <DEL>
-    # - { key: Tab, mods: Alt, chars: "\e\x09" } # Alt + <TAB> = \e\t
-    - { key: LBracket, mods: Alt, chars: "\e[" } # Alt + [
-    - { key: RBracket, mods: Alt, chars: "\e]" } # Alt + ]
-    # - { key: Return, mods: Alt, chars: "\e\x0d" } # Alt + <RET> = \e\r
-    - { key: Backslash, mods: Alt, chars: "\e\\" } # Alt + \
-    - { key: Apostrophe, mods: Alt, chars: "\e\x27" } # Alt + '
-    - { key: Semicolon, mods: Alt, chars: "\e;" } # Alt + ;
-    - { key: Grave, mods: Alt, chars: "\e`" } # Alt + `
-    - { key: Comma, mods: Alt, chars: "\e," } # Alt + ,
-    - { key: Period, mods: Alt, chars: "\e." } # Alt + .
-    - { key: Slash, mods: Alt, chars: "\e/" } # Alt + /
-    # - { key: Space, mods: Alt, chars: "\xA0" } # Alt + <SPACE> = "\xa0" (No-Break Space)
-
-    # - { key: Left, mods: Alt, chars: "\eb" } # before
-    # - { key: Right, mods: Alt, chars: "\ef" } # forward
-    # - { key: Up, mods: Alt, chars: "\e[1;3A" } # Not sure
-    # - { key: Down, mods: Alt, chars: "\e[1;3B" } # Not sure
-
-    - { key: A, mods: Alt|Shift, chars: "\eA" }
-    - { key: B, mods: Alt|Shift, chars: "\eB" }
-    - { key: C, mods: Alt|Shift, chars: "\eC" }
-    - { key: D, mods: Alt|Shift, chars: "\eD" }
-    - { key: E, mods: Alt|Shift, chars: "\eE" }
-    - { key: F, mods: Alt|Shift, chars: "\eF" }
-    - { key: G, mods: Alt|Shift, chars: "\eG" }
-    - { key: H, mods: Alt|Shift, chars: "\eH" }
-    - { key: I, mods: Alt|Shift, chars: "\eI" }
-    - { key: J, mods: Alt|Shift, chars: "\eJ" }
-    - { key: K, mods: Alt|Shift, chars: "\eK" }
-    - { key: L, mods: Alt|Shift, chars: "\eL" }
-    - { key: M, mods: Alt|Shift, chars: "\eM" }
-    - { key: N, mods: Alt|Shift, chars: "\eN" }
-    - { key: O, mods: Alt|Shift, chars: "\eO" }
-    - { key: P, mods: Alt|Shift, chars: "\eP" }
-    - { key: Q, mods: Alt|Shift, chars: "\eQ" }
-    - { key: R, mods: Alt|Shift, chars: "\eR" }
-    - { key: S, mods: Alt|Shift, chars: "\eS" }
-    - { key: T, mods: Alt|Shift, chars: "\eT" }
-    - { key: U, mods: Alt|Shift, chars: "\eU" }
-    - { key: V, mods: Alt|Shift, chars: "\eV" }
-    - { key: W, mods: Alt|Shift, chars: "\eW" }
-    - { key: X, mods: Alt|Shift, chars: "\eX" }
-    - { key: Y, mods: Alt|Shift, chars: "\eY" }
-    - { key: Z, mods: Alt|Shift, chars: "\eZ" }
-
-    - { key: Key1, mods: Alt|Shift, chars: "\e!" } # Alt + !
-    - { key: Key2, mods: Alt|Shift, chars: "\e@" } # Alt + @
-    - { key: Key3, mods: Alt|Shift, chars: "\e#" } # Alt + #
-    - { key: Key4, mods: Alt|Shift, chars: "\e$" } # Alt + $
-    - { key: Key5, mods: Alt|Shift, chars: "\e%" } # Alt + %
-    - { key: Key6, mods: Alt|Shift, chars: "\e^" } # Alt + ^
-    - { key: Key7, mods: Alt|Shift, chars: "\e&" } # Alt + &
-    - { key: Key8, mods: Alt|Shift, chars: "\e*" } # Alt + *
-    - { key: Key9, mods: Alt|Shift, chars: "\e(" } # Alt + (
-    - { key: Key0, mods: Alt|Shift, chars: "\e)" } # Alt + )
-
-    - { key: Caret, mods: Alt|Shift, chars: "\e±" } # Alt + ± = \e±
-    - { key: Minus, mods: Alt|Shift, chars: "\e_" } # Alt + _
-    - { key: Equals, mods: Alt|Shift, chars: "\e+" } # Alt + +
-    # - { key: Back, mods: Alt|Shift, chars: "\e\x7f" } # Alt + <DEL>
-    # - { key: Tab, mods: Alt|Shift, chars: "?" } # Alt + <TAB> = \e\t
-    - { key: LBracket, mods: Alt|Shift, chars: "\e{" } # Alt + {
-    - { key: RBracket, mods: Alt|Shift, chars: "\e}" } # Alt + }
-    # - { key: Return, mods: Alt|Shift, chars: "?" } # Alt + <RET> = \e\r
-    - { key: Backslash, mods: Alt|Shift, chars: "\e|" } # Alt + |
-    - { key: Apostrophe, mods: Alt|Shift, chars: "\e\x27" } # Alt + '
-    - { key: Semicolon, mods: Alt|Shift, chars: "\e:" } # Alt + :
-    - { key: Grave, mods: Alt|Shift, chars: "\e~" } # Alt + ~
-    - { key: Comma, mods: Alt|Shift, chars: "\e<" } # Alt + <
-    - { key: Period, mods: Alt|Shift, chars: "\e>" } # Alt + >
-    - { key: Slash, mods: Alt|Shift, chars: "\e?" } # Alt + ?
-    # - { key: Space, mods: Alt|Shift, chars: "\e\x07" } # Alt + Shift + <SPACE> = ?
-
-    # - { key: Left, mods: Alt|Shift, chars: "\eB" } # before
-    # - { key: Right, mods: Alt|Shift, chars: "\eF" } # forward
-    # - { key: Up, mods: Alt|Shift, chars: "\e[1;4A" } # Not sure
-    # - { key: Down, mods: Alt|Shift, chars: "\e[1;4B" } # Not sure
-
-
-
-    ###############
-    # In progress #
-    ###############
-    # - { key: A,         mods: Control,       chars: "\ea"                       }
-    # - { key: B,         mods: Control,       chars: "\eb"                       }
-    # - { key: C,         mods: Control,       chars: "\ec"                       }
-    # - { key: D,         mods: Control,       chars: "\ed"                       }
-    # - { key: E,         mods: Control,       chars: "\ee"                       }
-    # - { key: F,         mods: Control,       chars: "\ef"                       }
-    # - { key: G,         mods: Control,       chars: "\eg"                       }
-    # - { key: H,         mods: Control,       chars: "\eh"                       }
-    # - { key: I,         mods: Control,       chars: "\ei"                       }
-    # - { key: J,         mods: Control,       chars: "\ej"                       }
-    # - { key: K,         mods: Control,       chars: "\ek"                       }
-    # - { key: L,         mods: Control,       chars: "\el"                       }
-    # - { key: M,         mods: Control,       chars: "\em"                       }
-    # - { key: N,         mods: Control,       chars: "\en"                       }
-    # - { key: O,         mods: Control,       chars: "\eo"                       }
-    # - { key: P,         mods: Control,       chars: "\ep"                       }
-    # - { key: Q,         mods: Control,       chars: "\eq"                       }
-    # - { key: R,         mods: Control,       chars: "\er"                       }
-    # - { key: S,         mods: Control,       chars: "\es"                       }
-    # - { key: T,         mods: Control,       chars: "\et"                       }
-    # - { key: U,         mods: Control,       chars: "\eu"                       }
-    # - { key: V,         mods: Control,       chars: "\ev"                       }
-    # - { key: W,         mods: Control,       chars: "\ew"                       }
-    # - { key: X,         mods: Control,       chars: "\ex"                       }
-    # - { key: Y,         mods: Control,       chars: "\ey"                       }
-    # - { key: Z,         mods: Control,       chars: "\ez"                       }
-    # - { key: Key1,      mods: Control,       chars: "\e1"                       }
-    # - { key: Key2,      mods: Control,       chars: "\e2"                       }
-    # - { key: Key3,      mods: Control,       chars: "\e3"                       }
-    # - { key: Key4,      mods: Control,       chars: "\e4"                       }
-    # - { key: Key5,      mods: Control,       chars: "\e5"                       }
-    # - { key: Key6,      mods: Control,       chars: "\x1e"                      }
-    # - { key: Key7,      mods: Control,       chars: "\e7"                       }
-    # - { key: Key8,      mods: Control,       chars: "\e8"                       }
-    # - { key: Key9,      mods: Control,       chars: "\e9"                       }
-    # - { key: Key0,      mods: Control,       chars: "\e0"                       }
-    # - { key: Caret,     mods: Control,       chars: "\e§"                       } # Control + §
-    # - { key: Minus,     mods: Control,       chars: "\e-"                       } # Control + -
-    # - { key: Equals,    mods: Control,       chars: "\e="                       } # Control + =
-    # - { key: Back,      mods: Control,       chars: "\e\x7f"                    } # Control + <DEL>
-    # - { key: Tab,       mods: Control,       chars: "\e\x09"                    } # Control + <TAB> = \e\t
-    # - { key: LBracket,  mods: Control,       chars: "\e["                       } # Control + [
-    # - { key: RBracket,  mods: Control,       chars: "\e]"                       } # Control + ]
-    # - { key: Return,    mods: Control,       chars: "\e\x0d"                    } # Control + <RET> = \e\r
-    # - { key: Backslash, mods: Control,       chars: "\e\\"                      } # Control + \
-    # - { key: Apostrophe,mods: Control,       chars: "\e\x27"                    } # Control + '
-    # - { key: Semicolon, mods: Control,       chars: "\e;"                       } # Control + ;
-    # - { key: Grave,     mods: Control,       chars: "\e`"                       } # Control + `
-    # - { key: Comma,     mods: Control,       chars: "\e,"                       } # Control + ,
-    # - { key: Period,    mods: Control,       chars: "\e."                       } # Control + .
-    # - { key: Slash,     mods: Control,       chars: "\e/"                       } # Control + /
-    ## - { key: Space,     mods: Control,       chars: "\x00"                      } # Control + <SPACE> = NULL
-    # - { key: Left,      mods: Control,       chars: "\e0D"                      } # Home
-    # - { key: Right,     mods: Control,       chars: "\e0C"                      } # End
-    ## - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
-    ## - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
-    # - { key: Up,        mods: Control,       chars: "?"                         }
-    # - { key: Down,      mods: Control,       chars: "?"                         }
-    # - { key: A,         mods: Control|Shift, chars: "\eA"                       }
-    # - { key: B,         mods: Control|Shift, chars: "\eB"                       }
-    # - { key: C,         mods: Control|Shift, chars: "\eC"                       }
-    # - { key: D,         mods: Control|Shift, chars: "\eD"                       }
-    # - { key: E,         mods: Control|Shift, chars: "\eE"                       }
-    # - { key: F,         mods: Control|Shift, chars: "\eF"                       }
-    # - { key: G,         mods: Control|Shift, chars: "\eG"                       }
-    # - { key: H,         mods: Control|Shift, chars: "\eH"                       }
-    # - { key: I,         mods: Control|Shift, chars: "\eI"                       }
-    # - { key: J,         mods: Control|Shift, chars: "\eJ"                       }
-    # - { key: K,         mods: Control|Shift, chars: "\eK"                       }
-    # - { key: L,         mods: Control|Shift, chars: "\eL"                       }
-    # - { key: M,         mods: Control|Shift, chars: "\eM"                       }
-    # - { key: N,         mods: Control|Shift, chars: "\eN"                       }
-    # - { key: O,         mods: Control|Shift, chars: "\eO"                       }
-    # - { key: P,         mods: Control|Shift, chars: "\eP"                       }
-    # - { key: Q,         mods: Control|Shift, chars: "\eQ"                       }
-    # - { key: R,         mods: Control|Shift, chars: "\eR"                       }
-    # - { key: S,         mods: Control|Shift, chars: "\eS"                       }
-    # - { key: T,         mods: Control|Shift, chars: "\eT"                       }
-    # - { key: U,         mods: Control|Shift, chars: "\eU"                       }
-    # - { key: V,         mods: Control|Shift, chars: "\eV"                       }
-    # - { key: W,         mods: Control|Shift, chars: "\eW"                       }
-    # - { key: X,         mods: Control|Shift, chars: "\eX"                       }
-    # - { key: Y,         mods: Control|Shift, chars: "\eY"                       }
-    # - { key: Z,         mods: Control|Shift, chars: "\eZ"                       }
-    # - { key: Key1,      mods: Control|Shift, chars: "\e!"                       } # Control + !
-    # - { key: Key2,      mods: Control|Shift, chars: "\e@"                       } # Control + @
-    # - { key: Key3,      mods: Control|Shift, chars: "\e#"                       } # Control + #
-    # - { key: Key4,      mods: Control|Shift, chars: "\e$"                       } # Control + $
-    # - { key: Key5,      mods: Control|Shift, chars: "\e%"                       } # Control + %
-    # - { key: Key6,      mods: Control|Shift, chars: "\e^"                       } # Control + ^
-    # - { key: Key7,      mods: Control|Shift, chars: "\e&"                       } # Control + &
-    # - { key: Key8,      mods: Control|Shift, chars: "\e*"                       } # Control + *
-    # - { key: Key9,      mods: Control|Shift, chars: "\e("                       } # Control + (
-    # - { key: Key0,      mods: Control|Shift, chars: "\e)"                       } # Control + )
-    # - { key: Caret,     mods: Control|Shift, chars: "\e±"                       } # Control + ± = \e±
-    # - { key: Minus,     mods: Control|Shift, chars: "\e_"                       } # Control + _
-    # - { key: Equals,    mods: Control|Shift, chars: "\e+"                       } # Control + +
-    # - { key: Back,      mods: Control|Shift, chars: "?"                         } # Control + <DEL>
-    # - { key: Tab,       mods: Control|Shift, chars: "?"                         } # Control + <TAB> = \e\t
-    # - { key: LBracket,  mods: Control|Shift, chars: "\e{"                       } # Control + {
-    # - { key: RBracket,  mods: Control|Shift, chars: "\e}"                       } # Control + }
-    # - { key: Return,    mods: Control|Shift, chars: "?"                         } # Control + <RET> = \e\r
-    # - { key: Backslash, mods: Control|Shift, chars: "\e|"                       } # Control + |
-    # - { key: Apostrophe,mods: Control|Shift, chars: "\e\x27"                    } # Control + '
-    # - { key: Semicolon, mods: Control|Shift, chars: "\e:"                       } # Control + :
-    # - { key: Grave,     mods: Control|Shift, chars: "\e~"                       } # Control + ~
-    # - { key: Comma,     mods: Control|Shift, chars: "\e<"                       } # Control + <
-    # - { key: Period,    mods: Control|Shift, chars: "\e>"                       } # Control + >
-    # - { key: Slash,     mods: Control|Shift, chars: "\e?"                       } # Control + ?
-    # - { key: Space,     mods: Control|Shift, chars: "?"                         } # Control + Shift + <SPACE> = ?
-    # - { key: Left,      mods: Control|Shift, chars: "?"                         } # before
-    # - { key: Right,     mods: Control|Shift, chars: "?"                         } # forward
-    # - { key: Up,        mods: Control|Shift, chars: "?"                         }
-    # - { key: Down,      mods: Control|Shift, chars: "?"                         }
-    ###############################
-    # Collected from the internet #
-    ###############################
-    # - { key: Apostrophe,mods: Control,   chars: "\x18\x40\x63\x27"            } # Ctrl + ''
-    # - { key: Semicolon, mods: Control,   chars: "\x18\x40\x63\x3b"            } # Ctrl + ;
-    # - { key: Slash,     mods: Control,   chars: "\x1f"                        } # Ctrl + /
-    # - { key: Space,     mods: Control,   chars: "\x00"                        } # Ctrl + Space
-    # - { key: L,        mods: Control, action: ClearLogNotice                   }
-    # - { key: L,        mods: Control, chars: "\x0c"                            }
-    # - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                          }
-    # - { key: Back,                    chars: "\x7f"                            }
-    # - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                        }
-    # - { key: Delete,                  chars: "\x1b[3~"                         }
-    # - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                       }
-    # - { key: Left,     mods: Control, chars: "\x1b[1;5D"                       }
-    # - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                       }
-    # - { key: Left,                    chars: "\x1b[D",        mode: ~AppCursor }
-    # - { key: Left,                    chars: "\x1bOD",        mode: AppCursor  }
-    # - { key: Right,    mods: Shift,   chars: "\x1b[1;2C"                       }
-    # - { key: Right,    mods: Control, chars: "\x1b[1;5C"                       }
-    # - { key: Right,    mods: Alt,     chars: "\x1b[1;3C"                       }
-    # - { key: Right,                   chars: "\x1b[C",        mode: ~AppCursor }
-    # - { key: Right,                   chars: "\x1bOC",        mode: AppCursor  }
-    # - { key: Up,       mods: Shift,   chars: "\x1b[1;2A"                       }
-    # - { key: Up,       mods: Control, chars: "\x1b[1;5A"                       }
-    # - { key: Up,       mods: Alt,     chars: "\x1b[1;3A"                       }
-    # - { key: Up,                      chars: "\x1b[A",        mode: ~AppCursor }
-    # - { key: Up,                      chars: "\x1bOA",        mode: AppCursor  }
-    # - { key: Down,     mods: Shift,   chars: "\x1b[1;2B"                       }
-    # - { key: Down,     mods: Control, chars: "\x1b[1;5B"                       }
-    # - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                       }
-    # - { key: Down,                    chars: "\x1b[B",        mode: ~AppCursor }
-    # - { key: Down,                    chars: "\x1bOB",        mode: AppCursor  }
-    # - { key: F1,                      chars: "\x1bOP"                          }
-    # - { key: F2,                      chars: "\x1bOQ"                          }
-    # - { key: F3,                      chars: "\x1bOR"                          }
-    # - { key: F4,                      chars: "\x1bOS"                          }
-    # - { key: F5,                      chars: "\x1b[15~"                        }
-    # - { key: F6,                      chars: "\x1b[17~"                        }
-    # - { key: F7,                      chars: "\x1b[18~"                        }
-    # - { key: F8,                      chars: "\x1b[19~"                        }
-    # - { key: F9,                      chars: "\x1b[20~"                        }
-    # - { key: F10,                     chars: "\x1b[21~"                        }
-    # - { key: F11,                     chars: "\x1b[23~"                        }
-    # - { key: F12,                     chars: "\x1b[24~"                        }
-    # - { key: F1,       mods: Shift,   chars: "\x1b[1;2P"                       }
-    # - { key: F2,       mods: Shift,   chars: "\x1b[1;2Q"                       }
-    # - { key: F3,       mods: Shift,   chars: "\x1b[1;2R"                       }
-    # - { key: F4,       mods: Shift,   chars: "\x1b[1;2S"                       }
-    # - { key: F5,       mods: Shift,   chars: "\x1b[15;2~"                      }
-    # - { key: F6,       mods: Shift,   chars: "\x1b[17;2~"                      }
-    # - { key: F7,       mods: Shift,   chars: "\x1b[18;2~"                      }
-    # - { key: F8,       mods: Shift,   chars: "\x1b[19;2~"                      }
-    # - { key: F9,       mods: Shift,   chars: "\x1b[20;2~"                      }
-    # - { key: F10,      mods: Shift,   chars: "\x1b[21;2~"                      }
-    # - { key: F11,      mods: Shift,   chars: "\x1b[23;2~"                      }
-    # - { key: F12,      mods: Shift,   chars: "\x1b[24;2~"                      }
-    # - { key: F1,       mods: Control, chars: "\x1b[1;5P"                       }
-    # - { key: F2,       mods: Control, chars: "\x1b[1;5Q"                       }
-    # - { key: F3,       mods: Control, chars: "\x1b[1;5R"                       }
-    # - { key: F4,       mods: Control, chars: "\x1b[1;5S"                       }
-    # - { key: F5,       mods: Control, chars: "\x1b[15;5~"                      }
-    # - { key: F6,       mods: Control, chars: "\x1b[17;5~"                      }
-    # - { key: F7,       mods: Control, chars: "\x1b[18;5~"                      }
-    # - { key: F8,       mods: Control, chars: "\x1b[19;5~"                      }
-    # - { key: F9,       mods: Control, chars: "\x1b[20;5~"                      }
-    # - { key: F10,      mods: Control, chars: "\x1b[21;5~"                      }
-    # - { key: F11,      mods: Control, chars: "\x1b[23;5~"                      }
-    # - { key: F12,      mods: Control, chars: "\x1b[24;5~"                      }
-    # - { key: F1,       mods: Alt,     chars: "\x1b[1;6P"                       }
-    # - { key: F2,       mods: Alt,     chars: "\x1b[1;6Q"                       }
-    # - { key: F3,       mods: Alt,     chars: "\x1b[1;6R"                       }
-    # - { key: F4,       mods: Alt,     chars: "\x1b[1;6S"                       }
-    # - { key: F5,       mods: Alt,     chars: "\x1b[15;6~"                      }
-    # - { key: F6,       mods: Alt,     chars: "\x1b[17;6~"                      }
-    # - { key: F7,       mods: Alt,     chars: "\x1b[18;6~"                      }
-    # - { key: F8,       mods: Alt,     chars: "\x1b[19;6~"                      }
-    # - { key: F9,       mods: Alt,     chars: "\x1b[20;6~"                      }
-    # - { key: F10,      mods: Alt,     chars: "\x1b[21;6~"                      }
-    # - { key: F11,      mods: Alt,     chars: "\x1b[23;6~"                      }
-    # - { key: F12,      mods: Alt,     chars: "\x1b[24;6~"                      }
-    # - { key: F1,       mods: Super,   chars: "\x1b[1;3P"                       }
-    # - { key: F2,       mods: Super,   chars: "\x1b[1;3Q"                       }
-    # - { key: F3,       mods: Super,   chars: "\x1b[1;3R"                       }
-    # - { key: F4,       mods: Super,   chars: "\x1b[1;3S"                       }
-    # - { key: F5,       mods: Super,   chars: "\x1b[15;3~"                      }
-    # - { key: F6,       mods: Super,   chars: "\x1b[17;3~"                      }
-    # - { key: F7,       mods: Super,   chars: "\x1b[18;3~"                      }
-    # - { key: F8,       mods: Super,   chars: "\x1b[19;3~"                      }
-    # - { key: F9,       mods: Super,   chars: "\x1b[20;3~"                      }
-    # - { key: F10,      mods: Super,   chars: "\x1b[21;3~"                      }
-    # - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                      }
-    # - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
+    - new-session
+    - -A
+    - -D
+    - -s
+    - main
