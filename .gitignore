@@ -1,4 +1,7 @@
-gitconfig
 priv.*
 
+# IDE
+idea/
+
+# MacOS
 .DS_Store

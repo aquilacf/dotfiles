@@ -1,0 +1,10 @@
+# Git root configuration.
+# ~/.gitconfig
+# 05 Jul 2022
+
+[include]
+    path = ~/Projects/Personal/dotfiles/git/main.gitconfig
+[includeIf "gitdir:~/Projects/Work/"]
+    path = ~/Projects/Personal/dotfiles/git/priv.work.gitconfig
+[includeIf "gitdir:~/Projects/Personal/"]
+    path = ~/Projects/Personal/dotfiles/git/personal.gitconfig

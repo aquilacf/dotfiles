@@ -1,0 +1,8 @@
+[user]
+   name = Áquila Freitas
+
+[commit]
+   gpgsign = true
+   
+[gpg]
+   program = gpg
