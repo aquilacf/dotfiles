@@ -1,0 +1,25 @@
+## Multi-shell framework.
+## ~/.config/starship.toml
+## 05 Jul 2022
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = """
+$directory\
+$git_branch
+"""
+
+[character]
+disabled = true
+
+[package]
+disabled = true
+
+[directory]
+truncation_length = 1
+truncation_symbol = ""
+
+[git_branch]
+symbol = ""
+format = "[$symbol$branch(:$remote_branch)]($style) "
