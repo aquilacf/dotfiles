@@ -1,9 +1,18 @@
 ## My zsh.
 ## ~/.zshrc
-## 18 Mar 2022
+## 05 Jul 2022
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# GPG
 export GPG_TTY=$(tty)
-autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
+
+# PATH
+PATH=$PATH:~/.cargo/bin
+PATH=$PATH:~/.dotnet/tools
+PATH=$PATH:/usr/local/share/dotnet
+PATH=$PATH:/opt/homebrew/Cellar/emacs-plus@28/28.1/libexec/emacs/28.1/aarch64-apple-darwin21.2.0
 
 # Bindings
 bindkey "^[[1;3A" history-beginning-search-backward
@@ -11,16 +20,36 @@ bindkey "^[[1;3B" history-beginning-search-forward
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-source ~/.config/zsh/priv.personal.zsh
-source ~/.config/zsh/autosuggestions.zsh
-source ~/.config/zsh/syntax-highlighting.zsh
 
 # History
-export HISTSIZE=10000000
-export SAVEHIST=$HISTSIZE
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
 
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt inc_append_history
 setopt hist_reduce_blanks
+
+# Other
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Avoid customizations for dumb terminals
+if [[ "$TERM" != "dumb" ]] then
+
+   TERM=alacritty
+   
+   FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+   autoload bashcompinit && bashcompinit
+   autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
+   complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
+
+   # Plugins
+   source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+   source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   eval "$(starship init zsh)"
+
+fi
+
+# Load extra
+#source ~/.config/zsh/priv.personal.zsh
