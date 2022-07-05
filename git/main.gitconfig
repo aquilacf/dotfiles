@@ -1,8 +1,11 @@
+# Default git configuration.
+# 05 Jul 2022
+
 [user]
    name = Áquila Freitas
 
 [commit]
    gpgsign = true
-   
+
 [gpg]
    program = gpg
