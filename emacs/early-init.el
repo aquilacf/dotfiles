@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;
 ;; GC Threshold ;;
 ;;;;;;;;;;;;;;;;;;
-
 (defconst GC_CONST_THREASHOLD_ORIGINAL gc-cons-threshold)
 (setq gc-cons-threshold most-positive-fixnum)
 
@@ -17,7 +16,6 @@
 
 (run-with-idle-timer 5 t #'garbage-collect)
 
-
 ;; Disable package
 (setq package-enable-at-startup nil)
 
@@ -30,7 +28,6 @@
 (unless IS_MAC   (setq command-line-ns-option-alist nil))
 (unless IS_LINUX (setq command-line-x-option-alist nil))
 
-
 ;; Define user constants
 (defconst DIR_ROOT (expand-file-name user-emacs-directory))
 (defconst DIR_CACHE (concat DIR_ROOT "cache/"))
@@ -40,6 +37,7 @@
 ;(mkdir DIR_SNIPPETS)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; Handling Files ;;
