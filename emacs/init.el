@@ -33,6 +33,7 @@
 
 ;; Evil
 (use-package evil
+  :disabled
   :demand t
   :init
   (setq evil-want-integration t)
@@ -142,12 +143,8 @@
   :defer 2
   :config (smartparens-global-mode t))
 (use-package rainbow-mode
-;; Not working
   :defer 5
-  :config (rainbow-mode t))
-
-
-
+  :config (rainbow-mode))
 
 
 ;;;;;;;;;;;;;;
@@ -170,26 +167,25 @@
 ;; Treemacs ;;
 ;;;;;;;;;;;;;;
 (use-package treemacs
-  :custom (treemacs-persist-file (concat DIR_CACHE "treemacs-persist"))
+  :custom
+  (treemacs-persist-file (concat DIR_CACHE "treemacs-persist"))
+  (treemacs-last-error-persist-file (concat DIR_CACHE "treemacs-persist-at-last-error"))
   :bind ("§" . treemacs)
   :config
+  (treemacs-git-commit-diff-mode)
   (treemacs-filewatch-mode)
+  (treemacs-project-follow-mode)
   (treemacs-follow-mode))
 
 (use-package treemacs-projectile
-  :after (treemacs projectile)
-  :config
-  (advice-add 'projectile-switch-project-by-name :after #'(lambda (&rest args)
-							    (let* ((path (car args))
-								   (name (treemacs--filename path)))
-							      (treemacs-do-add-project-to-workspace path name)))))
+  :after (treemacs projectile))
 
 
 ;;;;;;;;;;;;;
 ;; Company ;;
 ;;;;;;;;;;;;;
 (use-package company
-  :defer 3
+  :disabled
   :custom
   (company-idle-delay 0.5)
   (company-echo-delay 0)
@@ -273,6 +269,8 @@
 ;(use-package lsp-ui :commands lsp-ui-mode)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package dap-mode
+  :custom
+  (dap-breakpoints-file (concat DIR_CACHE "dap-breakpoints"))
   :commands dap-debug
   :config
   ;; (general-define-key
@@ -394,7 +392,7 @@
 ;; Gutter ;;
 ;;;;;;;;;;;;
 (use-package git-gutter
-  :defer 5 
+  :defer 1
   :custom
   (git-gutter:added-sign " +")
   (git-gutter:deleted-sign " -")
@@ -416,5 +414,10 @@
 ;; Magit
 (use-package magit
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  (transient-history-file (concat DIR_CACHE "transient/history.el"))
+  (transient-values-file (concat DIR_CACHE "transient/values.el"))
+  (transient-levels-file (concat DIR_CACHE "transient/levels.el"))
+  
+  )
 
