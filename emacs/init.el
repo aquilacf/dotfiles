@@ -17,12 +17,13 @@
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
 ;; Mouse wheel
-(xterm-mouse-mode t)
-(global-set-key (kbd "<mouse-3>") (kbd "C-y"))
-(global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
-(global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
+;todo
+;(xterm-mouse-mode t)
+;(global-set-key (kbd "<mouse-3>") (kbd "C-y"))
+;(global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
+;(global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
 
-(global-unset-key (kbd "C-t")) ; This is reserved to tmux
+;(global-unset-key (kbd "C-t")) ; This is reserved to tmux
 
 (when IS_MAC
   (setq mac-right-option-modifier nil))
@@ -67,9 +68,8 @@
 
 (use-package which-key
   :defer 5
-  :config
-  (which-key-mode t)
-  :custom (which-key-idle-delay 0.3))
+  :custom (which-key-idle-delay 0.3)
+  :config (which-key-mode t))
 
 (use-package ivy
   ;; :bind (("C-s" . swiper)
@@ -167,10 +167,10 @@
 ;; Treemacs ;;
 ;;;;;;;;;;;;;;
 (use-package treemacs
+  :bind ("§" . treemacs)
   :custom
   (treemacs-persist-file (concat DIR_CACHE "treemacs-persist"))
   (treemacs-last-error-persist-file (concat DIR_CACHE "treemacs-persist-at-last-error"))
-  :bind ("§" . treemacs)
   :config
   (treemacs-git-commit-diff-mode)
   (treemacs-filewatch-mode)
@@ -206,8 +206,8 @@
 
 (use-package company-quickhelp
   :after (company)
-  :custom (company-quickhelp-delay 0)
-  :hook (company-mode . company-quickhelp-mode))
+  :hook (company-mode . company-quickhelp-mode)
+  :custom (company-quickhelp-delay 0))
 
 (use-package company-quickhelp-terminal
   :after (company-quickhelp)
@@ -272,7 +272,7 @@
   :custom
   (dap-breakpoints-file (concat DIR_CACHE "dap-breakpoints"))
   :commands dap-debug
-  :config
+;  :config
   ;; (general-define-key
   ;;   :keymaps 'lsp-mode-map
   ;;   :prefix lsp-keymap-prefix
@@ -314,6 +314,7 @@
   :mode "\\.md\\'"
   :hook (markdown-mode . lsp-deferred))
 
+
 ;;;;;;;;;;;;
 ;; Docker ;;
 ;;;;;;;;;;;;
@@ -331,15 +332,18 @@
 ;;   :after (terraform-mode company)
 ;;   :hook (terraform-mode . company-terraform-init))
 
+
 ;;;;;;;;;;;;;;;;
 ;; TypeScript ;;
 ;;;;;;;;;;;;;;;;
 (use-package typescript-mode
-  :mode ("\\.ts[x]?\\'" . typescript-mode)
-  :hook (typescript-mode . lsp-deferred)
-  :config
-  (require 'dap-node)
-  (dap-node-seup))
+  :mode "\\.ts[x]?\\'"
+;  :hook (typescript-mode . lsp-deferred)
+;  :config
+;  (require 'dap-node)
+					; (dap-node-seup)
+  )
+
 
 ;;;;;;;;;;
 ;; YAML ;;
@@ -349,12 +353,14 @@
   :hook (yaml-mode . lsp-deferred)
   :custom (lsp-yaml-schemas t))
 
+
 ;;;;;;;;;;
 ;; JSON ;;
 ;;;;;;;;;;
 ;(use-package json-mode
 ;	 :ensure-system-package (vscode-json-languageserver . "yarn global add vscode-json-languageserver")
 ;	 :custom (lsp-json-schemas t))
+
 
 ;;;;;;;;;;;;;
 ;; GraphQL ;;
@@ -363,15 +369,17 @@
   :mode "\\.graphql\\'"
   :hook (graphql-mode . lsp-deferred))
 
+
 ;;;;;;;;;;;;;;
 ;; PlantUML ;;
 ;;;;;;;;;;;;;;
 (use-package plantuml-mode
+  :mode "\\.p[lant]?uml\\'"
   :config
   (setq plantuml-executable-path "plantuml")
   (setq plantuml-default-exec-mode 'executable)
-  :ensure-system-package (plantuml . plantuml)
-  :mode ("\\.p[lant]?uml\\'" . plantuml-mode))
+  :ensure-system-package (plantuml . plantuml))
+
 
 ;;;;;;;;;
 ;; Org ;;
@@ -380,12 +388,11 @@
 (setq org-element-cache-persistent nil)
 (use-package org-bullets :hook (org-mode . org-bullets-mode))
 
+
 ;;;;;;;;;;;
 ;; C/C++ ;;
 ;;;;;;;;;;;
 (use-package cmake-mode)
-
-
 
 
 ;;;;;;;;;;;;
@@ -402,7 +409,7 @@
   (git-gutter:lighter nil)
   (git-gutter:window-width 2)
   (git-gutter:visual-line t)
-  (git-gutter:update-interval 2)
+  (git-gutter:update-interval 0)
 
   :config
   (set-face-attribute 'git-gutter:added nil :inherit 'default :foreground "green1" :background 'unspecified)
@@ -411,13 +418,14 @@
   (set-face-attribute 'git-gutter:unchanged nil :inherit 'default :foreground 'unspecified :background 'unspecified)
   (global-git-gutter-mode))
 
-;; Magit
+
+;;;;;;;;;;;
+;; Magit ;;
+;;;;;;;;;;;
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   (transient-history-file (concat DIR_CACHE "transient/history.el"))
   (transient-values-file (concat DIR_CACHE "transient/values.el"))
-  (transient-levels-file (concat DIR_CACHE "transient/levels.el"))
-  
-  )
+  (transient-levels-file (concat DIR_CACHE "transient/levels.el")))
 
