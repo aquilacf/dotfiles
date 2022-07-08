@@ -16,6 +16,23 @@
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
+;; delete-word
+(defun delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (if (use-region-p)
+      (delete-region (region-beginning) (region-end))
+    (delete-region (point) (progn (forward-word arg) (point)))))
+
+(defun backward-delete-word (arg)
+  "Delete characters backward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (delete-word (- arg)))
+
+(global-set-key (read-kbd-macro "<M-DEL>") 'backward-delete-word)
+
 ;; Mouse wheel
 ;todo
 ;(xterm-mouse-mode t)
@@ -155,7 +172,7 @@
   :custom
   (projectile-known-projects-file (concat DIR_CACHE "projectile-bookmarks.eld"))
   (projectile-cache-file (concat DIR_CACHE "projectile.cache"))
-  (projectile-switch-project-action #'projectile-dired)
+  (projectile-switch-project-action #'projectile-commander)
   (projectile-project-search-path '(("~/Projects" . 3)))
   ;(projectile-completion-system 'ivy)
   :config
