@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Retrieve PATH from zshrc ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -34,13 +35,12 @@ With argument, do this that many times."
 (global-set-key (read-kbd-macro "<M-DEL>") 'backward-delete-word)
 
 ;; Mouse wheel
-;todo
-;(xterm-mouse-mode t)
-;(global-set-key (kbd "<mouse-3>") (kbd "C-y"))
-;(global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
-;(global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
+(xterm-mouse-mode t)
+(global-set-key (kbd "<mouse-3>") (kbd "C-y"))
+(global-set-key (kbd "<mouse-4>") (kbd "C-u 1 M-v"))
+(global-set-key (kbd "<mouse-5>") (kbd "C-u 1 C-v"))
 
-;(global-unset-key (kbd "C-t")) ; This is reserved to tmux
+(global-unset-key (kbd "C-t")) ; This is reserved to tmux
 
 (when IS_MAC
   (setq mac-right-option-modifier nil))
@@ -275,13 +275,21 @@ With argument, do this that many times."
 (defconst DIR_LSP (concat DIR_CACHE "lsp"))
 (defconst DIR_DAP (concat DIR_CACHE "dap"))
 (use-package lsp-mode
+  :ensure-system-package
+  ((bash-language-server . "yarn global add bash-language-server")
+   (taplo . "cargo install taplo-cli"))
+  :hook
+  ((lsp-mode . lsp-enable-which-key-integration)
+   (sh-mode . lsp-deferred)
+   (conf-mode . lsp-deferred))
   :custom
   (lsp-server-install-dir DIR_LSP)
   (lsp-session-file (concat DIR_CACHE "lsp-session"))
   (lsp-keymap-prefix "C-c l")
   (lsp-auto-guess-root t)
-  :commands (lsp lsp-deferred)
-  :config (lsp-enable-which-key-integration t))
+  (lsp-enable-suggest-server-download nil)
+  :commands (lsp lsp-deferred))
+
 
 ;(use-package lsp-ui :commands lsp-ui-mode)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
@@ -324,11 +332,13 @@ With argument, do this that many times."
 
 (use-package powershell)
 
+
 ;;;;;;;;;;;;;;
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 (use-package markdown-mode
   :mode "\\.md\\'"
+  :ensure-system-package (remark-language-server . "yarn global add remark-language-server")
   :hook (markdown-mode . lsp-deferred))
 
 
@@ -338,16 +348,16 @@ With argument, do this that many times."
 (use-package docker :bind ("C-c d" . docker))
 (use-package dockerfile-mode :mode "Dockerfile\\'")
 
+
 ;;;;;;;;;;;;;;;
 ;; Terraform ;;
 ;;;;;;;;;;;;;;;
 (use-package terraform-mode
   :mode "\\.tf\\'"
+  :ensure-system-package
+  ((terraform)
+   (terraform-ls))
   :hook (terraform-mode . lsp-deferred))
-
-;; (use-package company-terraform
-;;   :after (terraform-mode company)
-;;   :hook (terraform-mode . company-terraform-init))
 
 
 ;;;;;;;;;;;;;;;;
@@ -355,28 +365,33 @@ With argument, do this that many times."
 ;;;;;;;;;;;;;;;;
 (use-package typescript-mode
   :mode "\\.ts[x]?\\'"
-;  :hook (typescript-mode . lsp-deferred)
-;  :config
-;  (require 'dap-node)
-					; (dap-node-seup)
-  )
+  :ensure-system-package
+  ((tsc . "yarn global add typescript")
+   (typescript-language-server . "yarn global add typescript-language-server"))
+  :hook (typescript-mode . lsp-deferred))
 
+;; JS
+(use-package js2-mode
+  :mode "\\.js[x]?\\'"
+  :hook (js2-mode . lsp-deferred))
 
 ;;;;;;;;;;
 ;; YAML ;;
 ;;;;;;;;;;
 (use-package yaml-mode
   :mode "\\.yml\\'"
-  :hook (yaml-mode . lsp-deferred)
-  :custom (lsp-yaml-schemas t))
+  :ensure-system-package (yaml-language-server . "yarn global add yaml-language-server")
+  :custom (lsp-yaml-schemas t)  
+  :hook (yaml-mode . lsp-deferred))
 
 
 ;;;;;;;;;;
 ;; JSON ;;
 ;;;;;;;;;;
-;(use-package json-mode
-;	 :ensure-system-package (vscode-json-languageserver . "yarn global add vscode-json-languageserver")
-;	 :custom (lsp-json-schemas t))
+(use-package json-mode
+  :ensure-system-package (vscode-json-language-server . "yarn global add vscode-langservers-extracted")
+  :custom (lsp-json-schemas t)
+  :hook (json-mode . lsp-deferred))
 
 
 ;;;;;;;;;;;;;
@@ -384,7 +399,24 @@ With argument, do this that many times."
 ;;;;;;;;;;;;;
 (use-package graphql-mode
   :mode "\\.graphql\\'"
-  :hook (graphql-mode . lsp-deferred))
+  :ensure-system-package
+  (graphql-lsp . "yarn global add graphql graphql-language-service-cli")
+  :init
+  ;; Not working
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-language-id-configuration
+		 '(graphql-mode . "graphql"))
+
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection '("graphql-lsp" "server" "--method=stream"))
+                      :major-modes '(graphql-mode)
+                      :language-id "graphql"
+                      :server-id 'graphql-lsp
+                      :priority 1
+                      :add-on? t
+                      :multi-root t
+                      :activation-fn (lsp-activate-on "graphql")))))
+
 
 
 ;;;;;;;;;;;;;;
@@ -392,10 +424,10 @@ With argument, do this that many times."
 ;;;;;;;;;;;;;;
 (use-package plantuml-mode
   :mode "\\.p[lant]?uml\\'"
-  :config
-  (setq plantuml-executable-path "plantuml")
-  (setq plantuml-default-exec-mode 'executable)
-  :ensure-system-package (plantuml . plantuml))
+  :ensure-system-package (plantuml . plantuml)
+  :custom
+  (plantuml-executable-path "plantuml")
+  (plantuml-default-exec-mode 'executable))
 
 
 ;;;;;;;;;
@@ -409,7 +441,9 @@ With argument, do this that many times."
 ;;;;;;;;;;;
 ;; C/C++ ;;
 ;;;;;;;;;;;
-(use-package cmake-mode)
+(use-package cmake-mode
+  :ensure-system-package (cmake-language-server . "pip3 install cmake-language-server")
+  :hook (cmake-mode . lsp-deferred))
 
 
 ;;;;;;;;;;;;
