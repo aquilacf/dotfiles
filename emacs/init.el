@@ -238,36 +238,56 @@ With argument, do this that many times."
 ;; 	:defer 2
 ;; 	:config (global-flycheck-mode))
 
-;;;;;;;;;;;
-;; Corfu ;;
-;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;
+;; Completion ;;
+;;;;;;;;;;;;;;;;
+(use-package marginalia
+  :custom (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
 
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '(file (styles . (partial-completion)))))
+
+  
 (use-package corfu
-  :disabled
-  ;; Optional customizations
-  ;; :custom
-  ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-auto t)                 ;; Enable auto completion
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect-first nil)    ;; Disable candidate preselection
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
-  ;; (corfu-echo-documentation nil) ;; Disable documentation in the echo area
-  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-
-  ;; Enable Corfu only for certain modes.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
-
-  ;; Recommended: Enable Corfu globally.
-  ;; This is recommended since Dabbrev can be used globally (M-/).
-  ;; See also `corfu-excluded-modes'.
+  :custom
+   (corfu-cycle t)
+   (corfu-auto t)
+   (corfu-auto-prefix 2)
+   (corfu-auto-delay 0.0)
+   (corfu-echo-documentation 0.25)
   :init
   (global-corfu-mode))
+
+(use-package corfu-doc
+  :after corfu
+  :hook (corfu-mode . corfu-doc-mode))
+
+
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file))
+
+;; Terminal
+(use-package popon
+  :straight (:type git :host nil :repo "https://codeberg.org/akib/emacs-popon.git")
+  :if (not (display-graphic-p)))
+
+(use-package corfu-terminal
+  :straight (:type git :host nil :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
+  :after popon
+  :init
+  (global-corfu-terminal-mode))
+
+(use-package corfu-doc-terminal
+  :straight (corfu-doc-terminal :type git :host nil :repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git")
+  :after corfu-terminal
+  :hook (corfu-mode-terminal . corfu-doc-terminal-mode))
 
 ;;;;;;;;;
 ;; LSP ;;
