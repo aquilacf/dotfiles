@@ -308,6 +308,7 @@ With argument, do this that many times."
   (lsp-keymap-prefix "C-c l")
   (lsp-auto-guess-root t)
   (lsp-enable-suggest-server-download nil)
+  (lsp-toml-cache-path (concat DIR_LSP "/lsp-toml"))
   :commands (lsp lsp-deferred))
 
 
