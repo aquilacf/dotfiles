@@ -115,31 +115,6 @@
 (setq inhibit-splash-screen t)
 
 
-(setq visible-bell nil)
-(setq ring-bell-function 'ignore)
-(setq use-dialog-box nil)
-
-;; Line numbers
-(setq-default display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
-(global-visual-line-mode)
-
-(column-number-mode)
-(delete-selection-mode t)
-
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-
-;; Parenthesis
-;(set-face-attribute 'show-paren-match nil :foreground 'unspecified :background 'unspecified :weight 'extra-bold :underline t)
-(setq show-paren-delay 0)
-(setq show-paren-style 'parenthesis)
-(show-paren-mode t)
-
 
 ;; Tramp
 (setq tramp-persistency-file-name (concat DIR_CACHE "tramp"))
@@ -216,7 +191,7 @@
 
 (use-package doom-modeline
   :demand t
-  :custom (doom-modeline-height 15)
+  :custom (doom-modeline-height 25)
   :config (doom-modeline-mode t))
 
 ;;; early-init.el ends here

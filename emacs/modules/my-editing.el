@@ -131,4 +131,9 @@ With argument, do this that many times."
 ;;  "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 
+
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+
 (provide 'my-editing)
