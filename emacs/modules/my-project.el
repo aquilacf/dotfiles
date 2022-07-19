@@ -51,6 +51,12 @@
   (transient-levels-file (concat DIR_CACHE "transient/levels.el")))
 
 
+;;;;;;;;;;;
+;; Dired ;;
+;;;;;;;;;;;
+(customize-set-variable 'dired-kill-when-opening-new-dired-buffer t)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map [mouse-2] 'dired-find-file))
 
 
 (provide 'my-project)
