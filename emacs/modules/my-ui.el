@@ -26,6 +26,13 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;;;;;;;;;;;;;;;;;;;
+;; All the icons ;;
+;;;;;;;;;;;;;;;;;;;
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :demand t)
+
 ;;;;;;;;;;;;;;
 ;; Treemacs ;;
 ;;;;;;;;;;;;;;
