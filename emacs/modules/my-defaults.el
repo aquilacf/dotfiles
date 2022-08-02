@@ -43,7 +43,7 @@
 
 (customize-set-variable 'vc-follow-symlinks t)
 
-(fset 'yes-or-no-p 'y-or-n-p)
+(customize-set-variable 'use-short-answers t)
 
 
 (provide 'my-defaults)
