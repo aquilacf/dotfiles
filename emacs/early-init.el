@@ -36,7 +36,7 @@
 (mkdir DIR_CACHE t)
 ;(mkdir DIR_SNIPPETS)
 
-(fset 'yes-or-no-p 'y-or-n-p)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -51,29 +51,7 @@
 (setq-default global-auto-revert-non-file-buffers t)
 (setq create-lockfiles nil)
 
-;; Charset
-(set-charset-priority 'unicode)
-(prefer-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8)
-(set-language-environment "UTF-8")
-(setq default-input-method nil)
-(setq require-final-newline t)
 
-;; Recentf
-(setq-default recentf-max-menu-items 25)
-(setq-default recentf-max-saved-items 25)
-(setq-default recentf-save-file (concat DIR_CACHE "recentf"))
-(recentf-mode t)
-
-;; Save Place
-(setq-default save-place-file (concat DIR_CACHE "places"))
-(save-place-mode t)
-
-;; History
-(setq history-length 30)
-(setq-default savehist-file (concat DIR_CACHE "history"))
-(savehist-mode t)
-(setq-default url-history-file (concat DIR_CACHE "url-history"))
 
 ;; Backups
 (defconst DIR_BACKUPS (concat DIR_ROOT "backups/"))
@@ -127,15 +105,10 @@
 ;; Other ;;
 ;;;;;;;;;;;
 (setq large-file-warning-threshold nil)
-(setq vc-follow-symlinks t)
 (setq idle-update-delay 1.0)
 (setq inhibit-compacting-font-caches t)
-(setq fast-but-imprecise-scrolling t)
 (setq redisplay-skip-fontification-on-input t)
 (setq auto-mode-case-fold nil)
-(setq-default bidi-display-reordering 'left-to-right
-	      bidi-paragraph-direction 'left-to-right)
-(setq bidi-inhibit-bpa t)
 (setq-default cursor-in-non-selected-windows nil)
 (setq highlight-nonselected-windows nil)
 (setq-default ffap-machine-p-known 'reject)
