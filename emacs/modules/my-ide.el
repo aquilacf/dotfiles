@@ -85,7 +85,8 @@
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 (use-package markdown-mode
-  :mode "\\.md\\'"
+  :commands (markdown-mode gfm-mode)
+  :mode ("README\\.md\\'" . gfm-mode)
   :ensure-system-package (remark-language-server . "yarn global add remark-language-server")
   :hook (markdown-mode . lsp-deferred))
 
