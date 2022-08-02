@@ -20,4 +20,4 @@
 (require 'my-ui)
 (require 'my-completion)
 (require 'my-ide)
-
+(require 'my-pdf)
