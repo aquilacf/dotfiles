@@ -22,39 +22,19 @@
 ;;;;;;;;;
 ;; LSP ;;
 ;;;;;;;;;
-(defconst DIR_LSP (concat DIR_CACHE "lsp"))
-(defconst DIR_DAP (concat DIR_CACHE "dap"))
-(use-package lsp-mode
+(use-package eglot
   :ensure-system-package
   ((bash-language-server . "yarn global add bash-language-server")
    (taplo . "cargo install taplo-cli"))
   :hook
-  ((lsp-mode . lsp-enable-which-key-integration)
-   (sh-mode . lsp-deferred)
-   (conf-mode . lsp-deferred))
-  :custom
-  (lsp-server-install-dir DIR_LSP)
-  (lsp-session-file (concat DIR_CACHE "lsp-session"))
-  (lsp-keymap-prefix "C-c l")
-  (lsp-auto-guess-root t)
-  (lsp-enable-suggest-server-download nil)
-  (lsp-toml-cache-path (concat DIR_LSP "/lsp-toml"))
-  :commands (lsp lsp-deferred))
+  ((sh-mode . eglot-ensure)
+   (conf-toml-mode . eglot-ensure)))
 
-
-;(use-package lsp-ui :commands lsp-ui-mode)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-(use-package dap-mode
-  :custom
-  (dap-breakpoints-file (concat DIR_CACHE "dap-breakpoints"))
-  :commands dap-debug
-;  :config
-  ;; (general-define-key
-  ;;   :keymaps 'lsp-mode-map
-  ;;   :prefix lsp-keymap-prefix
-  ;;   "d" '(dap-hydra t :wk "debugger"))
-  )
-
+(with-eval-after-load 'eglot
+  (push '(conf-toml-mode . ("taplo" "lsp" "stdio")) eglot-server-programs)
+  (push '(terraform-mode . ("terraform-ls" "serve")) eglot-server-programs)
+  (push '(graphql-mode . ("graphql-lsp" "server" "-m" "stream")) eglot-server-programs)
+  (push '(csharp-tree-sitter-mode . ("/bin/ksh" "-c" "csharp-ls")) eglot-server-programs))
 
 ;;;;;;;;
 ;; C# ;;
@@ -64,20 +44,15 @@
 (use-package tree-sitter-indent)
 
 (defun my/csharp-mode-hook ()
-  (lsp-deferred)
+  (eglot-ensure)
   (electric-pair-mode 1))
 
 (use-package csharp-mode
   :mode "\\.cs\\'"
   :hook (csharp-tree-sitter-mode . my/csharp-mode-hook) ; check this later
-  :init (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
-  :custom
-  (dap-netcore-install-dir DIR_DAP)
-  :config
-  (require 'dap-netcore)
-  (dap-netcore-setup))
+  :init (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode)))
 
-
+(use-package csproj-mode)
 (use-package powershell)
 
 
@@ -86,9 +61,7 @@
 ;;;;;;;;;;;;;;
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
-  :mode ("README\\.md\\'" . gfm-mode)
-  :ensure-system-package (remark-language-server . "yarn global add remark-language-server")
-  :hook (markdown-mode . lsp-deferred))
+  :mode ("README\\.md\\'" . gfm-mode))
 
 (defvar markdown-electric-pairs '((?* . ?*)) "Electric pairs for markdown-mode.")
 (defun markdown-add-electric-pairs ()
@@ -112,7 +85,7 @@
   :ensure-system-package
   ((terraform)
    (terraform-ls))
-  :hook (terraform-mode . lsp-deferred))
+  :hook (terraform-mode . eglot-ensure))
 
 
 ;;;;;;;;;;;;;;;;
@@ -123,12 +96,12 @@
   :ensure-system-package
   ((tsc . "yarn global add typescript")
    (typescript-language-server . "yarn global add typescript-language-server"))
-  :hook (typescript-mode . lsp-deferred))
+  :hook (typescript-mode . eglot-ensure))
 
 ;; JS
 (use-package js2-mode
   :mode "\\.js[x]?\\'"
-  :hook (js2-mode . lsp-deferred))
+  :hook (js2-mode . eglot-ensure))
 
 ;;;;;;;;;;
 ;; YAML ;;
@@ -136,8 +109,7 @@
 (use-package yaml-mode
   :mode "\\.yml\\'"
   :ensure-system-package (yaml-language-server . "yarn global add yaml-language-server")
-  :custom (lsp-yaml-schemas t)  
-  :hook (yaml-mode . lsp-deferred))
+  :hook (yaml-mode . eglot-ensure))
 
 
 ;;;;;;;;;;
@@ -145,8 +117,7 @@
 ;;;;;;;;;;
 (use-package json-mode
   :ensure-system-package (vscode-json-language-server . "yarn global add vscode-langservers-extracted")
-  :custom (lsp-json-schemas t)
-  :hook (json-mode . lsp-deferred))
+  :hook (json-mode . eglot-ensure))
 
 
 ;;;;;;;;;;;;;
@@ -155,22 +126,7 @@
 (use-package graphql-mode
   :mode "\\.graphql\\'"
   :ensure-system-package
-  (graphql-lsp . "yarn global add graphql graphql-language-service-cli")
-  :init
-  ;; Not working
-  (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-language-id-configuration
-		 '(graphql-mode . "graphql"))
-
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection '("graphql-lsp" "server" "--method=stream"))
-                      :major-modes '(graphql-mode)
-                      :language-id "graphql"
-                      :server-id 'graphql-lsp
-                      :priority 1
-                      :add-on? t
-                      :multi-root t
-                      :activation-fn (lsp-activate-on "graphql")))))
+  (graphql-lsp . "yarn global add graphql graphql-language-service-cli"))
 
 
 
@@ -198,7 +154,7 @@
 ;;;;;;;;;;;
 (use-package cmake-mode
   :ensure-system-package (cmake-language-server . "pip3 install cmake-language-server")
-  :hook (cmake-mode . lsp-deferred))
+  :hook (cmake-mode . eglot-ensure))
 
 
 (provide 'my-ide)
