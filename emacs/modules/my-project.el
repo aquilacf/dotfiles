@@ -1,18 +1,8 @@
 ;; -*- lexical-binding: t -*-
 
-;;;;;;;;;;;;;;
-;; Projects ;;
-;;;;;;;;;;;;;;
-(use-package projectile
-  :demand t
-  :custom
-  (projectile-known-projects-file (concat DIR_CACHE "projectile-bookmarks.eld"))
-  (projectile-cache-file (concat DIR_CACHE "projectile.cache"))
-  (projectile-switch-project-action #'projectile-dired)
-  (projectile-project-search-path '(("~/Projects" . 3)))
-  :config
-  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-  (projectile-mode))
+
+;; Projects
+(setq project-list-file (concat DIR_CACHE "projects"))
 
 
 ;;;;;;;;;;;;

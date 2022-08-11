@@ -98,8 +98,6 @@
 (setq tramp-persistency-file-name (concat DIR_CACHE "tramp"))
 (setq-default tramp-default-method "ssh")
 
-					; Projects
-(setq project-list-file (concat DIR_CACHE "projects"))
 
 ;;;;;;;;;;;
 ;; Other ;;
