@@ -28,7 +28,9 @@
    (taplo . "cargo install taplo-cli"))
   :hook
   ((sh-mode . eglot-ensure)
-   (conf-toml-mode . eglot-ensure)))
+   (conf-toml-mode . eglot-ensure)
+   (c++-mode . eglot-ensure)
+   (c-mode . eglot-ensure)))
 
 (with-eval-after-load 'eglot
   (push '(conf-toml-mode . ("taplo" "lsp" "stdio")) eglot-server-programs)
