@@ -42,7 +42,7 @@ With argument, do this that many times."
 (define-key isearch-mode-map (kbd "<DEL>") 'isearch-del-char)
 
 
-
+(use-package minimap :custom (minimap-window-location 'right))
 
 
 

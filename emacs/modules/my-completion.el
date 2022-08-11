@@ -22,7 +22,8 @@
 
 
 (use-package consult
-  :custom (completion-in-region-function #'consult-completion-in-region))
+  :custom (completion-in-region-function #'consult-completion-in-region)
+  :config (define-key minibuffer-local-map (kbd "C-r") 'consult-history))
 
 
 (use-package orderless
