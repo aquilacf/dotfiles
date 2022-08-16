@@ -2,9 +2,7 @@
 
 
 ;; Projects
-(setq project-list-file (concat DIR_CACHE "projects"))
-
-
+(customize-set-variable 'project-list-file (concat DIR_CACHE "projects"))
 (define-key project-prefix-map (kbd "b") 'consult-project-buffer)
 
 ;;;;;;;;;;;;

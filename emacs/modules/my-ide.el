@@ -30,7 +30,9 @@
   ((sh-mode . eglot-ensure)
    (conf-toml-mode . eglot-ensure)
    (c++-mode . eglot-ensure)
-   (c-mode . eglot-ensure)))
+   (c-mode . eglot-ensure))
+  :config
+  (define-key eglot-mode-map (kbd "s-r r") 'eglot-rename))
 
 (with-eval-after-load 'eglot
   (push '(conf-toml-mode . ("taplo" "lsp" "stdio")) eglot-server-programs)

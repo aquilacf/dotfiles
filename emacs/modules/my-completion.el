@@ -5,14 +5,27 @@
 ;;;;;;;;;;;
 
 (use-package vertico
-  :custom (vertico-cycle t)
-  :init (vertico-mode))
-
-(use-package vertico-directory
-  :after vertico
-  :ensure nil
-  :straight nil
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+  :straight (vertico :files (:defaults "extensions/*")
+                     :includes (vertico-indexed
+                                vertico-reverse
+				vertico-directory
+                                ))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  :custom
+  (vertico-cycle t)
+  (vertico-resize t)
+  :init
+  (vertico-reverse-mode)
+  (vertico-indexed-mode)
+  
+  (advice-add #'vertico--format-candidate :around
+              (lambda (orig cand prefix suffix index _start)
+		(setq cand (funcall orig cand prefix suffix index _start))
+		(concat
+		 (if (= vertico--index index)
+                     (propertize "» " 'face 'vertico-current)
+                   "  ")
+		 cand))))
 
 
 (use-package marginalia
@@ -20,10 +33,20 @@
   :init
   (marginalia-mode))
 
+(use-package all-the-icons-completion
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
+
 
 (use-package consult
   :custom (completion-in-region-function #'consult-completion-in-region)
-  :config (define-key minibuffer-local-map (kbd "C-r") 'consult-history))
+  (consult-narrow-key "<")
+  :config
+  (define-key minibuffer-local-map (kbd "C-r") 'consult-history)
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref))
 
 
 (use-package orderless
