@@ -15,6 +15,7 @@
   (vertico-cycle t)
   (vertico-resize t)
   :init
+  (vertico-mode)
   (vertico-reverse-mode)
   (vertico-indexed-mode)
   

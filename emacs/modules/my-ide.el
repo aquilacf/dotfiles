@@ -30,15 +30,15 @@
   ((sh-mode . eglot-ensure)
    (conf-toml-mode . eglot-ensure)
    (c++-mode . eglot-ensure)
-   (c-mode . eglot-ensure))
-  :config
-  (define-key eglot-mode-map (kbd "s-r r") 'eglot-rename))
+   (c-mode . eglot-ensure)))
 
 (with-eval-after-load 'eglot
   (push '(conf-toml-mode . ("taplo" "lsp" "stdio")) eglot-server-programs)
   (push '(terraform-mode . ("terraform-ls" "serve")) eglot-server-programs)
   (push '(graphql-mode . ("graphql-lsp" "server" "-m" "stream")) eglot-server-programs)
-  (push '(csharp-tree-sitter-mode . ("/bin/ksh" "-c" "csharp-ls")) eglot-server-programs))
+  (push '(csharp-tree-sitter-mode . ("/bin/ksh" "-c" "csharp-ls")) eglot-server-programs)
+  (define-key eglot-mode-map (kbd "s-r r") 'eglot-rename)
+  (define-key eglot-mode-map (kbd "M-s-<return>") 'eglot-format))
 
 ;;;;;;;;
 ;; C# ;;
