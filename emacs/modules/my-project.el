@@ -44,6 +44,7 @@
 ;; Dired ;;
 ;;;;;;;;;;;
 (customize-set-variable 'dired-kill-when-opening-new-dired-buffer t)
+(customize-set-variable 'dired-use-ls-dired nil)
 (with-eval-after-load 'dired
   (define-key dired-mode-map [mouse-2] 'dired-find-file))
 
