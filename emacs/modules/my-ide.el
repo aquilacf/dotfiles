@@ -7,14 +7,9 @@
 
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
- ; :custom
- ; (counsel-describe-function-function #'helpful-callable)
- ; (counsel-describe-variable-function #'helpful-variable)
   :bind
-;  ([remap describe-function] . counsel-describe-function)
   ([remap describe-function] . helpful-callable)
   ([remap describe-command] . helpful-command)
-;  ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-variable] . helpful-variable)
   ([remap describe-key] . helpful-key))
 
@@ -30,7 +25,9 @@
   ((sh-mode . eglot-ensure)
    (conf-toml-mode . eglot-ensure)
    (c++-mode . eglot-ensure)
-   (c-mode . eglot-ensure)))
+   (c-mode . eglot-ensure)
+   (mhtml-mode . eglot-ensure)
+   (css-mode . eglot-ensure)))
 
 (with-eval-after-load 'eglot
   (push '(conf-toml-mode . ("taplo" "lsp" "stdio")) eglot-server-programs)
@@ -48,8 +45,7 @@
 (use-package tree-sitter-indent)
 
 (defun my/csharp-mode-hook ()
-  (eglot-ensure)
-  (electric-pair-mode 1))
+  (eglot-ensure))
 
 (use-package csharp-mode
   :mode "\\.cs\\'"
