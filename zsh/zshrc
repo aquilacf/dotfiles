@@ -1,6 +1,6 @@
 ## My zsh.
 ## ~/.zshrc
-## 05 Jul 2022
+## 29 Aug 2022
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -52,4 +52,5 @@ if [[ "$TERM" != "dumb" ]] then
 fi
 
 # Load extra
-#source ~/.config/zsh/priv.personal.zsh
+source ~/.config/zsh/priv.personal.zsh
+source ~/.config/zsh/priv.work.zsh
