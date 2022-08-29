@@ -12,6 +12,7 @@ export GPG_TTY=$(tty)
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.dotnet/tools
 PATH=$PATH:/usr/local/share/dotnet
+PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin
 PATH=$PATH:/opt/homebrew/Cellar/emacs-plus@28/28.1/libexec/emacs/28.1/aarch64-apple-darwin21.2.0
 
 # Bindings
