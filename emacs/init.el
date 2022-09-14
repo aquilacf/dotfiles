@@ -21,3 +21,5 @@
 (require 'my-completion)
 (require 'my-ide)
 (require 'my-pdf)
+;(require 'my-term)
+(require 'my-org)

@@ -141,13 +141,6 @@
   (plantuml-default-exec-mode 'executable))
 
 
-;;;;;;;;;
-;; Org ;;
-;;;;;;;;;
-(use-package org)
-(setq org-element-cache-persistent nil)
-(use-package org-bullets :hook (org-mode . org-bullets-mode))
-
 
 ;;;;;;;;;;;
 ;; C/C++ ;;
