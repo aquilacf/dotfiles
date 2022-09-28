@@ -44,6 +44,8 @@
 (use-package consult
   :custom (completion-in-region-function #'consult-completion-in-region)
   (consult-narrow-key "<")
+  :bind
+  ("C-x b" . consult-buffer)
   :config
   (define-key minibuffer-local-map (kbd "C-r") 'consult-history)
   (setq xref-show-xrefs-function #'consult-xref
@@ -85,24 +87,24 @@
    (corfu-auto t)
    (corfu-auto-prefix 2)
    (corfu-auto-delay 0.0)
-   (corfu-echo-documentation 0.25)
+   (corfu-echo-documentation nil)
+
+   (corfu-min-width 80)
+   (corfu-count 14)
+   (corfu-scroll-margin 4)
   :init
   (global-corfu-mode)
   (corfu-history-mode 1)
   (add-to-list 'savehist-additional-variables 'corfu-history))
 
 (use-package cape
+  :after corfu
   :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file))
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
 
 (use-package kind-icon
   :after corfu
-  :custom
-  (kind-icon-default-face 'corfu-default)
-  (svg-lib-icons-dir (concat DIR_CACHE "svg-lib/"))
-  :config
+  :init
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-
 
 (provide 'my-completion)
