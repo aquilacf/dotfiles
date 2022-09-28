@@ -38,89 +38,21 @@ With argument, do this that many times."
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 
-
 (define-key isearch-mode-map (kbd "<DEL>") 'isearch-del-char)
 
 
 (use-package minimap :custom (minimap-window-location 'right))
-
-
-
-;; Evil
-(use-package evil
-  :disabled
-  :demand t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-;  (setq evil-want-C-i-jump nil)
-  :config
-  (evil-mode t)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  ;(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  ;; (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  ;; (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
-
-(use-package evil-collection
-  :after evil
-  :config (evil-collection-init))
-
-;; (use-package counsel
-;;   :bind (("C-M-j" . 'counsel-switch-buffer)
-;;          :map minibuffer-local-map
-;;          ("C-r" . 'counsel-minibuffer-history))
-;;   :custom
-;;   (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
-;;   :config
-;;   (counsel-mode 1))
 
 (use-package which-key
   :defer 5
   :custom (which-key-idle-delay 0.3)
   :config (which-key-mode t))
 
-(use-package ivy
-  ;; :bind (("C-s" . swiper)
-  ;;        :map ivy-minibuffer-map
-  ;;        ("TAB" . ivy-alt-done)
-  ;;        ("C-l" . ivy-alt-done)
-  ;;        ("C-j" . ivy-next-line)
-  ;;        ("C-k" . ivy-previous-line)
-  ;;        :map ivy-switch-buffer-map
-  ;;        ("C-k" . ivy-previous-line)
-  ;;        ("C-l" . ivy-done)
-  ;;        ("C-d" . ivy-switch-buffer-kill)
-  ;;        :map ivy-reverse-i-search-map
-  ;;        ("C-k" . ivy-previous-line)
-  ;;        ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
+;(defalias 'ctl-spc-keymap (make-sparse-keymap))
+;(defvar ctl-spc-map (symbol-function 'ctl-spc-keymap))
+;(define-key global-map (kbd "C-SPC") 'ctl-spc-keymap)
 
-;; (use-package ivy-rich
-;;   :after ivy
-;;   :init
-;;   (ivy-rich-mode 1))
-
-
-(use-package general
-  :disabled
-  :config
-  (general-create-definer my/leader-keys
-    :keymaps '(normal insert visual emacs)
-    ;:prefix "SPC"
-    :global-prefix "C-SPC")
-
-  (my/leader-keys
-    "t"  '(:ignore t :which-key "toggles")))
-    ;"tt" '(counsel-load-theme :which-key "choose theme")))
-
-(use-package hydra :disabled)
+;(use-package hydra :disabled)
 
 ;; (defhydra hydra-text-scale (:timeout 4)
 ;;   "scale text"
