@@ -39,7 +39,7 @@
 
 (use-package consult
   :custom (completion-in-region-function #'consult-completion-in-region)
-  (consult-narrow-key "<")
+  (consult-narrow-key ">")
   :bind
   ("C-x b" . consult-buffer)
   :config
