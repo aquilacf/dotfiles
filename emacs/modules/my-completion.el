@@ -1,9 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-;;;;;;;;;;;
-;; Minad ;;
-;;;;;;;;;;;
-
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*")
                      :includes (vertico-indexed
