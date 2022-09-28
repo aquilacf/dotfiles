@@ -45,5 +45,6 @@
 
 (customize-set-variable 'use-short-answers t)
 
+(customize-set-variable 'svg-lib-icons-dir (concat DIR_CACHE "svg-lib/"))
 
 (provide 'my-defaults)
