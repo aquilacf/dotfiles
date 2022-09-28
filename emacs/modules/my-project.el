@@ -30,17 +30,6 @@
 
 
 ;;;;;;;;;;;
-;; Magit ;;
-;;;;;;;;;;;
-(use-package magit
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  (transient-history-file (concat DIR_CACHE "transient/history.el"))
-  (transient-values-file (concat DIR_CACHE "transient/values.el"))
-  (transient-levels-file (concat DIR_CACHE "transient/levels.el")))
-
-
-;;;;;;;;;;;
 ;; Dired ;;
 ;;;;;;;;;;;
 (customize-set-variable 'dired-kill-when-opening-new-dired-buffer t)
