@@ -1,6 +1,6 @@
 ## My zsh.
 ## ~/.zshrc
-## 29 Aug 2022
+## 26 Sept 2022
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -34,6 +34,9 @@ setopt hist_reduce_blanks
 
 # Other
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Alias
+alias -g awslocal="aws --endpoint-url http://localhost:4566"
 
 # Avoid customizations for dumb terminals
 if [[ "$TERM" != "dumb" ]] then
