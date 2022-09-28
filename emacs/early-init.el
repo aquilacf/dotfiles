@@ -146,23 +146,12 @@
   (doom-themes-enable-bold t)
   (doom-themes-enable-italic t)
   :config
-  (load-theme 'doom-one t)
+  (load-theme 'doom-monokai-pro t)
   (doom-themes-org-config))
-
-(defvar current-theme-style "d")
-(defun my/toggle-theme ()
-  "Toggle theme style."
-  (interactive)
-  (if (string-equal current-theme-style "d")
-      (progn
-	(disable-theme 'doom-one) (load-theme 'doom-one-light t) (setq current-theme-style "l"))
-    (progn
-      (disable-theme 'doom-one-light) (load-theme 'doom-one t) (setq current-theme-style "d"))))
-
 
 (use-package doom-modeline
   :demand t
-  :custom (doom-modeline-height 25)
+  :custom (doom-modeline-height 30)
   :config (doom-modeline-mode t))
 
 ;;; early-init.el ends here
