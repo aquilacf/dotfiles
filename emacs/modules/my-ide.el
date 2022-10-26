@@ -21,6 +21,7 @@
   :ensure-system-package
   ((bash-language-server . "yarn global add bash-language-server")
    (taplo . "cargo install taplo-cli"))
+  :bind ("M-<RET>" . eglot-code-actions)
   :hook
   ((sh-mode . eglot-ensure)
    (conf-toml-mode . eglot-ensure)
