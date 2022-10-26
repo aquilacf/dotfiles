@@ -25,6 +25,7 @@ bindkey "^[[1;3D" backward-word
 # History
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
+LESSHISTFILE=-
 
 setopt hist_ignore_dups
 setopt hist_ignore_all_dups
