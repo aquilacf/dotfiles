@@ -16,6 +16,12 @@
 
 (run-with-idle-timer 5 t #'garbage-collect)
 
+;; Compilation cache
+(when (fboundp 'startup-redirect-eln-cache)
+  (startup-redirect-eln-cache
+   (convert-standard-filename
+	  (expand-file-name  "var/eln-cache/" user-emacs-directory))))
+
 ;; Disable package
 (setq package-enable-at-startup nil)
 
@@ -28,47 +34,6 @@
 (unless IS_MAC   (setq command-line-ns-option-alist nil))
 (unless IS_LINUX (setq command-line-x-option-alist nil))
 
-;; Define user constants
-(defconst DIR_ROOT (expand-file-name user-emacs-directory))
-(defconst DIR_CACHE (concat DIR_ROOT "cache/"))
-(defconst DIR_SNIPPETS (concat DIR_ROOT "snippets/"))
-(defconst DIR_PACKAGES (concat DIR_ROOT "packages/"))
-(mkdir DIR_CACHE t)
-;(mkdir DIR_SNIPPETS)
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;
-;; Handling Files ;;
-;;;;;;;;;;;;;;;;;;;;
-
-;; Custom files
-(setq custom-file (concat DIR_CACHE "custom.el"))
-(load custom-file 'noerror 'nomessage)
-
-(global-auto-revert-mode t)
-(setq-default global-auto-revert-non-file-buffers t)
-(setq create-lockfiles nil)
-
-
-
-;; Backups
-(defconst DIR_BACKUPS (concat DIR_ROOT "backups/"))
-;(mkdir DIR_BACKUPS t)
-(setq backup-inhibited t)
-(setq make-backup-files nil)
-
-
-;; Autosaves
-(defconst DIR_AUTOSAVES (concat DIR_ROOT "autosaves/"))
-;(mkdir DIR_AUTOSAVES t)
-(setq auto-save-default nil)
-(setq auto-save-interval 0)
-(setq auto-save-timeout 0)
-(setq auto-save-list-file-prefix nil)
-
-
 ;; Interface
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -80,10 +45,7 @@
                                 (ns-appearance . dark)
                                 (font . "FiraCode Nerd Font-14")))
 
-
-
 (defun display-startup-echo-area-message()
-  "Message that will display on the footer when opening EMACS."
   (message (concat "Loaded in " (emacs-init-time) ".")))
 
 (setq inhibit-startup-message t)
@@ -92,40 +54,20 @@
 (setq initial-major-mode 'fundamental-mode)
 (setq inhibit-splash-screen t)
 
-
-
-;; Tramp
-(setq tramp-persistency-file-name (concat DIR_CACHE "tramp"))
-(setq-default tramp-default-method "ssh")
-
-
-;;;;;;;;;;;
-;; Other ;;
-;;;;;;;;;;;
-(setq large-file-warning-threshold nil)
-(setq idle-update-delay 1.0)
-(setq inhibit-compacting-font-caches t)
-(setq redisplay-skip-fontification-on-input t)
-(setq auto-mode-case-fold nil)
-(setq-default cursor-in-non-selected-windows nil)
-(setq highlight-nonselected-windows nil)
-(setq-default ffap-machine-p-known 'reject)
-(setq frame-inhibit-implied-resize t)
-
-
 ;;;;;;;;;;;;;;
 ;; Straight ;;
 ;;;;;;;;;;;;;;
-(setq-default straight-base-dir DIR_CACHE)
 (unless (featurep 'straight)
   ;; Bootstrap straight.el
   (defvar bootstrap-version)
   (let ((bootstrap-file
-	 (expand-file-name "straight/repos/straight.el/bootstrap.el" DIR_CACHE))
-	(bootstrap-version 5))
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 6))
     (unless (file-exists-p bootstrap-file)
       (with-current-buffer
-	  (url-retrieve-synchronously "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el" 'silent 'inhibit-cookies)
+          (url-retrieve-synchronously
+           "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+           'silent 'inhibit-cookies)
 	(goto-char (point-max))
 	(eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage)))
@@ -133,9 +75,9 @@
 ;; Use Package
 (straight-use-package 'use-package)
 (straight-use-package 'use-package-ensure-system-package)
-(setq-default straight-use-package-by-default t
-	      use-package-expand-minimally t
-	      use-package-always-defer t) 
+(custom-set-variables '(straight-use-package-by-default t)
+		      '(use-package-expand-minimally t)
+		      '(use-package-always-defer t))
 
 ;;;;;;;;;;;
 ;; Theme ;;
@@ -155,4 +97,4 @@
   :config (doom-modeline-mode t))
 
 ;;; early-init.el ends here
-
+1
