@@ -13,7 +13,9 @@ PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.dotnet/tools
 PATH=$PATH:/usr/local/share/dotnet
 PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin
-PATH=$PATH:/opt/homebrew/Cellar/emacs-plus@28/28.1/libexec/emacs/28.1/aarch64-apple-darwin21.2.0
+PATH=$PATH:~/Projects/Local/Bin/omnisharp
+PATH=$PATH:~/Projects/Local/Bin/netcoredbg
+
 
 # Bindings
 bindkey "^[[1;3A" history-beginning-search-backward
@@ -37,13 +39,14 @@ setopt hist_reduce_blanks
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Alias
-alias -g awslocal="aws --endpoint-url http://localhost:4566"
+alias awslocal="aws --endpoint-url http://localhost:4566"
+alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
 
 # Avoid customizations for dumb terminals
 if [[ "$TERM" != "dumb" ]] then
 
    TERM=alacritty
-   
+
    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
    autoload bashcompinit && bashcompinit
    autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
