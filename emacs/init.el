@@ -25,3 +25,4 @@
 (require 'acf-project)
 (require 'acf-programming)
 (require 'acf-pdf)
+(require 'acf-shell)
