@@ -137,8 +137,6 @@ With argument, do this that many times."
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-flip-direction t)
 
-(global-unset-key (kbd "C-t")) ; This is reserved to tmux
-
 (when IS_MAC
   (setq mac-right-option-modifier nil))
 
