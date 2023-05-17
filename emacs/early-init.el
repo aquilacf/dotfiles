@@ -1,14 +1,18 @@
+;;; early-init.el --- Emacs early init.
+
+;;; Commentary:
+;; Modifies GC, disables package, defines contants, etc...
+
+;; -*- lexical-binding: t -*-
+
+;;; Code:
+
+
 ;;;;;;;;;;;;;;;;;;
 ;; GC Threshold ;;
 ;;;;;;;;;;;;;;;;;;
 (setq gc-cons-threshold 100000000)      ; 100mb
 (setq read-process-output-max 1048576)  ; 1mb
-
-;; Compilation cache
-(when (fboundp 'startup-redirect-eln-cache)
-  (progn
-    (startup-redirect-eln-cache (convert-standard-filename (expand-file-name  "var/eln-cache/" user-emacs-directory)))
-    (delete-directory (concat user-emacs-directory "eln-cache") t)))
 
 ;; Disable package
 (setq package-enable-at-startup nil)
@@ -44,3 +48,5 @@
 (setq initial-scratch-message nil)
 (setq initial-major-mode 'fundamental-mode)
 (setq inhibit-splash-screen t)
+
+;;; early-init.el ends here

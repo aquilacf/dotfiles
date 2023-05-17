@@ -1,3 +1,11 @@
+;;; acf-ui.el --- User interface module.
+
+;;; Commentary:
+;; This module contains styling and eye candy.
+
+;; -*- lexical-binding: t -*-
+
+;;; Code:
 
 (use-package doom-themes
   :demand t
@@ -153,3 +161,5 @@ With argument, do this that many times."
 (add-hook 'focus-out-hook 'acf/save-all-buffers)
 
 (provide 'acf-ui)
+
+;;; acf-ui.el ends here
