@@ -59,6 +59,12 @@ if [[ "$TERM" != "dumb" ]] then
 
 fi
 
+
+# Load eshell integration
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
+
+
 # Load extra
 source ~/.config/zsh/priv.personal.zsh
 source ~/.config/zsh/priv.work.zsh

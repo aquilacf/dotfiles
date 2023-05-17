@@ -1,14 +1,19 @@
+;;; acf-programming.el --- Programming module.
+
+;;; Commentary:
+;; This file contains a collection of configurations and packages related to
+;; programming in Emacs.  It includes settings for various programming languages,
+;; autocompletion, syntax highlighting, and language server configurations.
+
 ;; -*- lexical-binding: t -*-
+
+;;; Code:
 
 (use-package flymake
   :hook (prog-mode . flymake-mode)
   :custom
   (flymake-fringe-indicator-position 'right-fringe))
 
-(customize-set-variable 'eldoc-echo-area-use-multiline-p nil)
-
-
-(customize-set-variable 'gdb-many-windows t)
 
 (use-package comment-dwim-2
   :defer 2
@@ -22,7 +27,9 @@
 ;;;;;;;;;;;;;;;;
 (use-package treesit-auto
   :demand t
-  :custom (treesit-auto-install 'prompt)
+  :custom
+  (treesit-auto-install 'prompt)
+  (treesit-font-lock-level 4)
   :config (global-treesit-auto-mode))
 
 ;;;;;;;;;
@@ -75,24 +82,22 @@
   (defun acf/lsp/setup ()
     "Setup orderless completion."
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults)) '(orderless))
-    (lsp-enable-which-key-integration))
+    (lsp-enable-which-key-integration)
+    (lsp-dired-mode))
   :hook
   (lsp-completion-mode . acf/lsp/setup)
-  ;;  (sh-mode . lsp-deferred)
+  (bash-ts-mode . lsp-deferred)
   ;;  (conf-toml-mode . lsp-deferred)
   ;;  (c++-mode . lsp-deferred)
   ;;  (c-mode . lsp-deferred)
   ;;  (mhtml-mode . lsp-deferred)
   ;;  (css-mode . lsp-deferred)
-  ;;  (csharp-mode . lsp-deferred)
   (csharp-ts-mode . lsp-deferred)
-  ;; (csharp-ts-mode . acf/dap/csharp)
   ;;  (terraform-mode . lsp-deferred)
-  ;;  (js-json-mode . lsp-deferred)
-  ;;  (yaml-mode . lsp-deferred)
+  (json-ts-mode . lsp-deferred)
+  (yaml-ts-mode . lsp-deferred)
   ;;  (typescript-mode . lsp-deferred)
-  ;;  (cmake-mode . lsp-deferred))
-  )
+  (cmake-ts-mode . lsp-deferred))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -164,9 +169,15 @@
   (plantuml-default-exec-mode 'executable))
 
 
+;;;;;;;;;
+;; C++ ;;
+;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '("\\(CMakeLists.txt\\|\\.cmake\\)\\'" . cmake-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.y[a]?ml\\'" . yaml-ts-mode))
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-ts-mode))
+
 (use-package editorconfig :demand t :config (editorconfig-mode))
-
-
 
 
 ;; (use-package helpful
@@ -177,13 +188,11 @@
 ;;   ([remap describe-variable] . helpful-variable)
 ;;   ([remap describe-key] . helpful-key))
 
+;;(defalias 'ctl-spc-keymap (make-sparse-keymap))
+;;(defvar ctl-spc-map (symbol-function 'ctl-spc-keymap))
+;;(define-key global-map (kbd "C-SPC") 'ctl-spc-keymap)
 
-
-                                        ;(defalias 'ctl-spc-keymap (make-sparse-keymap))
-                                        ;(defvar ctl-spc-map (symbol-function 'ctl-spc-keymap))
-                                        ;(define-key global-map (kbd "C-SPC") 'ctl-spc-keymap)
-
-                                        ;(use-package hydra :disabled)
+;;(use-package hydra :disabled)
 
 ;; (defhydra hydra-text-scale (:timeout 4)
 ;;   "scale text"
@@ -197,14 +206,13 @@
 
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :bind (:map copilot-completion-map ("<tab>" . copilot-accept-completion))
   :custom
   (copilot-idle-delay 0.5)
   :hook
   (prog-mode . copilot-mode))
 
 
-
-
-
-
 (provide 'acf-programming)
+
+;;; acf-programming.el ends here

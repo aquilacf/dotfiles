@@ -64,6 +64,7 @@
   (corfu-count 14)
   (corfu-scroll-margin 4)
   (corfu-popupinfo-delay '(2.0 . 0.0))
+  (corfu-exclude-modes '(eshell-mode))
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
@@ -81,5 +82,11 @@
   :config (corfu-terminal-mode))
 
 (use-package kind-icon :after corfu :init (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+
+;;;;;;;;;;;
+;; Other ;;
+;;;;;;;;;;;
+(customize-set-variable 'eldoc-echo-area-use-multiline-p nil)
 
 (provide 'acf-completion)

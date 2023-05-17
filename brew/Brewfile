@@ -1,0 +1,86 @@
+#############
+# Brew Taps #
+#############
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/services"
+
+
+###################
+# Developer Tools #
+###################
+brew "pkg-config"
+brew "tree-sitter"
+brew "openssl@1.1"
+brew "sqlite"
+brew "miniupnpc"
+brew "zeromq"
+brew "protobuf"
+brew "hidapi"
+brew "libevent"
+brew "unbound"
+brew "libpgm"
+brew "libunwind-headers"
+brew "libsodium"
+brew "boost"
+
+brew "git"
+brew "cmake"
+brew "node"
+brew "dotnet@7"
+brew "dotnet@6"
+brew "python@3.11"
+brew "plantuml"
+
+cask "utm"
+
+
+# Emacs
+tap "d12frosted/emacs-plus"
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-dbus", "with-imagemagick", "with-mailutils", "with-native-comp", "with-poll"]
+
+# Hashicorp
+tap "hashicorp/tap"
+brew "consul"
+brew "terraform"
+brew "hashicorp/tap/nomad"
+brew "hashicorp/tap/terraform-ls"
+
+
+################
+# Productivity #
+################
+brew "tldr"
+cask "raycast"
+cask "font-fira-code-nerd-font"
+
+
+#################
+# Communication #
+#################
+cask "zoom"
+cask "keet"
+
+
+#############
+# Utilities #
+#############
+brew "awscli"
+brew "curl"
+brew "gnupg"
+brew "gnu-sed", link: true
+brew "starship"
+brew "okta-aws-cli"
+
+# cask "gimp"
+cask "lulu"
+cask "librewolf"
+cask "cloudflare-warp"
+cask "google-earth-pro"
+
+
+#########
+# Games #
+#########
+#cask "0-ad"

@@ -20,6 +20,7 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 (require 'acf-defaults)
+(require 'acf-editing)
 (require 'acf-ui)
 (require 'acf-completion)
 (require 'acf-project)
