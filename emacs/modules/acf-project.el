@@ -1,44 +1,42 @@
+;;; acf-project.el --- Project/File management module.
+
+;;; Commentary:
+;; This module is used for project/file management.
+
+;; -*- lexical-binding: t -*-
+
+;;; Code:
+
+(require 'ls-lisp)
+
 (use-package dired
   :straight nil
   :bind (:map dired-mode-map ([mouse-2] . dired-find-file))
+  :hook (dired-mode . dired-omit-mode)
   :custom
+  (ls-lisp-use-insert-directory-program nil)
+  (ls-lisp-dirs-first t)
   (dired-kill-when-opening-new-dired-buffer t)
   (dired-use-ls-dired nil)
- (dired-mouse-drag-files t))
+  (dired-mouse-drag-files t)
+  (dired-omit-files "^\\.[^.].*"))
 
 (use-package all-the-icons-dired
-  :after (all-the-icons)
   :if (display-graphic-p)
-  :hook
-  (dired-mode . (lambda () (interactive)
-                  (unless (file-remote-p default-directory)
-                    (all-the-icons-dired-mode)))))
+  :hook (dired-mode . all-the-icons-dired-mode))
 
-;; Not working as expected
 (use-package dired-subtree
-  :init
-  (advice-add 'dired-subtree-toggle
-              :after (lambda () (interactive)
-                       (when all-the-icons-dired-mode (revert-buffer)))))
-
+  :defer 2
+  :bind (:map dired-mode-map ("TAB" . dired-subtree-cycle))
+  :custom (dired-subtree-use-backgrounds nil))
 
 (use-package dired-sidebar
-  :commands (dired-sidebar-toggle-sidebar)
   :bind (("§" . dired-sidebar-toggle-sidebar))
+  :hook (dired-sidebar-mode . (lambda () (display-line-numbers-mode -1) (setq-local mode-line-format nil)))
   :custom
-  (dired-sidebar-subtree-line-prefix "  ")
-  ;; (dired-sidebar-theme 'vscode)
-  ;; (dired-sidebar-use-term-integration t)
-  ;; (dired-sidebar-use-custom-font t)
-  :init
-  (add-hook 'dired-sidebar-mode-hook
-            (lambda ()
-              (unless (file-remote-p default-directory)
-                (auto-revert-mode))
-              (display-line-numbers-mode -1)
-              ))
-  :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands))
+  (dired-sidebar-subtree-line-prefix "  "))
+
 
 (provide 'acf-project)
+
+;;; acf-project.el ends here

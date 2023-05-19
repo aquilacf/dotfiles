@@ -7,7 +7,67 @@
 
 ;;; Code:
 
+(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+
+;; delete-word
+(defun delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (if (use-region-p)
+      (delete-region (region-beginning) (region-end))
+    (delete-region (point) (progn (forward-word arg) (point)))))
+
+(defun backward-delete-word (arg)
+  "Delete characters backward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (delete-word (- arg)))
+
+(global-set-key (read-kbd-macro "<M-DEL>") 'backward-delete-word)
+(delete-selection-mode)
+
+;; Mouse wheel
+(xterm-mouse-mode t)
+
+(setq mouse-wheel-tilt-scroll t)
+(setq mouse-wheel-flip-direction t)
+
+(when IS_MAC
+  (setq mac-right-option-modifier nil))
+
+;; Make ESC quit prompts
+(global-unset-key (kbd "C-x <escape> <escape>"))
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+(define-key isearch-mode-map (kbd "<DEL>") 'isearch-del-char)
+(define-key isearch-mode-map (kbd "C-<backspace>") 'isearch-del-char)
+(define-key isearch-mode-map (kbd "<M-DEL>") 'isearch-del-char)
+
+(defun acf/save-all-buffers ()
+  (interactive)
+  (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'acf/save-all-buffers)
+
 (electric-pair-mode +1)
+
+;;TODO Conflicts with copilot
+(use-package undo-tree
+  :defer 2
+  ;; :bind (:map undo-tree-mode
+  ;;             ("<ret>" . undo-tree-undo)
+  ;;             ("<S-ret>" . undo-tree-redo)
+  ;;             ("C-/" . undo-tree-visualize))
+  :custom (undo-tree-auto-save-history nil)
+  :config (global-undo-tree-mode +1))
+(use-package evil :disabled)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 (provide 'acf-editing)
 

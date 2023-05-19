@@ -45,8 +45,6 @@ alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
 # Avoid customizations for dumb terminals
 if [[ "$TERM" != "dumb" ]] then
 
-   TERM=alacritty
-
    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
    autoload bashcompinit && bashcompinit
    autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
@@ -55,7 +53,6 @@ if [[ "$TERM" != "dumb" ]] then
    # Plugins
    source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
    source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-   eval "$(starship init zsh)"
 
 fi
 
