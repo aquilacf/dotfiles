@@ -7,6 +7,10 @@
 
 ;;; Code:
 
+(set-face-attribute 'default nil :family "FiraCode Nerd Font")
+(set-face-attribute 'variable-pitch nil :family "FiraCode Nerd Font")
+
+
 (use-package doom-themes
   :demand t
   :custom

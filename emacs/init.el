@@ -27,3 +27,4 @@
 (require 'acf-programming)
 (require 'acf-pdf)
 (require 'acf-shell)
+(require 'acf-org)

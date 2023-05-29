@@ -14,6 +14,7 @@
   :bind (:map dired-mode-map ([mouse-2] . dired-find-file))
   :hook (dired-mode . dired-omit-mode)
   :custom
+  (dired-listing-switches "-alh")
   (ls-lisp-use-insert-directory-program nil)
   (ls-lisp-dirs-first t)
   (dired-kill-when-opening-new-dired-buffer t)
@@ -32,7 +33,11 @@
 
 (use-package dired-sidebar
   :bind (("§" . dired-sidebar-toggle-sidebar))
-  :hook (dired-sidebar-mode . (lambda () (display-line-numbers-mode -1) (setq-local mode-line-format nil)))
+  :hook (dired-sidebar-mode . acf/dired-sidebar/setup)
+  :init
+  (defun acf/dired-sidebar/setup ()
+    (display-line-numbers-mode -1)
+    (setq-local mode-line-format nil))
   :custom
   (dired-sidebar-subtree-line-prefix "  "))
 

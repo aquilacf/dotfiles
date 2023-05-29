@@ -10,6 +10,25 @@
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
+(ffap-bindings)
+
+;;TODO
+;;(windmove-default-keybindings 'meta)
+;; (defun ignore-error-wrapper (fn)
+;;   "Funtion return new function that ignore errors.
+;;    The function wraps a function with `ignore-errors' macro."
+;;   (lexical-let ((fn fn))
+;;     (lambda ()
+;;       (interactive)
+;;       (ignore-errors
+;;         (funcall fn)))))
+
+;; (global-set-key [M-left] (ignore-error-wrapper 'windmove-left))
+;; (global-set-key [M-right] (ignore-error-wrapper 'windmove-right))
+;; (global-set-key [M-up] (ignore-error-wrapper 'windmove-up))
+;; (global-set-key [M-down] (ignore-error-wrapper 'windmove-down))
+
+
 ;; delete-word
 (defun delete-word (arg)
   "Delete characters forward until encountering the end of a word.
@@ -55,6 +74,7 @@ With argument, do this that many times."
 
 ;;TODO Conflicts with copilot
 (use-package undo-tree
+  :disabled
   :defer 2
   ;; :bind (:map undo-tree-mode
   ;;             ("<ret>" . undo-tree-undo)

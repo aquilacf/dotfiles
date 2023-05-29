@@ -90,14 +90,26 @@
   ;;  (conf-toml-mode . lsp-deferred)
   ;;  (c++-mode . lsp-deferred)
   ;;  (c-mode . lsp-deferred)
-  ;;  (mhtml-mode . lsp-deferred)
-  ;;  (css-mode . lsp-deferred)
   (csharp-ts-mode . lsp-deferred)
-  ;;  (terraform-mode . lsp-deferred)
+  (terraform-mode . lsp-deferred)
   (json-ts-mode . lsp-deferred)
   (yaml-ts-mode . lsp-deferred)
-  ;;  (typescript-mode . lsp-deferred)
+  (typescript-ts-mode . lsp-deferred)
   (cmake-ts-mode . lsp-deferred))
+
+;; TODO
+(defun my-filter-function (orig-fun &rest args)
+  (let ((result (apply orig-fun args)))
+    (message result)
+    (message (lsp-workspace-root))
+
+    ;; Filter the result here.
+    ;; This is a placeholder for the actual filtering logic.
+    (if (listp result)
+        (delq nil result)
+      result)))
+
+(advice-add 'lsp-csharp--cls-metadata-uri-handler :around #'my-filter-function)
 
 (use-package lsp-ui
   :after lsp-mode
@@ -141,6 +153,7 @@
 ;; Docker ;;
 ;;;;;;;;;;;;
 (use-package docker :disabled :bind ("C-c d" . docker))
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-ts-mode))
 
 ;;;;;;;;;;;;;;;
 ;; Terraform ;;
@@ -172,10 +185,9 @@
 ;;;;;;;;;
 ;; C++ ;;
 ;;;;;;;;;
-
 (add-to-list 'auto-mode-alist '("\\(CMakeLists.txt\\|\\.cmake\\)\\'" . cmake-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.y[a]?ml\\'" . yaml-ts-mode))
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-ts-mode))
+
 
 (use-package editorconfig :demand t :config (editorconfig-mode))
 
@@ -205,6 +217,7 @@
 
 
 (use-package copilot
+  :disabled
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :bind (:map copilot-completion-map ("<tab>" . copilot-accept-completion))
   :custom

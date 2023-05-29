@@ -1,6 +1,6 @@
 ## My zsh.
 ## ~/.zshrc
-## 26 Sept 2022
+## 20 May 2023
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -13,7 +13,6 @@ PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.dotnet/tools
 PATH=$PATH:/usr/local/share/dotnet
 PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin
-PATH=$PATH:~/Projects/Local/Bin/omnisharp
 PATH=$PATH:~/Projects/Local/Bin/netcoredbg
 
 
