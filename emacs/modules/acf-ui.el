@@ -7,6 +7,12 @@
 
 ;;; Code:
 
+;; Search
+(custom-set-variables '(isearch-lazy-count t)
+		      '(lazy-count-prefix-format nil)
+		      '(lazy-count-suffix-format "   (%s/%s)"))
+
+
 (set-face-attribute 'default nil :family "FiraCode Nerd Font")
 (set-face-attribute 'variable-pitch nil :family "FiraCode Nerd Font")
 

@@ -31,4 +31,6 @@
   :config
   (global-org-modern-mode))
 
+(provide 'acf-org)
+
 ;;; acf-org.el ends here
