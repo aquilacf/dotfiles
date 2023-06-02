@@ -12,7 +12,6 @@ export GPG_TTY=$(tty)
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.dotnet/tools
 PATH=$PATH:/usr/local/share/dotnet
-PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin
 PATH=$PATH:~/Projects/Local/Bin/netcoredbg
 
 
@@ -44,14 +43,14 @@ alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
 # Avoid customizations for dumb terminals
 if [[ "$TERM" != "dumb" ]] then
 
-   FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
-   autoload bashcompinit && bashcompinit
-   autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
-   complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
+   #FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+   #autoload bashcompinit && bashcompinit
+   #autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
+   #complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
 
    # Plugins
-   source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-   source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   #source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+   #source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fi
 
@@ -62,5 +61,5 @@ fi
 
 
 # Load extra
-source ~/.config/zsh/priv.personal.zsh
+#source ~/.config/zsh/priv.personal.zsh
 source ~/.config/zsh/priv.work.zsh

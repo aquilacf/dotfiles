@@ -71,10 +71,12 @@ brew "curl"
 brew "gnupg"
 brew "gnu-sed", link: true
 brew "okta-aws-cli"
+brew "jq"
 
 # cask "gimp"
+cask "postman"
 cask "lulu"
-cask "librewolf"
+cask "librewolf", args: ["no-quarantine"]
 cask "cloudflare-warp"
 cask "google-earth-pro"
 

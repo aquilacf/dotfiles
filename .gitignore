@@ -5,3 +5,9 @@ idea/
 
 # MacOS
 .DS_Store
+
+# Emacs
+emacs/eln-cache/
+emacs/straight/
+emacs/tree-sitter/
+emacs/var/
