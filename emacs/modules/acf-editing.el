@@ -74,17 +74,10 @@ With argument, do this that many times."
 
 (electric-pair-mode +1)
 
-;;TODO Conflicts with copilot
-(use-package undo-tree
-  :disabled
-  :defer 2
-  ;; :bind (:map undo-tree-mode
-  ;;             ("<ret>" . undo-tree-undo)
-  ;;             ("<S-ret>" . undo-tree-redo)
-  ;;             ("C-/" . undo-tree-visualize))
-  :custom (undo-tree-auto-save-history nil)
-  :config (global-undo-tree-mode +1))
-(use-package evil :disabled)
+(use-package evil
+  :custom
+  (evil-want-integration t)
+  (evil-want-keybinding nil))
 
 (use-package evil-collection
   :after evil

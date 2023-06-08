@@ -34,6 +34,9 @@
   (eshell-load . eat-eshell-mode)
   (eshell-load . eat-eshell-visual-command-mode))
 
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
+
 (use-package eshell
   ;;  :hook (eshell-mode . acf/eshell-filter)
   ;; :init

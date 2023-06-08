@@ -98,18 +98,19 @@
   (cmake-ts-mode . lsp-deferred))
 
 ;; TODO
-(defun my-filter-function (orig-fun &rest args)
-  (let ((result (apply orig-fun args)))
-    (message result)
-    (message (lsp-workspace-root))
+;; (defun my-filter-function (orig-fun &rest args)
+;;   (let ((result (apply orig-fun args)))
+;;     (message result)
+;;     (message (lsp-workspace-root))
 
-    ;; Filter the result here.
-    ;; This is a placeholder for the actual filtering logic.
-    (if (listp result)
-        (delq nil result)
-      result)))
+;;     ;; Filter the result here.
+;;     ;; This is a placeholder for the actual filtering logic.
+;;     (if (listp result)
+;;         (delq nil result)
+;;       result)))
 
-(advice-add 'lsp-csharp--cls-metadata-uri-handler :around #'my-filter-function)
+;; (advice-add 'lsp-csharp--cls-metadata-uri-handler :around #'my-filter-function)
+
 
 (use-package lsp-ui
   :after lsp-mode

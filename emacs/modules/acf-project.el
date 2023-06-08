@@ -42,6 +42,25 @@
   (dired-sidebar-subtree-line-prefix "  "))
 
 
+
+;; (custom-set-variables
+;;  '(grep-find-ignored-directories . ("folder-to-ignore"))
+;;  '(grep-find-ignored-files . ("file-to-ignore")))
+
+
+(eval-after-load 'grep
+  '(progn
+     (add-to-list 'grep-find-ignored-directories "tmp")
+     (add-to-list 'grep-find-ignored-directories "node_modules")
+     (add-to-list 'grep-find-ignored-directories ".bundle")
+     (add-to-list 'grep-find-ignored-directories "auto")
+     (add-to-list 'grep-find-ignored-directories "elpa")))
+
+
+
+
+(use-package magit)
+
 (provide 'acf-project)
 
 ;;; acf-project.el ends here
