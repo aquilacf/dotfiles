@@ -28,8 +28,6 @@ brew "boost"
 brew "git"
 brew "cmake"
 brew "node"
-brew "dotnet@7"
-brew "dotnet@6"
 brew "python@3.11"
 brew "plantuml"
 
@@ -60,7 +58,7 @@ cask "font-fira-code-nerd-font"
 # Communication #
 #################
 cask "zoom"
-cask "keet"
+cask "slack"
 
 
 #############
@@ -74,11 +72,13 @@ brew "okta-aws-cli"
 brew "jq"
 
 # cask "gimp"
+cask "spotify"
 cask "postman"
 cask "lulu"
 cask "librewolf", args: ["no-quarantine"]
 cask "cloudflare-warp"
 cask "google-earth-pro"
+cask "appcleaner"
 
 
 #########
