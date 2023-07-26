@@ -70,6 +70,7 @@ brew "gnupg"
 brew "gnu-sed", link: true
 brew "okta-aws-cli"
 brew "jq"
+brew "pinentry-mac"
 
 # cask "gimp"
 cask "spotify"

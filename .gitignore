@@ -19,3 +19,12 @@ emacs/var/
 !*.secret
 ssh/config
 git/work.gitconfig
+gpg/0x22171E5E54F901DC.asc
+gpg/0x22171E5E54F901DC.asc.pub
+gpg/0xA74EEDD900C370A4.asc
+gpg/0xA74EEDD900C370A4.asc.pub
+gpg/fingerprint.txt
+gpg/gpg-agent.conf
+gpg/gpg.conf
+gpg/ownertrust.asc
+gpg/sshcontrol
