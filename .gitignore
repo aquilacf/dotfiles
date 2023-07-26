@@ -18,3 +18,4 @@ emacs/var/
 .gitsecret/keys/random_seed
 !*.secret
 ssh/config
+git/work.gitconfig
