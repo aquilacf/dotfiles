@@ -13,3 +13,8 @@ emacs/elpaca/
 emacs/elpa/
 emacs/tree-sitter/
 emacs/var/
+
+# Git Secret
+.gitsecret/keys/random_seed
+!*.secret
+ssh/config
