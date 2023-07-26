@@ -1,0 +1,105 @@
+{
+    // Telemetry
+    "telemetry.telemetryLevel": "off",
+    // Updates
+    "update.showReleaseNotes": false,
+    "update.mode": "none",
+    // Files
+    "files.autoSave": "onFocusChange",
+    // Window
+    "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "off",
+    // .NET
+    "dotnet.autoDetect": "on",
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    // Extensions
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    // AWS
+    "aws.telemetry": false,
+    "aws.codeWhisperer.includeSuggestionsWithCodeReferences": false,
+    "aws.codeWhisperer.importRecommendation": false,
+    "aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
+    // Vim
+    "vim.surround": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.hlsearch": true,
+    "vim.smartcase": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before":["<Esc>"],
+            "commands": [
+                ":nohl",
+                "removeSecondaryCursors"
+            ],
+            "silent": true
+        }
+    ],
+    // Editor
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.codeLensFontSize": 10,
+    "editor.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.fontSize": 14,
+    "editor.detectIndentation": true,
+    "editor.lineNumbers": "relative",
+    "editor.fontLigatures": false,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": false,
+    "editor.guides.highlightActiveIndentation": true,
+    // Workbench
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.startupEditor": "none",
+    "workbench.sideBar.location": "right",
+    "window.commandCenter": true,
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.decorations.colors": false,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.showTabs": false,
+    "workbench.colorCustomizations": {
+        "editorOverviewRuler.border": "#0000",
+        "editorOverviewRuler.findMatchForeground": "#0000",
+        "editorOverviewRuler.rangeHighlightForeground": "#0000",
+        "editorOverviewRuler.selectionHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+        "editorOverviewRuler.modifiedForeground": "#0000",
+        "editorOverviewRuler.addedForeground": "#0000",
+        "editorOverviewRuler.deletedForeground": "#0000",
+        "editorOverviewRuler.errorForeground": "#0000",
+        "editorOverviewRuler.warningForeground": "#0000",
+        "editorOverviewRuler.infoForeground": "#0000",
+        "editorOverviewRuler.bracketMatchForeground": "#0000"
+    },
+    "workbench.editor.enablePreview": false,
+    // Explorer
+    // "explorer.decorations.badges": false,
+    // "explorer.decorations.colors": false,
+    "explorer.openEditors.visible": 1,
+    // GIT
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "editor.foldingImportsByDefault": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "window.autoDetectHighContrast": false,
+    "explorer.excludeGitIgnore": true,
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "workbench.preferredDarkColorTheme": "Visual Studio 2019 Dark",
+    "workbench.preferredLightColorTheme": "Visual Studio 2019 Light",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "grammarly.files.include": [
+        "**/readme.md",
+        "**/README.md",
+        "**/*.txt",
+        "**/*.md"
+    ],
+    "grammarly.config.documentDialect": "british",
+    // Other
+}

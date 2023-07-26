@@ -21,7 +21,7 @@
 (use-package eshell-syntax-highlighting :hook (eshell-mode . eshell-syntax-highlighting-mode))
 
 (use-package eat
-  :straight (eat
+  :elpaca (eat
              :type git
              :host codeberg
              :repo "akib/emacs-eat"
@@ -38,6 +38,7 @@
   :hook (eshell-mode . esh-autosuggest-mode))
 
 (use-package eshell
+  :elpaca nil
   ;;  :hook (eshell-mode . acf/eshell-filter)
   ;; :init
   ;; (defun acf/eshell-filter ()

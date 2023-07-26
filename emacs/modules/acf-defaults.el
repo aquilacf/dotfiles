@@ -1,4 +1,14 @@
+;;; acf-defaults.el --- Defaults.
+
+;;; Commentary:
+;; No littering...
+
+;; -*- lexical-binding: t -*-
+
+;;; Code:
+
 (use-package no-littering :demand t)
+(elpaca-wait)
 
 ;; File handling
 (global-auto-revert-mode)
@@ -70,3 +80,5 @@
 
 
 (provide 'acf-defaults)
+
+;;; acf-defaults.el ends here

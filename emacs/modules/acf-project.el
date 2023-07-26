@@ -10,7 +10,7 @@
 (require 'ls-lisp)
 
 (use-package dired
-  :straight nil
+  :elpaca nil
   :bind (:map dired-mode-map ([mouse-2] . dired-find-file))
   :hook (dired-mode . dired-omit-mode)
   :custom
@@ -21,10 +21,6 @@
   (dired-use-ls-dired nil)
   (dired-mouse-drag-files t)
   (dired-omit-files "^\\.[^.].*"))
-
-(use-package all-the-icons-dired
-  :if (display-graphic-p)
-  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package dired-subtree
   :defer 2

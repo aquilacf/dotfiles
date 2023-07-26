@@ -30,13 +30,11 @@
 ;;;;;;;;;;;;;;;
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
 (modify-all-frames-parameters '((fullscreen . maximized)
                                 (internal-border-width . 1)
                                 (vertical-scroll-bars . nil)
                                 (tool-bar-lines . 0)
                                 (ns-appearance . dark)
-                                ;; (left-fringe . 0)
                                 (font . "FiraCode Nerd Font-14")))
 
 (defun display-startup-echo-area-message()

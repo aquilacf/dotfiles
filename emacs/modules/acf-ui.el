@@ -42,21 +42,13 @@
 (customize-set-variable 'display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 
-(dolist (mode '(org-mode-hook
-                term-mode-hook
+(dolist (mode '(term-mode-hook
                 shell-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (column-number-mode)
 (customize-set-variable 'truncate-lines t)
-
-(use-package all-the-icons :if (display-graphic-p))
-(use-package all-the-icons-completion
-  :after (marginalia all-the-icons)
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-  :init  (all-the-icons-completion-mode))
-
 
 (use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
 

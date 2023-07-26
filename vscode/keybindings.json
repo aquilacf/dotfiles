@@ -1,0 +1,62 @@
+[
+    {
+        "key": "cmd+r r",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "f2",
+        "command": "-editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+r r",
+        "command": "csdevkit.rename",
+        "when": "focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'File' || focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'Folder' || focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'Project'"
+    },
+    {
+        "key": "f2",
+        "command": "-csdevkit.rename",
+        "when": "focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'File' || focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'Folder' || focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'Project'"
+    },
+    {
+        "key": "cmd+r r",
+        "command": "csdevkit.renameSolutionFolder",
+        "when": "focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'SolutionFolder'"
+    },
+    {
+        "key": "f2",
+        "command": "-csdevkit.renameSolutionFolder",
+        "when": "focusedView == 'solutionExplorer' && selectedSolutionExplorerNodeType == 'SolutionFolder'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+.",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+cmd+enter",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "alt+cmd+enter",
+        "command": "editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    }
+]

@@ -1,7 +1,8 @@
 priv.*
 
 # IDE
-idea/
+.idea/
+.vscode
 
 # MacOS
 .DS_Store
@@ -9,5 +10,6 @@ idea/
 # Emacs
 emacs/eln-cache/
 emacs/elpaca/
+emacs/elpa/
 emacs/tree-sitter/
 emacs/var/

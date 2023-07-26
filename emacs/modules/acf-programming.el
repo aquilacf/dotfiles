@@ -164,14 +164,6 @@
   ((terraform)
    (terraform-ls)))
 
-;;;;;;;;;;;;;
-;; GraphQL ;;
-;;;;;;;;;;;;;
-(use-package graphql-mode
-  :mode "\\.graphql\\'"
-  :ensure-system-package
-  (graphql-lsp . "yarn global add graphql graphql-language-service-cli"))
-
 ;;;;;;;;;;;;;;
 ;; PlantUML ;;
 ;;;;;;;;;;;;;;
@@ -219,7 +211,7 @@
 
 (use-package copilot
   :disabled
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :elpaca (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :bind (:map copilot-completion-map ("<tab>" . copilot-accept-completion))
   :custom
   (copilot-idle-delay 0.5)

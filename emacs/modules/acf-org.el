@@ -8,28 +8,46 @@
 ;;; Code:
 
 
-(use-package org-modern
-  :custom
-  (org-auto-align-tags nil)
-  (org-tags-column 0)
-  (org-catch-invisible-edits 'show-and-error)
-  (org-special-ctrl-a/e t)
-  (org-insert-heading-respect-content t)
 
-  ;; Org styling, hide markup etc.
-  (org-hide-emphasis-markers t)
-  (org-pretty-entities t)
-  (org-ellipsis "…")
 
-  ;; Agenda styling
-  (org-agenda-tags-column 0)
-  (org-agenda-block-separator ?─)
-  (org-agenda-time-grid '((daily today require-timed)   (800 1000 1200 1400 1600 1800 2000)   " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"))
-  (org-agenda-current-time-string "⭠ now ─────────────────────────────────────────────────")
-  :custom-face
-  (org-modern-symbol ((nil (:family "FiraCode Nerd Font"))))
-  :config
-  (global-org-modern-mode))
+
+;; (set-frame-font "FiraCode Nerd Font 18" nil t)
+
+
+
+;;  (custom-theme-set-faces
+;;    'user
+;;    '(variable-pitch ((t (:family "FiraCode Nerd Font" :height 180 :weight thin))))
+;;    '(fixed-pitch ((t ( :family "FiraCode Nerd Font" :height 160)))))
+
+
+;; (set-face-attribute 'default nil
+;;                     :family "FiraCode Nerd Font"
+;;                     :weight 'light
+;;                     :height 140)
+
+;; (set-face-attribute 'bold nil
+;;                     :family "FiraCode Nerd Font"
+;;                     :weight 'regular)
+
+;; (set-face-attribute 'italic nil
+;;                     :family "FiraCode Nerd Font"
+;;                     :weight 'semilight
+;;                     :slant 'italic)
+
+;; (set-fontset-font t 'unicode
+;;                     (font-spec :name "FiraCode Nerd Font"
+;;                                :size 26) nil)
+
+;; (set-fontset-font t '(#xe000 . #xffdd)
+;;                      (font-spec :name "FiraCode Nerd Font"
+;;                                 :size 32) nil)
+
+
+
+
+
+
 
 (provide 'acf-org)
 

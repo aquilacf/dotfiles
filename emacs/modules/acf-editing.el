@@ -13,7 +13,6 @@
 
 (ffap-bindings)
 
-
 ;;TODO
 ;;(windmove-default-keybindings 'meta)
 ;; (defun ignore-error-wrapper (fn)
@@ -59,12 +58,12 @@ With argument, do this that many times."
   (setq mac-right-option-modifier nil))
 
 ;; Make ESC quit prompts
-(global-unset-key (kbd "C-x <escape> <escape>"))
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;(global-unset-key (kbd "C-x <escape> <escape>"))
+;(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (define-key isearch-mode-map (kbd "<DEL>") 'isearch-del-char)
-(define-key isearch-mode-map (kbd "C-<backspace>") 'isearch-del-char)
-(define-key isearch-mode-map (kbd "<M-DEL>") 'isearch-del-char)
+;(define-key isearch-mode-map (kbd "C-<backspace>") 'isearch-del-char)
+;(define-key isearch-mode-map (kbd "<M-DEL>") 'isearch-del-char)
 
 (defun acf/save-all-buffers ()
   (interactive)
@@ -75,14 +74,23 @@ With argument, do this that many times."
 (electric-pair-mode +1)
 
 (use-package evil
+  :demand t
   :custom
   (evil-want-integration t)
-  (evil-want-keybinding nil))
+  (evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
 
 (use-package evil-collection
+  :demand t
   :after evil
   :config
   (evil-collection-init))
+
+(use-package emojify
+  :if (display-graphic-p)
+  :defer 3
+  :config (global-emojify-mode))
 
 (provide 'acf-editing)
 

@@ -3,7 +3,7 @@
 ;; Completion ;;
 ;;;;;;;;;;;;;;;;
 (use-package vertico
-  :straight (vertico :files (:defaults "extensions/*")
+  :elpaca (vertico :files (:defaults "extensions/*")
                      :includes (vertico-reverse
 				vertico-directory))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
@@ -24,6 +24,7 @@
 		 cand))))
 
 (use-package marginalia
+  :demand t
   :custom (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init  (marginalia-mode))
 
@@ -48,7 +49,7 @@
 
 (use-package corfu
   :defer 2
-  :straight (corfu :files (:defaults "extensions/*"))
+  :elpaca (corfu :files (:defaults "extensions/*"))
   :bind (:map corfu-map ("SPC" . corfu-insert-separator))
   :custom
   (corfu-cycle t)
@@ -76,7 +77,7 @@
 (use-package corfu-terminal
   :if (not (display-graphic-p))
   :defer 2
-  :straight (corfu-terminal
+  :elpaca (corfu-terminal
 	     :type git
 	     :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
   :config (corfu-terminal-mode))
