@@ -1,5 +1,5 @@
 # Default git configuration.
-# 26 Jul 2022
+# 31 Aug 2023
 
 [user]
    name = Áquila Freitas
@@ -9,6 +9,10 @@
 
 [tag]
    gpgSign = true
+
+[push]
+   gpgSign = false # GitHub does not support signed pushes.
+   autoSetupRemote = true
 
 [gpg]
    program = gpg
