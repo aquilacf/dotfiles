@@ -50,56 +50,59 @@
     "editor.guides.bracketPairs": true,
     "editor.guides.bracketPairsHorizontal": false,
     "editor.guides.highlightActiveIndentation": true,
+    "editor.foldingImportsByDefault": true,
     // Workbench
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.startupEditor": "none",
     "workbench.sideBar.location": "right",
-    "window.commandCenter": true,
+    "workbench.activityBar.location": "side", // Top looks cool too
+    // "window.commandCenter": true,
     "workbench.editor.decorations.badges": false,
-    "workbench.editor.decorations.colors": false,
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.showTabs": false,
-    "workbench.colorCustomizations": {
-        "editorOverviewRuler.border": "#0000",
-        "editorOverviewRuler.findMatchForeground": "#0000",
-        "editorOverviewRuler.rangeHighlightForeground": "#0000",
-        "editorOverviewRuler.selectionHighlightForeground": "#0000",
-        "editorOverviewRuler.wordHighlightForeground": "#0000",
-        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
-        "editorOverviewRuler.modifiedForeground": "#0000",
-        "editorOverviewRuler.addedForeground": "#0000",
-        "editorOverviewRuler.deletedForeground": "#0000",
-        "editorOverviewRuler.errorForeground": "#0000",
-        "editorOverviewRuler.warningForeground": "#0000",
-        "editorOverviewRuler.infoForeground": "#0000",
-        "editorOverviewRuler.bracketMatchForeground": "#0000"
-    },
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.decorations.colors": true,
+    // "workbench.editor.limit.enabled": true,
+    // "workbench.editor.limit.perEditorGroup": true,
+    // "workbench.colorCustomizations": {
+    //     "editorOverviewRuler.border": "#0000",
+    //     "editorOverviewRuler.findMatchForeground": "#0000",
+    //     "editorOverviewRuler.rangeHighlightForeground": "#0000",
+    //     "editorOverviewRuler.selectionHighlightForeground": "#0000",
+    //     "editorOverviewRuler.wordHighlightForeground": "#0000",
+    //     "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+    //     "editorOverviewRuler.modifiedForeground": "#0000",
+    //     "editorOverviewRuler.addedForeground": "#0000",
+    //     "editorOverviewRuler.deletedForeground": "#0000",
+    //     "editorOverviewRuler.errorForeground": "#0000",
+    //     "editorOverviewRuler.warningForeground": "#0000",
+    //     "editorOverviewRuler.infoForeground": "#0000",
+    //     "editorOverviewRuler.bracketMatchForeground": "#0000"
+    // },
+    "workbench.editor.enablePreview": true,
+    "workbench.statusBar.visible": true,
     // Explorer
-    // "explorer.decorations.badges": false,
-    // "explorer.decorations.colors": false,
-    "explorer.openEditors.visible": 1,
+    "explorer.decorations.badges": false,
+    "explorer.decorations.colors": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "explorer.excludeGitIgnore": false,
     // GIT
     "git.confirmSync": false,
     "git.autofetch": true,
-    "editor.foldingImportsByDefault": true,
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "window.autoDetectHighContrast": false,
-    "explorer.excludeGitIgnore": true,
-    "workbench.colorTheme": "Visual Studio 2019 Dark",
+
+    // REST Client
+    "rest-client.enableTelemetry": false,
+
+    // Theme
     "workbench.preferredDarkColorTheme": "Visual Studio 2019 Dark",
     "workbench.preferredLightColorTheme": "Visual Studio 2019 Light",
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    "grammarly.files.include": [
-        "**/readme.md",
-        "**/README.md",
-        "**/*.txt",
-        "**/*.md"
-    ],
-    "grammarly.config.documentDialect": "british",
+    "workbench.iconTheme": "eq-material-theme-icons-light",
+
     // Other
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "debug.toolBarLocation": "commandCenter",
+    "editor.smoothScrolling": true,
+
+
+
 }
