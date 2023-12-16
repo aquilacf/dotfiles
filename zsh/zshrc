@@ -1,33 +1,33 @@
-## My zsh.
-## ~/.zshrc
-## 20 May 2023
+### My zsh.
+### ~/.zshrc
+### 16 Dec 2023
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+## Homebrew
+eval "$(brew shellenv)"
 
-# GPG
+## GPG
+export GPG_TTY=$(tty)
+export GPG_KEYID="0xCA0901B5B1EDADB3"
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-export GPG_TTY=$(tty)
-gpg-connect-agent /bye
+gpgconf --launch gpg-agent
 
-# PATH
-PATH=$PATH:~/.cargo/bin
-PATH=$PATH:~/.dotnet/tools
-PATH=$PATH:/usr/local/share/dotnet
-PATH=$PATH:~/Projects/Local/Bin/netcoredbg
+## PATH
+PATH="~/.cargo/bin:$PATH"
+PATH="~/.dotnet/tools:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 
 
-# Bindings
+## Bindings
 bindkey "^[[1;3A" history-beginning-search-backward
 bindkey "^[[1;3B" history-beginning-search-forward
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 
-# History
+## History
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 LESSHISTFILE=-
@@ -38,33 +38,22 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt hist_reduce_blanks
 
-# Other
+## Other
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# Alias
+## Alias
 alias awslocal="aws --endpoint-url http://localhost:4566"
 alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
+alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --cask {} && brew cleanup"
 
-# Avoid customizations for dumb terminals
+## Avoid customizations for dumb terminals
 if [[ "$TERM" != "dumb" ]] then
 
-   #FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
-   #autoload bashcompinit && bashcompinit
-   #autoload -Uz compinit && compinit # Fix insecure files if need with: compaudit | xargs chmod g-w
-   #complete -C $HOMEBREW_PREFIX/bin/aws_completer aws
+  export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-   # Plugins
-   #source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-   #source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+  autoload bashcompinit && bashcompinit
+  autoload -Uz compinit && compinit
 
 fi
-
-
-# Load eshell integration
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-
-
-
-# Load extra
-#source ~/.config/zsh/priv.personal.zsh
-source ~/.config/zsh/priv.work.zsh
