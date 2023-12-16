@@ -1,5 +1,2 @@
 alias clear recenter 0
 alias emacs "find-file $1"
-
-alias awslocal "aws --endpoint-url http://localhost:4566"
-alias trigger-ci "git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
