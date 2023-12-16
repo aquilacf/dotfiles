@@ -1,20 +1,23 @@
 priv.*
 
-# IDE
+## IDE
 .idea/
 .vscode
 
-# MacOS
+## MacOS
 .DS_Store
 
-# Emacs
+## Brew
+Brewfile.lock.json
+
+## Emacs
 emacs/eln-cache/
 emacs/elpaca/
 emacs/elpa/
 emacs/tree-sitter/
 emacs/var/
 
-# Git Secret
+## Git Secret
 .gitsecret/keys/random_seed
 !*.secret
 ssh/config

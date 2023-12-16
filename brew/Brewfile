@@ -1,3 +1,6 @@
+## brew bundle
+## 16 Dec 2023
+
 #############
 # Brew Taps #
 #############
@@ -50,15 +53,15 @@ brew "hashicorp/tap/terraform-ls"
 # Productivity #
 ################
 brew "tldr"
-cask "raycast"
+#cask "raycast"
 cask "font-fira-code-nerd-font"
 
 
 #################
 # Communication #
 #################
-cask "zoom"
-cask "slack"
+# cask "zoom"
+# cask "slack"
 
 
 #############
@@ -74,10 +77,9 @@ brew "pinentry-mac"
 
 # cask "gimp"
 cask "spotify"
-cask "postman"
+#cask "postman"
 cask "lulu"
 cask "librewolf", args: ["no-quarantine"]
-cask "cloudflare-warp"
 cask "google-earth-pro"
 cask "appcleaner"
 
