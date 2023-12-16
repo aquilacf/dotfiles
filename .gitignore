@@ -18,7 +18,6 @@ emacs/var/
 .gitsecret/keys/random_seed
 !*.secret
 ssh/config
-git/work.gitconfig
 gpg/0x22171E5E54F901DC.asc
 gpg/0x22171E5E54F901DC.asc.pub
 gpg/0xA74EEDD900C370A4.asc

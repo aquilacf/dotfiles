@@ -1,10 +1,9 @@
 # Git root configuration.
 # ~/.gitconfig
-# 26 Jul 2022
+# 16 Dec 2023
 
 [include]
     path = ~/Projects/Personal/dotfiles/git/main.gitconfig
-[includeIf "gitdir:~/Projects/Work/"]
-    path = ~/Projects/Personal/dotfiles/git/work.gitconfig
+
 [includeIf "gitdir:~/Projects/Personal/"]
     path = ~/Projects/Personal/dotfiles/git/personal.gitconfig

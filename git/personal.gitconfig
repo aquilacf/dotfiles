@@ -1,6 +1,6 @@
 # Personal section of git configuration.
-# 05 Jul 2022
+# 16 Dec 2023
 
 [user]
-   email = aquilacf@protonmail.com
-   signingkey = 22171E5E54F901DC
+   email = hi@aquilafreitas.com
+   signingkey = CA0901B5B1EDADB3
