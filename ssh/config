@@ -1,0 +1,12 @@
+## SSH configuration for work GitHub and personal projects.
+## ~/.ssh/config
+## 16 Dec 2023
+
+Host git.aquilafreitas.com
+  IdentitiesOnly yes
+  HostName github.com
+  IdentityFile ~/.ssh/yubikey.pub
+
+Host github.com
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/yubikey.pub
