@@ -6,6 +6,9 @@
     "update.mode": "none",
     // Files
     "files.autoSave": "onFocusChange",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
     // Window
     "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "off",
@@ -51,17 +54,19 @@
     "editor.guides.bracketPairsHorizontal": false,
     "editor.guides.highlightActiveIndentation": true,
     "editor.foldingImportsByDefault": true,
+    "editor.smoothScrolling": true,
+
     // Workbench
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
     "workbench.startupEditor": "none",
     "workbench.sideBar.location": "right",
-    "workbench.activityBar.location": "side", // Top looks cool too
-    // "window.commandCenter": true,
+    "workbench.activityBar.location": "side",
     "workbench.editor.decorations.badges": false,
     "workbench.editor.decorations.colors": true,
-    // "workbench.editor.limit.enabled": true,
-    // "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.value": 10,
     // "workbench.colorCustomizations": {
     //     "editorOverviewRuler.border": "#0000",
     //     "editorOverviewRuler.findMatchForeground": "#0000",
@@ -79,6 +84,7 @@
     // },
     "workbench.editor.enablePreview": true,
     "workbench.statusBar.visible": true,
+
     // Explorer
     "explorer.decorations.badges": false,
     "explorer.decorations.colors": true,
@@ -97,11 +103,16 @@
     "workbench.preferredLightColorTheme": "Visual Studio 2019 Light",
     "workbench.iconTheme": "eq-material-theme-icons-light",
 
-    // Other
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
+    // Programming
     "debug.toolBarLocation": "commandCenter",
-    "editor.smoothScrolling": true,
+
+    // Other
+
+
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+
 
 
 
