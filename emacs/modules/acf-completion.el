@@ -3,16 +3,17 @@
 ;; Completion ;;
 ;;;;;;;;;;;;;;;;
 (use-package vertico
-  :elpaca (vertico :files (:defaults "extensions/*")
-                     :includes (vertico-reverse
-				vertico-directory))
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  :ensure t
+  ;; :elpaca (vertico :files (:defaults "extensions/*")
+  ;;                    :includes (vertico-reverse
+  ;;       			vertico-directory))
+  ;;:hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :custom
   (vertico-cycle t)
   (vertico-resize t)
   :init
   (vertico-mode)
-  (vertico-reverse-mode)
+ ; (vertico-reverse-mode)
 
   (advice-add #'vertico--format-candidate :around
               (lambda (orig cand prefix suffix index _start)
@@ -23,13 +24,32 @@
                    "  ")
 		 cand))))
 
+(use-package vertico-reverse
+  :ensure nil
+  :after vertico
+  :config
+  (vertico-reverse-mode))
+
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 (use-package marginalia
+  :ensure t
   :demand t
   :custom (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init  (marginalia-mode))
 
 
 (use-package consult
+  :ensure t
   :demand t
   :custom (completion-in-region-function #'consult-completion-in-region)
   (consult-narrow-key ">")
@@ -43,13 +63,15 @@
   (advice-add #'project-switch-to-buffer :override #'consult-project-buffer))
 
 (use-package orderless
+  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '(file (styles . (partial-completion)))))
 
 (use-package corfu
+  :ensure t
   :defer 2
-  :elpaca (corfu :files (:defaults "extensions/*"))
+  ;:elpaca (corfu :files (:defaults "extensions/*"))
   :bind (:map corfu-map ("SPC" . corfu-insert-separator))
   :custom
   (corfu-cycle t)
@@ -74,15 +96,15 @@
   (unbind-key "RET" corfu-map)
   (unbind-key "M-SPC" corfu-map))
 
-(use-package corfu-terminal
-  :if (not (display-graphic-p))
-  :defer 2
-  :elpaca (corfu-terminal
-	     :type git
-	     :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
-  :config (corfu-terminal-mode))
+;(use-package corfu-terminal
+;  :if (not (display-graphic-p))
+;  :defer 2
+  ;:elpaca (corfu-terminal
+;	     :type git
+;	     :repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
+;  :config (corfu-terminal-mode))
 
-(use-package kind-icon :after corfu :init (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+(use-package kind-icon :ensure t :after corfu :init (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 
 ;;;;;;;;;;;

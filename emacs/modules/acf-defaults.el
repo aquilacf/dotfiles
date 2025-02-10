@@ -7,8 +7,7 @@
 
 ;;; Code:
 
-(use-package no-littering :demand t)
-(elpaca-wait)
+(use-package no-littering :ensure t :demand t)
 
 ;; File handling
 (global-auto-revert-mode)
@@ -22,7 +21,7 @@
  '(make-backup-files nil))
 
 ;; Autosaves
-(customize-set-variable 'auto-save-file-name-transforms `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+;(customize-set-variable 'auto-save-file-name-transforms `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 (custom-set-variables
  '(auto-save-list-file-name nil)
  '(auto-save-default nil)
@@ -38,8 +37,8 @@
  '(recentf-auto-cleanup 'never))
 
 (recentf-mode)
-(add-to-list 'recentf-exclude no-littering-var-directory)
-(add-to-list 'recentf-exclude no-littering-etc-directory)
+ (add-to-list 'recentf-exclude no-littering-var-directory)
+ (add-to-list 'recentf-exclude no-littering-etc-directory)
 
 ;; Scroll
 (custom-set-variables

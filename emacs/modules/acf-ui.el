@@ -18,6 +18,7 @@
 
 
 (use-package doom-themes
+  :ensure t
   :demand t
   :custom
   (doom-themes-enable-bold t)
@@ -27,6 +28,7 @@
   (doom-themes-org-config))
 
 (use-package doom-modeline
+  :ensure t
   :demand t
   :custom
   (doom-modeline-height 30)
@@ -50,7 +52,7 @@
 (column-number-mode)
 (customize-set-variable 'truncate-lines t)
 
-(use-package rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
+(use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
 
 (custom-set-variables
  '(show-paren-delay 0)
@@ -66,6 +68,7 @@
 
 
 (use-package highlight-indent-guides
+  :ensure t
   :custom
   (highlight-indent-guides-method 'character)
   (highlight-indent-guides-responsive 'stack)
@@ -83,6 +86,7 @@
 (add-to-list 'write-file-functions 'delete-trailing-whitespace)
 
 (use-package diff-hl
+  :ensure t
   :defer 2
   :hook
   (find-file    . diff-hl-mode)
@@ -110,9 +114,10 @@
 
 (global-hl-line-mode)
 
-(use-package minimap :custom (minimap-window-location 'right))
+(use-package minimap :disabled :custom (minimap-window-location 'right))
 
 (use-package which-key
+  :disabled
   :defer 5
   :custom (which-key-idle-delay 0.3)
   :config (which-key-mode t))

@@ -10,7 +10,6 @@
 (require 'ls-lisp)
 
 (use-package dired
-  :elpaca nil
   :bind (:map dired-mode-map ([mouse-2] . dired-find-file))
   :hook (dired-mode . dired-omit-mode)
   :custom
@@ -23,11 +22,13 @@
   (dired-omit-files "^\\.[^.].*"))
 
 (use-package dired-subtree
+  :ensure t
   :defer 2
   :bind (:map dired-mode-map ("TAB" . dired-subtree-cycle))
   :custom (dired-subtree-use-backgrounds nil))
 
 (use-package dired-sidebar
+  :ensure t
   :bind (("§" . dired-sidebar-toggle-sidebar))
   :hook (dired-sidebar-mode . acf/dired-sidebar/setup)
   :init
@@ -55,7 +56,6 @@
 
 
 
-(use-package magit)
 
 (provide 'acf-project)
 

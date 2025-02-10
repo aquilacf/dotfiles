@@ -64,6 +64,9 @@
   (lsp-headerline-breadcrumb-segments '(symbols))
   (lsp-enable-indentation nil)
 
+  ;; Test
+  (lsp-csharp-omnisharp-roslyn-binary-path "~/.bin/omnisharp")
+
   ;; To decide
   (lsp-restart 'ignore)
   (lsp-eldoc-enable-hover nil)

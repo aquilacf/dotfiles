@@ -74,6 +74,7 @@ With argument, do this that many times."
 (electric-pair-mode +1)
 
 (use-package evil
+  :ensure t
   :demand t
   :custom
   (evil-want-integration t)
@@ -82,12 +83,14 @@ With argument, do this that many times."
   (evil-mode 1))
 
 (use-package evil-collection
+  :ensure t
   :demand t
   :after evil
   :config
   (evil-collection-init))
 
 (use-package emojify
+  :ensure t
   :if (display-graphic-p)
   :defer 3
   :config (global-emojify-mode))
