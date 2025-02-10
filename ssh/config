@@ -1,3 +1,5 @@
+Include /Users/aquila/.colima/ssh_config
+
 ## SSH configuration for work GitHub and personal projects.
 ## ~/.ssh/config
 ## 16 Dec 2023
