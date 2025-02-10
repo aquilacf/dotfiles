@@ -1,0 +1,19 @@
+[window]
+title = "Terminal"
+dynamic_title = true
+
+option_as_alt = "OnlyLeft"
+
+[font]
+normal.family = "FiraCode Nerd Font"
+size = 15
+
+[cursor]
+style.shape = "Beam"
+style.blinking = "On"
+
+[env]
+ZELLIJ_START = "true"
+
+[terminal]
+shell = { program = "/bin/zsh", args = ["-l"] }

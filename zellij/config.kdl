@@ -1,0 +1,76 @@
+keybinds {
+    normal clear-defaults=true {
+        // tmux
+        bind "Alt Space" { SwitchToMode "Tmux"; }
+
+    }
+
+    tmux clear-defaults=true {
+
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "s" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "Normal"
+        }
+        bind "Space" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "N" { NewTab; SwitchToMode "Normal";  }
+        bind "n" { GoToNextTab; SwitchToMode "Normal";  }
+        bind "r" { SwitchToMode "Resize";  }
+        bind "k" { CloseFocus; SwitchToMode "Normal"; }
+        bind "K" { CloseTab; SwitchToMode "Normal";}
+
+        bind "\\" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+
+        bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+
+        bind "d" {
+            LaunchOrFocusPlugin "docker" {
+                floating false
+            }
+            SwitchToMode "Normal";
+        }
+
+        bind "?" {
+            LaunchOrFocusPlugin "help" {
+               floating true
+            }
+            SwitchToMode "Normal";
+        }
+    }
+
+
+    resize {
+        bind "?" {
+            LaunchOrFocusPlugin "help" {
+               floating true
+            }
+            SwitchToMode "Normal";
+        }
+    }
+
+}
+
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+
+simplified_ui true
+default_layout "minimal"
+
+
+plugins {
+    docker location="https://github.com/dj95/zj-docker/releases/latest/download/zj-docker.wasm"
+    help location="https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
+}
+
+
+
