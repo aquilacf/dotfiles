@@ -1,19 +1,32 @@
+[general]
+import = ["~/.config/alacritty/alacritty-themes/themes/monokai_pro.toml"]
+live_config_reload = false
+
+
 [window]
 title = "Terminal"
 dynamic_title = true
-
+opacity = 0.9
+blur = true
 option_as_alt = "OnlyLeft"
 
+
 [font]
-normal.family = "FiraCode Nerd Font"
+normal.family = "Fira Code"
 size = 15
+
 
 [cursor]
 style.shape = "Beam"
 style.blinking = "On"
 
-[env]
-ZELLIJ_START = "true"
+[selection]
+save_to_clipboard = false
+
 
 [terminal]
-shell = { program = "/bin/zsh", args = ["-l"] }
+shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
+
+
+[keyboard]
+bindings = [{ key = "C", mods = "Command", action = "Copy" }]

@@ -1,8 +1,7 @@
-### ~/.zshenv
 
 # DOTNET
-export PATH="$PATH:/usr/local/share/dotnet"
-export PATH="$PATH:$HOME/.dotnet/tools"
+# export PATH="$PATH:/usr/local/share/dotnet"
+# export PATH="$PATH:$HOME/.dotnet/tools"
 
 # Cargo
 source "$HOME/.cargo/env"
