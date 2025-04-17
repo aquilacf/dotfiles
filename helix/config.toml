@@ -1,4 +1,5 @@
-theme = "monokai_pro_spectrum"
+
+theme = "custom"
 
 [editor]
 line-number = "relative"
@@ -41,10 +42,6 @@ select = "underline"
 render = true
 skip-levels = 1
 
-
-[keys.insert]
-C-space = "signature_help"
-
 [editor.statusline]
 left = [
   "mode",
@@ -63,12 +60,24 @@ right = [
 ]
 
 
-[keys.normal]
-esc = ["collapse_selection", "keep_primary_selection"]
+### Keybindings
 
+[keys.normal]
+# Cmd-c = ":clipboard-yank"
+esc = ["collapse_selection", "keep_primary_selection"]
+Cmd-s = ":w"
 
 [keys.select]
+# Cmd-c = ":clipboard-yank"
 "g" = { "e" = "goto_file_end" }
 esc = ["collapse_selection", "normal_mode"]
+
+
+[keys.insert]
+# Cmd-c = ":clipboard-yank"
+C-space = "signature_help"
+
+
+
 
 
