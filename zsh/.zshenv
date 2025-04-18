@@ -1,3 +1,5 @@
+### ~/.zshenv
+### export ZDOTDIR="$HOME/.config/zsh"
 
 # DOTNET
 # export PATH="$PATH:/usr/local/share/dotnet"

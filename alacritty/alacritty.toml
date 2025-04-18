@@ -18,7 +18,7 @@ size = 15
 
 [cursor]
 style.shape = "Beam"
-style.blinking = "On"
+style.blinking = "Always"
 
 [selection]
 save_to_clipboard = false

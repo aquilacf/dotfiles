@@ -17,3 +17,6 @@ emacs/elpa/
 emacs/tree-sitter/
 emacs/var/
 
+## Zsh
+.zsh_sessions/
+.zsh_history

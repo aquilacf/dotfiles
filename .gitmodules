@@ -1,3 +1,6 @@
 [submodule "alacritty/alacritty-theme"]
 	path = alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme
+[submodule "zsh/zsh-defer"]
+	path = zsh/zsh-defer
+	url = https://github.com/romkatv/zsh-defer.git
