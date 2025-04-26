@@ -26,9 +26,10 @@ source "$HOME/.config/zsh/zsh-defer/zsh-defer.plugin.zsh"
 zsh-defer eval 'source "$(brew --prefix zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"'
 
 ## Autocomplete
-fpath=(~/.stripe $fpath)
+fpath=(~/.stripe ~/.config/zsh/completions $fpath)
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
+autoload -U compinit && compinit
 zsh-defer eval 'source "$(brew --prefix zsh-autosuggestions)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"'
 
 ## Private

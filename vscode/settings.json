@@ -79,7 +79,6 @@
     // Theme
     "workbench.preferredDarkColorTheme": "Visual Studio 2019 Dark",
     "workbench.preferredLightColorTheme": "Visual Studio 2019 Light",
-    "workbench.colorTheme": "Monokai Pirokai - Arctic Frost",
     // Explorer
     "explorer.decorations.badges": false,
     "explorer.decorations.colors": true,

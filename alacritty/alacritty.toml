@@ -1,5 +1,4 @@
 [general]
-import = ["~/.config/alacritty/alacritty-themes/themes/monokai_pro.toml"]
 live_config_reload = false
 
 
@@ -11,9 +10,13 @@ blur = true
 option_as_alt = "OnlyLeft"
 
 
+[scrolling] # tmux handles scrolling
+history = 0
+multiplier = 0
+
 [font]
 normal.family = "Fira Code"
-size = 15
+size = 14.5
 
 
 [cursor]
@@ -25,8 +28,8 @@ save_to_clipboard = false
 
 
 [terminal]
+# shell = { program = "zsh", args = ["-l"]}
 shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
 
-
-[keyboard]
-bindings = [{ key = "C", mods = "Command", action = "Copy" }]
+[env]
+EDITOR= "hx"

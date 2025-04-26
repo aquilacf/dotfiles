@@ -20,3 +20,5 @@ emacs/var/
 ## Zsh
 .zsh_sessions/
 .zsh_history
+.zcompcache/
+.zcompdump
