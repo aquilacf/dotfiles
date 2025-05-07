@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Developer CV
+% LaTeX Template
+% Version 1.1 (February 24, 2025)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Jan Vorisek (jan@vorisek.me)
+% Based on a template by Jan Küster (info@jankuester.com)
+% Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{developercv} % Default font size, values from 8-12pt are recommended
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.45\textwidth} % Left column with your name and title, change the width as needed
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% If your name is very short: use just one of the lines below
+	% If your name is very long: reduce the font size or make the current column wider (and reduce the others proportionately)
+	\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Alyx}}}}} % First name
+	
+	\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Vance}}}}} % Last name
+	
+	\vspace{6pt} % Vertical whitespace
+	
+	{\huge Web App Architect} % Career or current job title
+\end{minipage}
+\hfill % Automatic horizontal whitespace
+\begin{minipage}[t]{0.27\textwidth} % Center column with the first column of icons
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+	% Other icons can be found by referring to fontawesome5.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+	\icon{MapMarker}{12}{Black Mesa East}\\
+	\icon{Phone}{12}{+1 123 456 789}\\
+	\icon{At}{12}{\href{mailto:alyx@vance.me}{alyx@vance.me}}\\	
+\end{minipage}
+\hfill % Automatic horizontal whitespace
+\begin{minipage}[t]{0.27\textwidth} % Right column with the first column of icons
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+	% Other icons can be found by referring to fontawesome5.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+	\icon{Globe}{12}{\href{https://alyx.vance.me}{alyx.vance.me}}\\
+	\icon{Github}{12}{\href{https://github.com/alyxvance}{github.com/alyxvance}}\\
+	\icon{Twitter}{12}{\href{https://twitter.com/@alyxvance}{@alyxvance}}\\
+\end{minipage}
+
+\vspace{0.5cm} % Vertical whitespace
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION, SKILLS AND TECHNOLOGIES
+%----------------------------------------------------------------------------------------
+
+\cvsect{Who Am I?}
+
+\begin{minipage}[t]{0.4\textwidth} % Left column with the introduction text, change the width as needed
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\lorem \lorem \lorem \lorem \lorem\\ % Dummy text
+\end{minipage}
+\hfill % Automatic horizontal whitespace
+\begin{minipage}[t]{0.5\textwidth} % Right column with the skills bar chart, change the width as needed
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\begin{barchart}{5.5} % The parameter to the barchart environment is the maximum width (in cm) of the longest bar
+		\baritem{JavaScript}{60}
+		\baritem{PHP}{100}
+		\baritem{SASS/LESS}{70}
+		\baritem{Bootstrap}{70}
+		\baritem{Git}{40}
+		\baritem{LaTeX}{60}
+	\end{barchart}
+\end{minipage}
+
+% Output a series of bubbles showing your proficiency with environments and/or tools
+\begin{center}
+	\bubbles{5/Eclipse, 6/git, 4/Office, 3/Inkscape, 3/Blender} % Each bubble must be in the format of '<size>/<label>' and you can specify as many bubbles as will fit on the page
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\cvsect{Experience}
+
+\begin{entrylist}
+	\entry
+		{2017 -- 3/2018}
+		{Front-end developer}
+		{Big Corporation Name Inc.}
+		{\lorem \lorem \lorem\\ \texttt{node.js}\slashsep\texttt{Vue.js}\slashsep\texttt{Electron}}
+	\entry
+		{2015 -- 2018\\\footnotesize{part time}}
+		{Full stack developer}
+		{Famous Eshop Inc.}
+		{\lorem\lorem\\ \texttt{PHP}\slashsep\texttt{JS}\slashsep\texttt{MariaDB}\slashsep\texttt{Linux}}
+	\entry
+		{2013 -- 2014\\\footnotesize{part time}}
+		{Junior PHP Developer}
+		{example.com}
+		{\lorem\lorem\\ \texttt{PHP}\slashsep\texttt{Laravel}}
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\cvsect{Education}
+
+\begin{entrylist}
+	\entry
+		{2013 -- 2017}
+		{Master's Degree}
+		{Another University Name}
+		{\lorem\lorem\lorem}
+	\entry
+		{2014}
+		{Postgraduate Diploma}
+		{A University Name}
+		{\lorem\lorem}
+	\entry
+		{2007 -- 2013}
+		{Bachelor's Degree}
+		{A University Name}
+		{\lorem\lorem}
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	ADDITIONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.3\textwidth} % Left column width
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+
+	\cvsect{Languages}
+	
+	\textbf{English} - native\\
+	\textbf{German} - proficient\\
+	\textbf{Polish} - rudimentary
+\end{minipage}
+\hfill % Automatic horizontal whitespace
+\begin{minipage}[t]{0.3\textwidth} % Center column width
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\cvsect{Hobbies}
+	
+	I love... \lorem
+\end{minipage}
+\hfill % Automatic horizontal whitespace
+\begin{minipage}[t]{0.3\textwidth} % Right column width
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\cvsect{Non profit}
+	
+	I help... \lorem
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
