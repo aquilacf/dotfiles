@@ -82,6 +82,8 @@ parents = true
 ### Keybindings
 
 [keys.normal]
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
 esc = ["collapse_selection", "keep_primary_selection"]
 C-right = "move_next_word_start"
 C-left = "move_prev_word_end"
@@ -102,7 +104,7 @@ F7 = ":sh git blame %{buffer_name} -L %{cursor_line},%{cursor_line}"
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
 C-right = "extend_next_word_start"
 C-left = "extend_prev_word_end"
-g = { e = "goto_file_end" }
+g = { e = ["extend_to_last_line","extend_to_line_end"] }
 X = "extend_line_above"
 
 [keys.insert]
