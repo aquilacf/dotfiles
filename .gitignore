@@ -22,3 +22,11 @@ emacs/var/
 .zsh_history
 .zcompcache/
 .zcompdump
+
+## Latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.gz
