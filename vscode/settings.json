@@ -6,175 +6,156 @@
     "update.mode": "none",
     // Files
     "files.autoSave": "onFocusChange",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
     "files.watcherExclude": {
-        "**/.terraform/**": true,
-        "**/bin/**": true,
+        "**/.git/**": true,
         "**/node_modules/**": true,
+        "**/.hg/**": true,
+        "**/.svn/**": true,
+        "**/bin/**": true,
         "**/obj/**": true,
-        "**/target/**": true
+        "**/target/**": true,
+        "**/.terraform/**": true
     },
-    // Window
-    "window.openFilesInNewWindow": "off",
-    "window.openFoldersInNewWindow": "off",
-    // Extensions
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
+    // // Window
+    // "window.openFilesInNewWindow": "off",
+    // "window.openFoldersInNewWindow": "off",
     // Editor
     "search.exclude": {
-        "**/.terraform": true,
-        "**/*lock.json": true,
-        "**/bin": true,
-        "**/obj": true,
-        "**/target": true
+        "**/.git/**": true,
+        "**/node_modules/**": true,
+        "**/.hg/**": true,
+        "**/.svn/**": true,
+        "**/bin/**": true,
+        "**/obj/**": true,
+        "**/target/**": true,
+        "**/.terraform/**": true
     },
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.codeLensFontSize": 10,
+    // "editor.codeLensFontSize": 10,
     "editor.fontFamily": "FiraCode, Menlo, Monaco, 'Courier New', monospace",
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "editor.hideCursorInOverviewRuler": true,
-    "editor.overviewRulerBorder": false,
+    // "editor.hideCursorInOverviewRuler": true,
+    // "editor.overviewRulerBorder": false,
     "editor.fontSize": 15,
-    "editor.lineNumbers": "relative",
-    "editor.fontLigatures": false,
+    // "editor.lineNumbers": "relative",
+    // "editor.fontLigatures": false,
     "editor.guides.bracketPairs": true,
-    "editor.guides.bracketPairsHorizontal": false,
-    "editor.guides.highlightActiveIndentation": true,
-    "editor.foldingImportsByDefault": true,
-    "editor.smoothScrolling": true,
-    "editor.scrollbar.verticalScrollbarSize": 8,
-    "editor.scrollbar.horizontalScrollbarSize": 8,
-    "editor.suggestSelection": "recentlyUsed",
-    "editor.lightbulb.enabled": "onCode",
+    // "editor.guides.bracketPairsHorizontal": false,
+    // "editor.foldingImportsByDefault": true,
+    // "editor.smoothScrolling": true,
+    // "editor.scrollbar.verticalScrollbarSize": 8,
+    // "editor.scrollbar.horizontalScrollbarSize": 8,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    // "editor.lightbulb.enabled": "onCode",
     // Workbench
-    "workbench.enableExperiments": false,
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    "workbench.startupEditor": "none",
+    // "workbench.enableExperiments": false,
+    // "workbench.settings.enableNaturalLanguageSearch": false,
+    // "workbench.startupEditor": "none",
     "workbench.sideBar.location": "right",
-    "workbench.activityBar.location": "default",
-    "workbench.editor.decorations.badges": false,
-    "workbench.editor.decorations.colors": true,
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.value": 10,
-    "workbench.colorCustomizations": {
-        //     "editorOverviewRuler.border": "#0000",
-        //     "editorOverviewRuler.findMatchForeground": "#0000",
-        //     "editorOverviewRuler.rangeHighlightForeground": "#0000",
-        //     "editorOverviewRuler.selectionHighlightForeground": "#0000",
-        //     "editorOverviewRuler.wordHighlightForeground": "#0000",
-        //     "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
-        //     "editorOverviewRuler.modifiedForeground": "#0000",
-        //     "editorOverviewRuler.addedForeground": "#0000",
-        //     "editorOverviewRuler.deletedForeground": "#0000",
-        //     "editorOverviewRuler.errorForeground": "#0000",
-        //     "editorOverviewRuler.warningForeground": "#0000",
-        //     "editorOverviewRuler.infoForeground": "#0000",
-        //     "editorOverviewRuler.bracketMatchForeground": "#0000"
-        "editorHoverWidget.border": "#FFFFFF66",
-    },
-    "workbench.editor.enablePreview": true,
-    "workbench.statusBar.visible": true,
+    // "workbench.activityBar.location": "default",
+    // "workbench.editor.decorations.badges": false,
+    // "workbench.editor.decorations.colors": true,
+    // "workbench.editor.limit.enabled": true,
+    // "workbench.editor.limit.perEditorGroup": true,
+    // "workbench.editor.limit.value": 10,
+    // "workbench.colorCustomizations": {
+    //     //     "editorOverviewRuler.border": "#0000",
+    //     //     "editorOverviewRuler.findMatchForeground": "#0000",
+    //     //     "editorOverviewRuler.rangeHighlightForeground": "#0000",
+    //     //     "editorOverviewRuler.selectionHighlightForeground": "#0000",
+    //     //     "editorOverviewRuler.wordHighlightForeground": "#0000",
+    //     //     "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+    //     //     "editorOverviewRuler.modifiedForeground": "#0000",
+    //     //     "editorOverviewRuler.addedForeground": "#0000",
+    //     //     "editorOverviewRuler.deletedForeground": "#0000",
+    //     //     "editorOverviewRuler.errorForeground": "#0000",
+    //     //     "editorOverviewRuler.warningForeground": "#0000",
+    //     //     "editorOverviewRuler.infoForeground": "#0000",
+    //     //     "editorOverviewRuler.bracketMatchForeground": "#0000"
+    //     "editorHoverWidget.border": "#FFFFFF66",
+    // },
+    // "workbench.editor.enablePreview": true,
     // Theme
     "workbench.preferredDarkColorTheme": "Visual Studio 2019 Dark",
     "workbench.preferredLightColorTheme": "Visual Studio 2019 Light",
-    // Explorer
-    "explorer.decorations.badges": false,
-    "explorer.decorations.colors": true,
-    "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false,
-    // GIT
-    "git.confirmSync": false,
-    "git.autofetch": true,
-    // Vim
-    "vim.surround": true,
-    "vim.camelCaseMotion.enable": true,
-    "vim.hlsearch": true,
-    "vim.smartcase": true,
-    // "vim.normalModeKeyBindings": [
-    //     {
-    //         "before": [
-    //             "<Esc>"
-    //         ],
-    //         "commands": [
-    //             ":nohl",
-    //             "removeSecondaryCursors"
-    //         ],
-    //         "silent": true
-    //     }
-    // ],
+    // // Explorer
+    // "explorer.decorations.badges": false,
+    // "explorer.decorations.colors": true,
+    // "explorer.confirmDragAndDrop": false,
+    // "explorer.confirmDelete": false,
+    // // Vim
+    // "vim.surround": true,
+    // "vim.camelCaseMotion.enable": true,
+    // "vim.hlsearch": true,
+    // "vim.smartcase": true,
+    // // "vim.normalModeKeyBindings": [
+    // //     {
+    // //         "before": [
+    // //             "<Esc>"
+    // //         ],
+    // //         "commands": [
+    // //             ":nohl",
+    // //             "removeSecondaryCursors"
+    // //         ],
+    // //         "silent": true
+    // //     }
+    // // ],
     // REST Client
     "rest-client.enableTelemetry": false,
     // Programming
     "debug.toolBarLocation": "commandCenter",
-    // Other
-    "[csharp]": {
-        "editor.defaultFormatter": "ms-dotnettools.csharp"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "files.associations": {
-        "appsettings.json": "jsonc",
-        "appsettings.*.json": "jsonc"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "editor.minimap.enabled": false,
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[css]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
-    },
-    "application.shellEnvironmentResolutionTimeout": 30,
+    // // Other
+    // "[csharp]": {
+    //     "editor.defaultFormatter": "ms-dotnettools.csharp"
+    // },
+    // "[json]": {
+    //     "editor.defaultFormatter": "vscode.json-language-features"
+    // },
+    // "files.associations": {
+    //     "appsettings.json": "jsonc",
+    //     "appsettings.*.json": "jsonc"
+    // },
+    // "[jsonc]": {
+    //     "editor.defaultFormatter": "vscode.json-language-features"
+    // },
+    // "editor.minimap.enabled": false,
+    // "[html]": {
+    //     "editor.defaultFormatter": "vscode.html-language-features"
+    // },
+    // "[javascript]": {
+    //     "editor.defaultFormatter": "vscode.typescript-language-features"
+    // },
+    // "[typescript]": {
+    //     "editor.defaultFormatter": "vscode.typescript-language-features"
+    // },
+    // "[css]": {
+    //     "editor.defaultFormatter": "vscode.css-language-features"
+    // },
+    // Git
     "git.openRepositoryInParentFolders": "always",
     // .NET
-    "dotnet.autoDetect": "on",
     "dotnetAcquisitionExtension.enableTelemetry": false,
     "dotnetAcquisitionExtension.installTimeoutValue": 1,
-    "dotnetAcquisitionExtension.sharedExistingDotnetPath": "/usr/local/share/dotnet/dotnet",
-    // Terraform
-    "terraform.languageServer.enable": true,
-    "terraform.languageServer.path": "terraform-ls",
-    // Bash
-    "bashIde.enableSourceErrorDiagnostics": false,
-    // AWS
-    "aws.telemetry": false,
-    "aws.codeWhisperer.includeSuggestionsWithCodeReferences": false,
-    "aws.codeWhisperer.importRecommendation": false,
-    "aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.fontSize": 15,
-    "accessibility.verbosity.inlineChat": false,
-    "inlineChat.holdToSpeech": false,
-    "inlineChat.lineNaturalLanguageHint": false,
-    "github.copilot.editor.enableCodeActions": false,
+    // // Bash
+    // "bashIde.enableSourceErrorDiagnostics": false,
+    // "terminal.integrated.cursorStyle": "line",
+    // "terminal.integrated.fontSize": 15,
+    // "accessibility.verbosity.inlineChat": false,
+    // "inlineChat.holdToSpeech": false,
+    // "inlineChat.lineNaturalLanguageHint": false,
     "tailwindCSS.files.exclude": [
         "**/.git/**",
         "**/node_modules/**",
         "**/.hg/**",
         "**/.svn/**",
         "**/bin/**",
-        "**/obj/**"
+        "**/obj/**",
+        "**/target/**",
+        "**/.terraform/**"
     ],
-    "tailwindCSS.includeLanguages": {
-        "razor": ""
-    },
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
+    // AWS
+    "aws.telemetry": false,
+    // Terminal
     "terminal.integrated.profiles.osx": {
         "zsh": {
             "path": "/bin/zsh",
@@ -182,5 +163,9 @@
                 "-d"
             ]
         }
-    }
+    },
+    "terminal.integrated.defaultProfile.windows": "zsh",
+    // YAML
+    "redhat.telemetry.enabled": false,
+    "editor.minimap.enabled": false,
 }

@@ -13,8 +13,6 @@ gutters = ["spacer", "line-numbers", "spacer", "diff"]
 insert-final-newline = true
 line-number = "relative"
 popup-border = "none"
-trim-final-newlines = true
-trim-trailing-whitespace = true
 true-color = true
 undercurl = true
 

@@ -1,6 +1,7 @@
 ### ~/.zshenv
 
 # DOTNET
+export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 # export PATH="$PATH:/usr/local/share/dotnet"
 # export PATH="$PATH:$HOME/.dotnet/tools"
 
@@ -11,4 +12,4 @@ export PATH="$PATH:$HOME/.bin"
 source "$HOME/.cargo/env"
 
 ## Docker
-export COMPOSE_BAKE=true
+export COMPOSE_BAKE="true"

@@ -15,10 +15,6 @@ formatter = { command = "taplo", args = ["fmt", "-"] }
 root_dir = [".git", "*.toml"]
 
 
-[[language]]
-name = "kdl"
-formatter = { command = "kdlfmt", args = ["format", "-"] }
-
 # Scripting
 
 [language-server.bash-language-server]

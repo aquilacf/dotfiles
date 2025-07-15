@@ -1,11 +1,11 @@
 ### ~/.zshrc
 
 ## Alias
-alias awslocal="aws --endpoint-url http://localhost:4566"
-alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --cask {} && brew cleanup"
+alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --force --cask {} && brew cleanup"
 
 alias dotfiles="cd $HOME/Projects/Personal/dotfiles"
 
+alias awslocal="aws --endpoint-url http://localhost:4566"
 alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
 alias git-commit-undo="git reset --soft HEAD~1"
 
