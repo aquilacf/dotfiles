@@ -5,7 +5,7 @@
    name = Áquila Freitas
 
 [commit]
-   gpgSign = true
+   gpgSign = false
 
 [tag]
    gpgSign = true

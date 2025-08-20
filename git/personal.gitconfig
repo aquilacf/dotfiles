@@ -4,3 +4,6 @@
 [user]
    email = hi@aquilafreitas.com
    signingkey = CA0901B5B1EDADB3
+
+[commit]
+   gpgSign = true
