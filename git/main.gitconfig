@@ -1,11 +1,13 @@
 # Default git configuration.
-# 20 Sept 2023
+# 21 Aug 2025
 
 [user]
    name = Áquila Freitas
+   email = hi@aquilafreitas.com
+   signingkey = CA0901B5B1EDADB3
 
 [commit]
-   gpgSign = false
+   gpgSign = true
 
 [tag]
    gpgSign = true
