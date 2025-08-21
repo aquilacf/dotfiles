@@ -5,5 +5,5 @@
 	path = zsh/zsh-defer
 	url = https://github.com/romkatv/zsh-defer.git
 [submodule "sources/helix"]
-	path = sources/helix
+	path = helix/src
 	url = https://github.com/helix-editor/helix
