@@ -1,6 +1,12 @@
 # Personal section of git configuration.
-# 16 Dec 2023
+# 24 Aug 2025
 
 [user]
    email = hi@aquilafreitas.com
    signingkey = CA0901B5B1EDADB3
+
+[commit]
+   gpgSign = true
+
+[tag]
+   gpgSign = true

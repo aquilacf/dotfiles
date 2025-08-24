@@ -28,7 +28,6 @@ save_to_clipboard = false
 
 
 [terminal]
-# shell = { program = "zsh", args = ["-l"]}
 shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
 
 [env]

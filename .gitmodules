@@ -5,5 +5,11 @@
 	path = zsh/zsh-defer
 	url = https://github.com/romkatv/zsh-defer.git
 [submodule "sources/helix"]
-	path = sources/helix
+	path = helix/src
 	url = https://github.com/helix-editor/helix
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/zsh-autosuggestions"]
+	path = zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

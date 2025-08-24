@@ -1,14 +1,16 @@
-Include /Users/aquila/.colima/ssh_config
-
 ## SSH configuration for work GitHub and personal projects.
 ## ~/.ssh/config
-## 16 Dec 2023
+## 24 Dec 2025
+
+Include ~/.colima/ssh_config
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
 
 Host git.aquilafreitas.com
   IdentitiesOnly yes
   HostName github.com
+  IdentityAgent $GPG_SSH_AUTH_SOCK
   IdentityFile ~/.ssh/yubikey.pub
-
-Host github.com
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh/yubikey.pub
+  
