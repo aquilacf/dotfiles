@@ -1,7 +1,5 @@
 ### ~/.config/zsh/.zshrc
 
-echo "inside zshrc"
-
 ## Alias
 alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --force --cask {} && brew cleanup"
 

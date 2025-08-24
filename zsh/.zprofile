@@ -1,8 +1,5 @@
 ### ~/.config/zsh/.zprofile
 
-
-echo "inside zprofile"
-
 ## Homebrew
 eval "$(brew shellenv)"
 
