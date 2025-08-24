@@ -1,6 +1,5 @@
 #!/bin/sh
-
-
+set -e
 
 # Keyboard
 defaults write -g KeyRepeat -int 2

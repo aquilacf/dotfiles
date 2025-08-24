@@ -1,5 +1,6 @@
 #!/bin/sh
 # Based on: https://gist.github.com/XVilka/8346728 and https://unix.stackexchange.com/a/404415/395213
+set -e
 
 awk -v term_cols="${width:-$(tput cols || echo 80)}" \
   -v term_lines="${height:-$(tput lines || echo 1)}" 'BEGIN{

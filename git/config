@@ -1,6 +1,6 @@
 # Git root configuration.
 # ~/.gitconfig
-# 21 Aug 2025
+# 24 Aug 2025
 
 [include]
     path = ~/.config/git/main.gitconfig
@@ -9,7 +9,7 @@
     path = ~/.config/git/personal.gitconfig
 
 [includeIf "gitdir:~/Projects/Business/"]
-    path = ~/.config/git/business.gitconfig
+    path = ~/.config/git/personal.gitconfig
 
 [includeIf "gitdir:~/Projects/Work/"]
     path = ~/.config/git/priv.work.gitconfig

@@ -1,16 +1,8 @@
 # Default git configuration.
-# 21 Aug 2025
+# 24 Aug 2025
 
 [user]
    name = Áquila Freitas
-   email = hi@aquilafreitas.com
-   signingkey = CA0901B5B1EDADB3
-
-[commit]
-   gpgSign = true
-
-[tag]
-   gpgSign = true
 
 [push]
    gpgSign = false # GitHub does not support signed pushes.
