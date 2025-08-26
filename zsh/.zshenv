@@ -1,16 +1,18 @@
 ### ~/.config/zsh/zshenv
 
-## Basic
+## XDG
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_STATE_HOME="${HOME}/.local/state"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
-## PATH
+## Basic
 export PATH="$PATH:$HOME/.bin"
+export LANG='en_GB.UTF-8'
 
 ## GNU
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GPG_TTY=$(tty)
 
 ## DOTNET
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"

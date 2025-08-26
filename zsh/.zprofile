@@ -4,7 +4,6 @@
 eval "$(brew shellenv)"
 
 ## GPG
-export GPG_TTY=$(tty)
-export GPG_KEYID="0xCA0901B5B1EDADB3"
+gpg-agent --daemon --pinentry-program "$HOMEBREW_PREFIX/bin/pinentry-mac" &>/dev/null
 export GPG_SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-gpgconf --launch gpg-agent
+export GPG_KEYID="0xCA0901B5B1EDADB3"
