@@ -28,8 +28,15 @@ save_to_clipboard = false
 
 
 [terminal]
-shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
+#shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
+
 
 [env]
 EDITOR = "hx"
 CLICOLOR = "1"
+
+
+[keyboard]
+bindings = [
+    { key = "C", mods = "Command", action = "ReceiveChar" },
+]
