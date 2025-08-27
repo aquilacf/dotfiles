@@ -21,6 +21,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT="true"
 
 ## Cargo
 source "$HOME/.cargo/env"
+export PATH="$PATH:$HOMEBREW_PREFIX/opt/llvm/bin"
+
 
 ## Docker
 export COMPOSE_BAKE="true"

@@ -1,8 +1,11 @@
+# Theme
 theme = "custom"
 
+# Editor configuration
 [editor]
 auto-completion = true
 auto-format = true
+auto-info = true
 bufferline = "always"
 color-modes = true
 completion-replace = true
@@ -10,15 +13,13 @@ completion-trigger-len = 3
 cursorcolumn = false
 cursorline = true
 gutters = ["spacer", "line-numbers", "spacer", "diff"]
-insert-final-newline = true
 line-number = "relative"
 popup-border = "none"
+rainbow-brackets = true
 true-color = true
 undercurl = true
 
-[editor.inline-diagnostics]
-cursor-line = "warning"
-
+# LSP configuration
 [editor.lsp]
 auto-signature-help = true
 display-inlay-hints = true
@@ -27,6 +28,10 @@ display-signature-help-docs = true
 enable = true
 goto-reference-include-declaration = true
 snippets = true
+
+# Diagnostics
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.auto-pairs]
 '(' = ')'
@@ -50,64 +55,73 @@ render = true
 skip-levels = 1
 
 [editor.statusline]
-left = [
-  "mode",
-  "read-only-indicator",
-  "file-modification-indicator",
-  "file-name",
-  "position",
-]
+left = ["mode", "read-only-indicator", "file-modification-indicator", "file-name", "position"]
 center = []
-right = [
-  "spinner",
-  "workspace-diagnostics",
-  "version-control",
-  "file-encoding",
-  "file-line-ending",
-]
+right = ["spinner", "workspace-diagnostics", "version-control", "file-encoding", "file-line-ending"]
 
-
-[editor.file-picker]
-deduplicate-links = true
-follow-symlinks = true
-git-exclude = true
-git-global = true
-git-ignore = true
-hidden = true
-ignore = true
-parents = true
-
-### Keybindings
-
+# Keybindings
 [keys.normal]
+# Buffer navigation
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
+
+# Basic movement and selection
 esc = ["collapse_selection", "keep_primary_selection"]
 C-right = "move_next_word_start"
 C-left = "move_prev_word_end"
 S-right = "extend_char_right"
 S-left = "extend_char_left"
+
+# Line selection
 x = ["extend_line", "select_mode"]
 X = ["extend_line", "select_mode", "flip_selections"]
+
+# Insert mode
 i = ["collapse_selection", "insert_mode"]
 a = ["collapse_selection", "append_mode"]
 
+# Clipboard
+Cmd-c = "yank_to_clipboard"
+
+# Reload
+F5 = [":reload-all", ":echo Reloaded configuration"]
+
+# Git blame
+F7 = ":sh git blame %{buffer_name} -L %{cursor_line},%{cursor_line}"
+
+# Paragraph navigation
 "}" = ["move_next_word_end", "select_mode", "insert_at_line_start", "move_line_down", "goto_next_paragraph", "normal_mode", "goto_prev_paragraph", "goto_next_paragraph", "trim_selections"]
 "{" = ["move_next_word_start", "select_mode", "insert_at_line_end", "move_line_up", "goto_prev_paragraph", "normal_mode", "goto_next_paragraph", "goto_prev_paragraph", "trim_selections"]
 
-F7 = ":sh git blame %{buffer_name} -L %{cursor_line},%{cursor_line}"
-
-
 [keys.select]
+# Exit select mode
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
+
+# Word movement in select mode
 C-right = "extend_next_word_start"
 C-left = "extend_prev_word_end"
-g = { e = ["extend_to_last_line","extend_to_line_end"] }
+
+# Line operations
+g = { e = ["extend_to_last_line", "extend_to_line_end"] }
 X = "extend_line_above"
 
+# Clipboard
+Cmd-c = "yank_to_clipboard"
+
+# Reload
+F5 = [":reload-all", ":echo Reloaded configuration"]
+
 [keys.insert]
+# Word movement in insert mode
 C-right = "move_next_word_start"
 C-left = "move_prev_word_end"
 S-right = "extend_char_right"
 S-left = "extend_char_left"
+
+# Clipboard
+Cmd-c = "yank_to_clipboard"
+
+
+
+# Signature help (disabled)
 # C-space = "signature_help"
