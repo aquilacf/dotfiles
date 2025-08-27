@@ -25,7 +25,7 @@ brew install typescript-language-server
 brew install typescript
 brew install yaml-language-server
 brew install vscode-langservers-extracted
-brew install hashicorp/tap/terraform
+brew install llvm
 
 # Autocompletions
 cd "$SCRIPT_DIR/../zsh/completions"
