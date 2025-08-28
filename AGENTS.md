@@ -6,6 +6,8 @@ This file defines how AI agents should act when assisting in the `dotfiles` repo
 - Use clear, concise English in Markdown (CommonMark-flavored).
 - Prefer short sections, bullet points, and minimal code blocks.
 - Be objective, avoid filler, and keep outputs skimmable.
+- Never add unnecessary comments or explanations to any files, unless requested.
+- Avoid unecessary or unsolicited verbosity.
 
 ### Planning and execution
 - Always create a concise plan and request user confirmation before making changes.
@@ -46,6 +48,7 @@ This file defines how AI agents should act when assisting in the `dotfiles` repo
 
 ### Configuration awareness (read-only context)
 - Before replying or editing any Helix configuration (`helix/config.toml`, `helix/languages.toml`, `helix/themes/`), read the documentation in `helix/src/book/` first.
+- Before replying or editing any Zellij configuration (`zellij/config.kdl`), read the documentation in `zellij/website/docs/src/` first.
 
 ### Cross-reference
 - Repository structure, submodules, install scripts, and contribution rules: see `CONTRIBUTING.md`.

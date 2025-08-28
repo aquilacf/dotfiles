@@ -12,6 +12,7 @@ This document explains the repository structure, contribution rules, scripting s
 - `latex/` — LaTeX files (e.g., CV).
 - `ssh/` — SSH configuration (public; keys are not stored here beyond public material).
 - `tmux/` — tmux configuration.
+- `zellij/` — zellij configuration.
 - `vscode/` — VS Code settings and keybindings.
 - `zsh/` — Zsh config and submodules.
 
@@ -38,6 +39,7 @@ The repository uses Git submodules:
 - `zsh/zsh-autosuggestions`
 - `zsh/zsh-defer`
 - `zsh/zsh-syntax-highlighting`
+- `zellij/website`
 
 Clone with submodules:
 ```sh

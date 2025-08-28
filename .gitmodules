@@ -13,3 +13,6 @@
 [submodule "zsh/zsh-autosuggestions"]
 	path = zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zellij/website"]
+	path = zellij/website
+	url = https://github.com/zellij-org/zellij-org.github.io.git
