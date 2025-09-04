@@ -1,23 +1,12 @@
+// If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
-   
-    normal clear-defaults=true {
-        bind "Alt Tab" { GoToNextTab; }
-        bind "Alt Shift Tab" { GoToPreviousTab; }
-
-        bind "Alt h" { NewPane "Right"; }
-        bind "Alt v" { NewPane "Down"; }
-
-        bind "Alt Space" {
-            SwitchToMode "Tmux"
-        }
+    normal {
+        // uncomment this and adjust key if using copy_on_select=false
+        // bind "Alt c" { Copy; }
     }
-
     locked {
-        bind "Esc" {
-            SwitchToMode "Normal"
-        }
+        bind "Ctrl g" { SwitchToMode "Normal"; }
     }
-
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
         bind "h" "Left" { Resize "Increase Left"; }
@@ -163,22 +152,6 @@ keybinds {
         }
     }
     tmux {
-
-        bind "Tab" { GoToNextTab; }
-        bind "Shift Tab" { GoToPreviousTab; }
-
-        bind "h" "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
-        bind "l" "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
-        bind "j" "Down" { MoveFocus "Down"; SwitchToMode "Normal";}
-        bind "k" "Up" { MoveFocus "Up"; SwitchToMode "Normal";}
-        
-        bind "?" {
-            LaunchOrFocusPlugin "help" {
-                floating true
-            }
-            SwitchToMode "Normal"
-        }
-
         bind "[" { SwitchToMode "Scroll"; }
         bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
         bind "\"" { NewPane "Down"; SwitchToMode "Normal"; }
@@ -188,9 +161,14 @@ keybinds {
         bind "," { SwitchToMode "RenameTab"; }
         bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }
-
-        
-
+        bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "o" { FocusNextPane; }
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
@@ -249,7 +227,7 @@ plugins {
     compact-bar location="zellij:compact-bar"
     session-manager location="zellij:session-manager"
     welcome-screen location="zellij:session-manager" {
-        welcome_screen false
+        welcome_screen true
     }
     filepicker location="zellij:strider" {
         cwd "/"
@@ -257,9 +235,6 @@ plugins {
     configuration location="zellij:configuration"
     plugin-manager location="zellij:plugin-manager"
     about location="zellij:about"
-
-    docker location="https://github.com/dj95/zj-docker/releases/latest/download/zj-docker.wasm"
-    help location="https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
 }
 
 // Plugins to load in the background when a new session starts
@@ -359,7 +334,7 @@ load_plugins {
 // Default: "default"
 // (Requires restart)
 //
-default_layout "compact"
+// default_layout "compact"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
@@ -525,11 +500,6 @@ default_layout "compact"
 // Default: true
 //
 // show_release_notes false
-
-// Whether to show usage tips on Zellij startup
-// Default: true
-//
-show_startup_tips false
 
 // Whether to enable mouse hover effects and pane grouping functionality
 // Default: true

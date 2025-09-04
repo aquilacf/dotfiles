@@ -47,8 +47,17 @@ This file defines how AI agents should act when assisting in the `dotfiles` repo
   ```
 
 ### Configuration awareness (read-only context)
-- Before replying or editing any Helix configuration (`helix/config.toml`, `helix/languages.toml`, `helix/themes/`), read the documentation in `helix/src/book/` first.
-- Before replying or editing any Zellij configuration (`zellij/config.kdl`), read the documentation in `zellij/website/docs/src/` first.
+- **General configuration principles (apply to all tools):**
+  - **Check before adding:** Always examine existing configurations before creating new ones
+  - **Read documentation first:** Review relevant docs before editing any configuration files
+  - **Search existing configs:** Use `grep`/`rg` to find existing definitions and avoid duplicates
+  - **Minimal changes:** Only add what's specifically requested, don't over-engineer
+
+- **Tool-specific documentation and file locations:**
+  - **Helix:** Read documentation in `helix/src/book/` first
+    - `helix/src/languages.toml` contains main language server definitions
+    - `helix/languages.toml` is for user overrides and additions only
+  - **Zellij:** Read documentation in `zellij/website/docs/src/` first
 
 ### Cross-reference
 - Repository structure, submodules, install scripts, and contribution rules: see `CONTRIBUTING.md`.

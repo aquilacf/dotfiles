@@ -61,16 +61,21 @@ right = ["spinner", "workspace-diagnostics", "version-control", "file-encoding",
 
 # Keybindings
 [keys.normal]
+# Clipboard
+Cmd-c = "yank_to_clipboard"
 # Buffer navigation
-tab = ":buffer-next"
-S-tab = ":buffer-previous"
-
+C-tab = ":buffer-next"
+C-S-tab = ":buffer-previous"
 # Basic movement and selection
 esc = ["collapse_selection", "keep_primary_selection"]
-C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
-S-right = "extend_char_right"
-S-left = "extend_char_left"
+
+# Window splits (helix have it reversed)
+C-v = "hsplit_new"
+C-h = "vsplit_new"
+C-left = "jump_view_left"
+C-right = "jump_view_right"
+C-down = "jump_view_down"
+C-up = "jump_view_up"
 
 # Line selection
 x = ["extend_line", "select_mode"]
@@ -80,8 +85,7 @@ X = ["extend_line", "select_mode", "flip_selections"]
 i = ["collapse_selection", "insert_mode"]
 a = ["collapse_selection", "append_mode"]
 
-# Clipboard
-Cmd-c = "yank_to_clipboard"
+
 
 # Reload
 F5 = [":reload-all", ":echo Reloaded configuration"]
@@ -93,7 +97,22 @@ F7 = ":sh git blame %{buffer_name} -L %{cursor_line},%{cursor_line}"
 "}" = ["move_next_word_end", "select_mode", "insert_at_line_start", "move_line_down", "goto_next_paragraph", "normal_mode", "goto_prev_paragraph", "goto_next_paragraph", "trim_selections"]
 "{" = ["move_next_word_start", "select_mode", "insert_at_line_end", "move_line_up", "goto_prev_paragraph", "normal_mode", "goto_next_paragraph", "goto_prev_paragraph", "trim_selections"]
 
+
+[keys.insert]# Buffer navigation
+# Clipboard
+Cmd-c = "yank_to_clipboard"
+# Buffer navigation
+C-tab = ":buffer-next"
+C-S-tab = ":buffer-previous"
+
+# Signature help (disabled)
+# C-space = "signature_help"
+
+
 [keys.select]
+# Clipboard
+Cmd-c = "yank_to_clipboard"
+
 # Exit select mode
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
 
@@ -105,23 +124,3 @@ C-left = "extend_prev_word_end"
 g = { e = ["extend_to_last_line", "extend_to_line_end"] }
 X = "extend_line_above"
 
-# Clipboard
-Cmd-c = "yank_to_clipboard"
-
-# Reload
-F5 = [":reload-all", ":echo Reloaded configuration"]
-
-[keys.insert]
-# Word movement in insert mode
-C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
-S-right = "extend_char_right"
-S-left = "extend_char_left"
-
-# Clipboard
-Cmd-c = "yank_to_clipboard"
-
-
-
-# Signature help (disabled)
-# C-space = "signature_help"

@@ -25,6 +25,7 @@ ln -sf "$DOTFILES_DIR/git" "$CONFIG_DIR"
 ln -sf "$DOTFILES_DIR/gnupg" "$CONFIG_DIR"
 ln -sf "$DOTFILES_DIR/helix" "$CONFIG_DIR"
 ln -sf "$DOTFILES_DIR/tmux" "$CONFIG_DIR"
+ln -sf "$DOTFILES_DIR/zellij" "$CONFIG_DIR"
 ln -sf "$DOTFILES_DIR/zsh" "$CONFIG_DIR"
 
 echo "Linking SSH files to ~/.ssh..."
