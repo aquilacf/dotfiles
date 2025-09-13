@@ -59,6 +59,7 @@ left = ["mode", "read-only-indicator", "file-modification-indicator", "file-name
 center = []
 right = ["spinner", "workspace-diagnostics", "version-control", "file-encoding", "file-line-ending"]
 
+
 # Keybindings
 [keys.normal]
 # Clipboard
@@ -69,14 +70,6 @@ C-S-tab = ":buffer-previous"
 # Basic movement and selection
 esc = ["collapse_selection", "keep_primary_selection"]
 
-# Window splits (helix have it reversed)
-C-v = "hsplit_new"
-C-h = "vsplit_new"
-C-left = "jump_view_left"
-C-right = "jump_view_right"
-C-down = "jump_view_down"
-C-up = "jump_view_up"
-
 # Line selection
 x = ["extend_line", "select_mode"]
 X = ["extend_line", "select_mode", "flip_selections"]
@@ -84,7 +77,6 @@ X = ["extend_line", "select_mode", "flip_selections"]
 # Insert mode
 i = ["collapse_selection", "insert_mode"]
 a = ["collapse_selection", "append_mode"]
-
 
 
 # Reload
@@ -97,15 +89,25 @@ F7 = ":sh git blame %{buffer_name} -L %{cursor_line},%{cursor_line}"
 "}" = ["move_next_word_end", "select_mode", "insert_at_line_start", "move_line_down", "goto_next_paragraph", "normal_mode", "goto_prev_paragraph", "goto_next_paragraph", "trim_selections"]
 "{" = ["move_next_word_start", "select_mode", "insert_at_line_end", "move_line_up", "goto_prev_paragraph", "normal_mode", "goto_next_paragraph", "goto_prev_paragraph", "trim_selections"]
 
+# Window splits (helix have it reversed)
+#C-v = "hsplit_new"
+#C-h = "vsplit_new"
 
-[keys.insert]# Buffer navigation
+
+[keys.insert]
 # Clipboard
 Cmd-c = "yank_to_clipboard"
 # Buffer navigation
 C-tab = ":buffer-next"
 C-S-tab = ":buffer-previous"
 
-# Signature help (disabled)
+# Word navigation
+C-left = "move_prev_word_start"
+C-right = "move_next_word_start"
+A-left = "move_prev_sub_word_start"
+A-right = "move_next_sub_word_start"
+
+# Signature help
 # C-space = "signature_help"
 
 
@@ -115,10 +117,6 @@ Cmd-c = "yank_to_clipboard"
 
 # Exit select mode
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
-
-# Word movement in select mode
-C-right = "extend_next_word_start"
-C-left = "extend_prev_word_end"
 
 # Line operations
 g = { e = ["extend_to_last_line", "extend_to_line_end"] }
