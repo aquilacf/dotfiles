@@ -28,7 +28,7 @@ save_to_clipboard = false
 
 
 [terminal]
-#shell = { program = "zsh", args = ["-l", "-c", "tmux new -t main"] }
+shell = { program = "zsh", args = ["-l", "-c", "zellij attach -c main"] }
 
 
 [env]

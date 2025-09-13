@@ -16,13 +16,11 @@ setopt hist_ignore_space
 setopt inc_append_history
 setopt hist_reduce_blanks
 
-## Bindings
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-
 ### Plugins
 source "$HOME/.config/zsh/zsh-defer/zsh-defer.plugin.zsh"
+
+## Keybindings
+zsh-defer source "$HOME/.config/zsh/keybindings.zsh"
 
 ## Syntax highlighting
 zsh-defer eval 'source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"'

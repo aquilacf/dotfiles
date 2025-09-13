@@ -5,8 +5,29 @@ formatter = { command = "rustfmt" }
 [[language]]
 name = "sql"
 language-servers = ["sql-language-server"]
-formatter = { command = "sqlformat", args = ["--reindent", "--keywords", "upper", "--identifiers", "lower", "-"] }
+formatter = { command = "sql-formatter" }
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "jinja"
+language-servers = ["jinja-lsp", "vscode-html-language-server", "superhtml", "tailwindcss-ls"]
 
 [language-server.sql-language-server]
 command = "sql-language-server"
 args = ["up", "--method", "stdio"]
+
+[language-server.taplo]
+config = {} # https://github.com/helix-editor/helix/issues/3897#issuecomment-2889068677
+
+[language-server.bash-language-server]
+config = { bashIde = { enableSourceErrorDiagnostics = true, shfmt = { simplifyCode = true } } }
+
+[language-server.docker-compose-langserver]
+config = { telemetry = { enableTelemetry = false } }
+
+[language-server.jinja-lsp]
+command = "jinja-lsp"
+timeout = 5

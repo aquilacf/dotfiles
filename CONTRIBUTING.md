@@ -28,9 +28,9 @@ This document explains the repository structure, contribution rules, scripting s
 - When referencing Homebrew, prefer `$HOMEBREW_PREFIX` rather than hard-coded prefixes.
 
 ### Shell and scripting standards
-- Interactive shell of choice: Zsh.
-- All repository scripts must be POSIX-compliant `sh` with shebang `#!/bin/sh` and valid `dash` syntax.
-- Do not add comments to shell scripts unless explicitly requested by the repository owner.
+- Interactive shell of choice: Zsh
+- All repository scripts must be POSIX-compliant `sh` with shebang `#!/bin/sh` and valid `dash` syntax
+- Do not add comments to shell scripts unless explicitly requested by the repository owner
 
 ### Submodules
 The repository uses Git submodules:
@@ -71,17 +71,21 @@ git submodule update --recursive --remote
   - Re-runs a command until it exits successfully.
 
 ### Editor and related rules
-- Editor of choice is Helix. Configuration lives under `helix/`.
-- Before editing Helix configuration files (`helix/config.toml`, `helix/languages.toml`, or themes under `helix/themes/`), consult the Helix documentation in `helix/src/book/`.
+- Editor of choice is Helix. Configuration lives under `helix/`
+- Before editing Helix configuration files (`helix/config.toml`, `helix/languages.toml`, or themes under `helix/themes/`), consult the Helix documentation in `helix/src/book/`
+
+## Multiplexer
+- The multiplexer of choice is Zellij. Configuration lives under `zellij/`
+- Before editing Zellij configuration files, consult the Zellij documentation in `zellij/website`
 
 ### Git and SSH
-- SSH is configured to use the GPG SSH Agent. GPG is configured for a YubiKey.
-- The SSH host alias `git.aquilafreitas.com` maps to `github.com` (see `ssh/config`). Use that alias when applicable.
+- SSH is configured to use the GPG SSH Agent. GPG is configured for a YubiKey
+- The SSH host alias `git.aquilafreitas.com` maps to `github.com` (see `ssh/config`). Use that alias when applicable
 
 ### Contribution workflow
-- Keep changes minimal, focused, and human-ergonomic. Avoid over-engineering.
-- Follow the platform and scripting standards above.
-- For significant changes, document rationale in commit messages.
-- For agents: follow the planning, safety, and logging rules in `AGENTS.md`.
+- Keep changes minimal, focused, and human-ergonomic. Avoid over-engineering
+- Follow the platform and scripting standards above
+- For significant changes, document rationale in commit messages
+- For agents: follow the planning, safety, and logging rules in `AGENTS.md`
 
 
