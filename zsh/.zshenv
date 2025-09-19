@@ -16,8 +16,6 @@ export GPG_TTY=$(tty)
 
 ## DOTNET
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
-# export PATH="$PATH:/usr/local/share/dotnet"
-# export PATH="$PATH:$HOME/.dotnet/tools"
 
 ## Cargo
 source "$HOME/.cargo/env"

@@ -13,6 +13,7 @@ completion-trigger-len = 3
 cursorcolumn = false
 cursorline = true
 gutters = ["spacer", "line-numbers", "spacer", "diff"]
+kitty-keyboard-protocol = "enabled"
 line-number = "relative"
 popup-border = "none"
 rainbow-brackets = true

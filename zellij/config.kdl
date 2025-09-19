@@ -255,3 +255,4 @@ plugins {
 
 default_layout "compact"
 show_startup_tips false
+support_kitty_keyboard_protocol true

@@ -15,11 +15,6 @@ Prerequisites:
 - macOS (Intel or Apple Silicon)
 - Git, Homebrew (recommended)
 
-Optionally install packages from the Brewfile:
-```sh
-brew bundle --file brew/Brewfile
-```
-
 Install the dotfiles (creates XDG dirs, sets `~/.zshenv`, and symlinks configs):
 ```sh
 sh bin/install_dotfiles.sh
