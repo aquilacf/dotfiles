@@ -12,12 +12,14 @@ cargo install -vv --path "$HELIX/helix-term" --locked
 # Install additional cargo tools
 echo "Installing additional cargo tools..."
 cargo install jinja-lsp --locked
+cargo install beancount-language-server --locked
 
 # Install global npm packages
 echo "Installing global npm packages..."
-npm install -g dockerfile-language-server-nodejs
-npm install -g @microsoft/compose-language-service
-npm install -g @tailwindcss/language-server
+npm i -g dockerfile-language-server-nodejs
+npm i -g @microsoft/compose-language-service
+npm i -g @tailwindcss/language-server
+npm i -g bash-language-server
 
 # Install brew programs
 echo "Installing brew programs..."
@@ -37,6 +39,7 @@ brew install taplo
 brew install ltex-ls-plus
 brew install markdown-oxide
 brew install marksman
+brew install beancount
 
 # Autocompletions
 cd "$SCRIPT_DIR/../zsh/completions"
