@@ -12,6 +12,7 @@ cargo install -vv --path "$HELIX/helix-term" --locked
 # Install additional cargo tools
 echo "Installing additional cargo tools..."
 cargo install jinja-lsp --locked
+cargo install --path "$SCRIPT_DIR/../harper/src/harper-ls" --locked
 cargo install beancount-language-server --locked
 
 # Install global npm packages

@@ -15,9 +15,16 @@ formatter = { command = "taplo", args = ["fmt", "-"] }
 name = "jinja"
 language-servers = ["jinja-lsp", "vscode-html-language-server", "superhtml", "tailwindcss-ls"]
 
+[[language]]
+name = "c-sharp"
+language-servers = ["csharp-ls"]
+
 [language-server.sql-language-server]
 command = "sql-language-server"
 args = ["up", "--method", "stdio"]
+
+[language-server.csharp-ls]
+command = "csharp-ls"
 
 [language-server.taplo]
 config = {} # https://github.com/helix-editor/helix/issues/3897#issuecomment-2889068677

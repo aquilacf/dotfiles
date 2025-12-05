@@ -5,8 +5,6 @@ live_config_reload = false
 [window]
 title = "Terminal"
 dynamic_title = true
-opacity = 0.9
-blur = true
 option_as_alt = "OnlyLeft"
 
 

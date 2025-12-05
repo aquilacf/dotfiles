@@ -16,3 +16,6 @@
 [submodule "zellij/website"]
 	path = zellij/website
 	url = https://github.com/zellij-org/zellij-org.github.io.git
+[submodule "harper/src"]
+	path = harper/src
+	url = https://github.com/Automattic/harper.git

@@ -83,6 +83,7 @@ This file defines the MANDATORY operating rules for AI agents in the `dotfiles` 
     - `helix/src/languages.toml` contains main language server definitions
     - `helix/languages.toml` is for user overrides and additions only
   - **Zellij:** Read documentation in `zellij/website/docs/src/` first
+  - **Harper:** Read documentation in `harper/src/packages/web/src/routes/docs/` first
 
 ### Cross-reference
 - Repository structure, submodules, install scripts, and contribution rules: see `CONTRIBUTING.md`.

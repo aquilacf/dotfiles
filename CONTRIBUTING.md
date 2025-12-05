@@ -8,6 +8,7 @@ This document explains the repository structure, contribution rules, scripting s
 - `brew/` — `Brewfile` for optional package setup.
 - `git/` — Git configuration snippets.
 - `gnupg/` — GnuPG configuration (public; secrets are not stored here).
+- `harper/` — Harper grammar checker config and source submodule in `harper/src`.
 - `helix/` — Helix editor config, themes, and the Helix source submodule in `helix/src`.
 - `latex/` — LaTeX files (e.g., CV).
 - `ssh/` — SSH configuration (public; keys are not stored here beyond public material).
@@ -35,6 +36,7 @@ This document explains the repository structure, contribution rules, scripting s
 ### Submodules
 The repository uses Git submodules:
 - `alacritty/alacritty-theme`
+- `harper/src` (Harper upstream source)
 - `helix/src` (Helix upstream source)
 - `zsh/zsh-autosuggestions`
 - `zsh/zsh-defer`
