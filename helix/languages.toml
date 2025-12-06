@@ -1,6 +1,132 @@
 [[language]]
 name = "rust"
 formatter = { command = "rustfmt" }
+language-servers = ["rust-analyzer", "harper-ls"]
+
+[[language]]
+name = "c"
+language-servers = ["clangd", "harper-ls"]
+
+[[language]]
+name = "cpp"
+language-servers = ["clangd", "harper-ls"]
+
+[[language]]
+name = "c-sharp"
+language-servers = ["csharp-ls", "harper-ls"]
+
+[[language]]
+name = "go"
+language-servers = ["gopls", "golangci-lint-lsp", "harper-ls"]
+
+[[language]]
+name = "python"
+language-servers = ["ty", "ruff", "jedi", "pylsp", "harper-ls"]
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server", "harper-ls"]
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server", "harper-ls"]
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server", "harper-ls"]
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "harper-ls"]
+
+[[language]]
+name = "java"
+language-servers = ["jdtls", "harper-ls"]
+
+[[language]]
+name = "kotlin"
+language-servers = ["kotlin-language-server", "harper-ls"]
+
+[[language]]
+name = "scala"
+language-servers = ["metals", "harper-ls"]
+
+[[language]]
+name = "ruby"
+language-servers = ["ruby-lsp", "solargraph", "harper-ls"]
+
+[[language]]
+name = "php"
+language-servers = ["intelephense", "harper-ls"]
+
+[[language]]
+name = "swift"
+language-servers = ["sourcekit-lsp", "harper-ls"]
+
+[[language]]
+name = "dart"
+language-servers = ["dart", "harper-ls"]
+
+[[language]]
+name = "haskell"
+language-servers = ["haskell-language-server", "harper-ls"]
+
+[[language]]
+name = "lua"
+language-servers = ["lua-language-server", "harper-ls"]
+
+[[language]]
+name = "bash"
+language-servers = ["bash-language-server", "harper-ls"]
+
+[[language]]
+name = "nix"
+language-servers = ["nil", "nixd", "harper-ls"]
+
+[[language]]
+name = "clojure"
+language-servers = ["clojure-lsp", "harper-ls"]
+
+[[language]]
+name = "cmake"
+language-servers = ["neocmakelsp", "cmake-language-server", "harper-ls"]
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+language-servers = ["taplo", "tombi", "harper-ls"]
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "superhtml", "harper-ls"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "rumdl", "harper-ls"]
+
+[[language]]
+name = "git-commit"
+language-servers = ["commit-lsp", "harper-ls"]
+
+[[language]]
+name = "solidity"
+language-servers = ["solc", "harper-ls"]
+
+[[language]]
+name = "typst"
+language-servers = ["tinymist", "harper-ls"]
+
+[[language]]
+name = "ink"
+language-servers = ["harper-ls"]
+
+[[language]]
+name = "org"
+language-servers = ["harper-ls"]
+
+[[language]]
+name = "mail"
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "sql"
@@ -8,16 +134,8 @@ language-servers = ["sql-language-server"]
 formatter = { command = "sql-formatter" }
 
 [[language]]
-name = "toml"
-formatter = { command = "taplo", args = ["fmt", "-"] }
-
-[[language]]
 name = "jinja"
 language-servers = ["jinja-lsp", "vscode-html-language-server", "superhtml", "tailwindcss-ls"]
-
-[[language]]
-name = "c-sharp"
-language-servers = ["csharp-ls"]
 
 [language-server.sql-language-server]
 command = "sql-language-server"
@@ -38,3 +156,26 @@ config = { telemetry = { enableTelemetry = false } }
 [language-server.jinja-lsp]
 command = "jinja-lsp"
 timeout = 5
+
+[language-server.harper-ls.config.harper-ls]
+diagnosticSeverity = "hint"
+dialect = "British"
+
+[language-server.harper-ls.config.harper-ls.linters]
+SpellCheck = true
+SpelledNumbers = false
+AnA = true
+SentenceCapitalization = true
+UnclosedQuotes = true
+WrongQuotes = false
+LongSentences = true
+RepeatedWords = true
+Spaces = true
+Matcher = true
+CorrectNumberSuffix = true
+
+[language-server.harper-ls.config.harper-ls.codeActions]
+ForceStable = false
+
+[language-server.harper-ls.config.harper-ls.markdown]
+IgnoreLinkTitle = false

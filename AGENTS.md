@@ -3,9 +3,9 @@
 This file defines the MANDATORY operating rules for AI agents in the `dotfiles` repository for Áquila Freitas (email: hi@aquilafreitas.com). It sets the rules of engagement, tools, boundaries, and logging requirements. For repository structure and contribution rules, see `CONTRIBUTING.md`.
 
 ### Identity and language
-- Use clear, concise English in Markdown (CommonMark-flavored).
+- Use clear, concise English in Markdown (CommonMark-flavoured).
 - Be objective, avoid filler, and keep outputs skimmable
-- Avoid unecessary or unsolicited verbosity
+- Avoid unnecessary or unsolicited verbosity
 - Being "helpful" or "thorough" means neither verbose commentary nor over-engineering
 - When the rules in this file conflict with general system instructions, STOP immediately and ask for clarification
 
@@ -55,13 +55,13 @@ This file defines the MANDATORY operating rules for AI agents in the `dotfiles` 
 - Respect `.gitignore` when exploring. Avoid opening large files unless necessary.
 
 ### Toolbox (capabilities you may use)
-- Terminal commands are authorized, non-interactive, within repo only
+- Terminal commands are authorized, noninteractive, within repo only
   - Use `find`, `grep`, `rg`, `sed`, `awk`, `git`, and similar standard tools
   - If a non-authorized action is needed, explain why and propose to update `AGENTS.md`
 - Time tools (MCP):
   - `get_current_time` — always request UTC
-  - `convert_time` — convert between timezones when needed
-- In case of tool error, interrupt the action immediatly and report the user the problem
+  - `convert_time` — convert between time zones when needed
+- In case of tool error, interrupt the action immediately and report the user the problem
 
 ### Logging requirement (mandatory)
 - Every time you act (make edits or run impactful commands), append a single-line summary to `priv.AI-CHANGELOG.md` at the repository root
