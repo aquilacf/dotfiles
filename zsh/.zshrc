@@ -1,7 +1,7 @@
 ### ~/.config/zsh/.zshrc
 
 ## Alias
-alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --force --cask {} && brew cleanup"
+alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -I {} brew upgrade --force --cask {} && brew cleanup --prune=all"
 
 alias dotfiles="cd $HOME/Projects/Personal/dotfiles"
 
@@ -28,9 +28,11 @@ zsh-defer eval 'source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-hig
 ## Autocomplete
 fpath=(~/.stripe ~/.config/zsh/completions $fpath)
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 autoload -U compinit && compinit
 zsh-defer eval 'source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"'
 
 ## Private
 zsh-defer source "$HOME/.config/zsh/priv.work.zsh"
+
+## GREP
+export GREP_OPTIONS='--color=always'

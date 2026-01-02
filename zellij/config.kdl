@@ -1,8 +1,8 @@
 keybinds {
    
     normal clear-defaults=true {
-        bind "Alt Tab" { GoToNextTab; }
-        bind "Alt Shift Tab" { GoToPreviousTab; }
+        bind "Alt Tab" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "Alt Shift Tab" { GoToPreviousTab; SwitchToMode "Normal"; }
 
         bind "Alt Space" {
             SwitchToMode "Tmux"
@@ -161,7 +161,7 @@ keybinds {
             SwitchToMode "Normal"
         }
     }
-    tmux {
+    tmux clear-defaults=true {
         bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
         bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
         bind "Down" { MoveFocus "Down"; SwitchToMode "Normal";}
@@ -176,16 +176,13 @@ keybinds {
 
         bind "v" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "h" { NewPane "Right"; SwitchToMode "Normal"; }
-        bind "!" { ToggleFloatingPanes; }
+        bind "!" { ToggleFloatingPanes; SwitchToMode "Normal"; }
 
         bind "[" { SwitchToMode "Scroll"; }
-        bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
 
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
-        bind "c" { NewTab; SwitchToMode "Normal"; }
+        bind "t" { NewTab; SwitchToMode "Normal"; }
         bind "," { SwitchToMode "RenameTab"; }
-        bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
-        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
 
         bind "o" { FocusNextPane; }
         bind "d" { Detach; }

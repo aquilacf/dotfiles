@@ -141,9 +141,6 @@ language-servers = ["jinja-lsp", "vscode-html-language-server", "superhtml", "ta
 command = "sql-language-server"
 args = ["up", "--method", "stdio"]
 
-[language-server.csharp-ls]
-command = "csharp-ls"
-
 [language-server.taplo]
 config = {} # https://github.com/helix-editor/helix/issues/3897#issuecomment-2889068677
 
@@ -179,3 +176,7 @@ ForceStable = false
 
 [language-server.harper-ls.config.harper-ls.markdown]
 IgnoreLinkTitle = false
+
+[language-server.terraform-ls]
+command = "terraform-ls"
+args = ["serve", "-log-file", "/dev/null"]

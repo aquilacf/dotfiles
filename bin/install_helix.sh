@@ -42,6 +42,15 @@ brew install markdown-oxide
 brew install marksman
 brew install beancount
 
+# Install dotnet tools
+echo "Installing dotnet tools..."
+dotnet tool install --global csharp-ls
+
 # Autocompletions
 cd "$SCRIPT_DIR/../zsh/completions"
 ln -fs "../../helix/src/contrib/completion/hx.zsh" "_hx"
+
+# Clean up
+# Uninstall dotnet installed by marksman since we already have it installed separately
+# --ignore-dependencies prevents marksman from being uninstalled as a dependent
+brew uninstall --ignore-dependencies dotnet
