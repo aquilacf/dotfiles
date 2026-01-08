@@ -162,6 +162,11 @@ keybinds {
         }
     }
     tmux clear-defaults=true {
+        bind "Esc" { SwitchToMode "Normal"; }
+
+        bind "Tab" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "Shift Tab" { GoToPreviousTab; SwitchToMode "Normal"; }
+        
         bind "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
         bind "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
         bind "Down" { MoveFocus "Down"; SwitchToMode "Normal";}

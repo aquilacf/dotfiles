@@ -266,6 +266,172 @@ safe_mkdir() {
     fi
 }
 
+# Detect the default branch of a repository
+detect_default_branch() {
+    local org="$1"
+    local repo_name="$2"
+    local default_branch
+    
+    # Try to get default branch from remote HEAD
+    default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+    
+    # Fallback to common default branch names
+    if [ -z "$default_branch" ]; then
+        if git show-ref --verify --quiet refs/remotes/origin/main; then
+            default_branch="main"
+        elif git show-ref --verify --quiet refs/remotes/origin/master; then
+            default_branch="master"
+        else
+            # Use the first remote branch found
+            default_branch=$(git branch -r | grep -v '\->' | head -n1 | sed 's/.*origin\///' | tr -d ' ')
+        fi
+    fi
+    
+    if [ -z "$default_branch" ]; then
+        log_warning "Could not determine default branch: $org/$repo_name"
+        return 1
+    fi
+    
+    echo "$default_branch"
+}
+
+# Stash uncommitted changes with a timestamped name
+stash_changes() {
+    local org="$1"
+    local repo_name="$2"
+    
+    if ! git diff-index --quiet HEAD 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+        local stash_name="auto-backup-$(date +%Y%m%d-%H%M%S)"
+        log_info "Uncommitted changes detected, stashing as: $stash_name"
+        
+        if ! git stash push -u -m "$stash_name" 2>&1; then
+            log_warning "Failed to stash changes: $org/$repo_name"
+            return 1
+        fi
+    fi
+    
+    return 0
+}
+
+# Checkout to the specified branch
+checkout_branch() {
+    local branch="$1"
+    local org="$2"
+    local repo_name="$3"
+    local current_branch
+    
+    current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    
+    # Already on the target branch
+    if [ "$current_branch" = "$branch" ]; then
+        return 0
+    fi
+    
+    log_info "Checking out branch: $branch"
+    
+    # Create local branch if it doesn't exist, or switch to it if it does
+    if ! git show-ref --verify --quiet "refs/heads/$branch"; then
+        if ! git checkout -b "$branch" "origin/$branch" 2>&1; then
+            log_warning "Failed to checkout branch: $org/$repo_name"
+            return 1
+        fi
+    else
+        if ! git checkout "$branch" 2>&1; then
+            log_warning "Failed to checkout branch: $org/$repo_name"
+            return 1
+        fi
+    fi
+    
+    return 0
+}
+
+# Set upstream tracking for current branch
+setup_upstream_tracking() {
+    local branch="$1"
+    
+    if ! git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+        git branch --set-upstream-to="origin/$branch" "$branch" 2>/dev/null
+    fi
+}
+
+# Pull changes from current branch
+pull_branch_changes() {
+    local org="$1"
+    local repo_name="$2"
+    local branch="$3"
+    
+    log_info "Pulling changes from branch: $branch"
+    
+    if ! git pull --recurse-submodules --rebase 2>&1; then
+        log_warning "Failed to pull changes from branch: $org/$repo_name"
+        return 1
+    fi
+    
+    return 0
+}
+
+# Create local tracking branches for all remote branches
+create_tracking_branches() {
+    local default_branch="$1"
+    
+    git branch -r | grep -v '\->' | grep -v "origin/$default_branch" | while read -r remote_branch; do
+        local branch_name
+        branch_name=$(echo "$remote_branch" | sed 's@^.*origin/@@' | tr -d ' ')
+        
+        if [ -n "$branch_name" ] && ! git show-ref --verify --quiet "refs/heads/$branch_name"; then
+            git branch --track "$branch_name" "$remote_branch" 2>/dev/null || true
+        fi
+    done
+}
+
+# Update existing repository with robust error handling
+update_repository() {
+    local repo_dir="$1"
+    local org="$2"
+    local repo_name="$3"
+    
+    cd "$repo_dir" || return 1
+    
+    # Fetch all remote refs and prune deleted branches
+    log_info "Fetching all remote refs for: $org/$repo_name"
+    if ! git fetch --all --prune 2>&1; then
+        log_warning "Failed to fetch from remote: $org/$repo_name"
+        return 1
+    fi
+    
+    # Check if remote has any branches
+    local remote_branches
+    remote_branches=$(git branch -r 2>/dev/null | grep -v '\->' | wc -l | tr -d ' ')
+    
+    if [ "$remote_branches" -eq 0 ]; then
+        log_warning "Repository is empty (no branches): $org/$repo_name"
+        return 0  # Not a failure, just empty
+    fi
+    
+    # Detect the default branch
+    local default_branch
+    default_branch=$(detect_default_branch "$org" "$repo_name") || return 1
+    log_info "Default branch detected: $default_branch for $org/$repo_name"
+    
+    # Stash any uncommitted changes
+    stash_changes "$org" "$repo_name" || true  # Don't fail if stash fails
+    
+    # Checkout to default branch
+    checkout_branch "$default_branch" "$org" "$repo_name" || return 1
+    
+    # Set up upstream tracking
+    setup_upstream_tracking "$default_branch"
+    
+    # Pull changes from default branch
+    pull_branch_changes "$org" "$repo_name" "$default_branch" || return 1
+    
+    # Create local tracking branches for all other remote branches
+    log_info "Creating tracking branches for: $org/$repo_name"
+    create_tracking_branches "$default_branch"
+    
+    return 0
+}
+
 # Clone or update repository
 process_repository() {
     local org="$1"
@@ -289,7 +455,7 @@ process_repository() {
             return 0
         fi
         
-        if ! (cd "$repo_dir" && git pull --recurse-submodules --rebase); then
+        if ! update_repository "$repo_dir" "$org" "$repo_name"; then
             log_warning "Failed to update repository: $org/$repo_name"
             return 1
         fi

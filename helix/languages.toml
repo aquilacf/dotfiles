@@ -103,6 +103,7 @@ language-servers = ["vscode-html-language-server", "superhtml", "harper-ls"]
 [[language]]
 name = "markdown"
 language-servers = ["marksman", "markdown-oxide", "rumdl", "harper-ls"]
+comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 
 [[language]]
 name = "git-commit"
@@ -135,7 +136,13 @@ formatter = { command = "sql-formatter" }
 
 [[language]]
 name = "jinja"
-language-servers = ["jinja-lsp", "vscode-html-language-server", "superhtml", "tailwindcss-ls"]
+language-servers = [
+  "jinja-lsp",
+  "vscode-html-language-server",
+  "superhtml",
+  "tailwindcss-ls",
+  "harper-ls"
+]
 
 [language-server.sql-language-server]
 command = "sql-language-server"
