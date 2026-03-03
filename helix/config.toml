@@ -79,8 +79,8 @@ x = ["extend_line", "select_mode"]
 X = ["extend_line", "select_mode", "flip_selections"]
 
 # Insert mode
-i = ["collapse_selection", "insert_mode"]
-a = ["collapse_selection", "append_mode"]
+# i = ["collapse_selection", "insert_mode"]
+# a = ["collapse_selection", "append_mode"]
 
 # Git blame
 space.space.b = ":sh git blame %{buffer_name} -L %{cursor_line},+1"

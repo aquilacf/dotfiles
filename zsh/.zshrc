@@ -11,10 +11,19 @@ alias git-commit-undo="git reset --soft HEAD~1"
 
 
 ## History
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt inc_append_history
-setopt hist_reduce_blanks
+HISTFILE="${XDG_STATE_HOME}/zsh/history"
+if [[ ! -d "${HISTFILE:h}" ]]; then
+  mkdir -p "${HISTFILE:h}"
+fi
+
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+
 
 ### Plugins
 source "$HOME/.config/zsh/zsh-defer/zsh-defer.plugin.zsh"
