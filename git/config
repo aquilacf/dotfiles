@@ -13,3 +13,5 @@
 
 [includeIf "gitdir:~/Projects/Work/"]
     path = ~/.config/git/priv.work.gitconfig
+[credential]
+	helper = osxkeychain

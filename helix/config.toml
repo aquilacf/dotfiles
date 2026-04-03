@@ -65,6 +65,9 @@ right = ["spinner", "workspace-diagnostics", "version-control", "file-encoding",
 
 # Keybindings
 [keys.normal]
+# File Explorer
+space."." = "no_op"
+space.E = "file_explorer_in_current_buffer_directory"
 # Clipboard
 Cmd-c = "yank_to_clipboard"
 Cmd-v = "replace_selections_with_clipboard"

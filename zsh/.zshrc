@@ -6,9 +6,10 @@ alias brew-update-all="brew update && brew upgrade && brew list --cask | xargs -
 alias dotfiles="cd $HOME/Projects/Personal/dotfiles"
 
 alias awslocal="aws --endpoint-url http://localhost:4566"
-alias trigger-ci="git commit --allow-empty -m 'Trigger CI/CD - Empty commit'"
+alias git-empty-commit="git commit --allow-empty -m 'Empty commit (intentional)' && git push"
 alias git-commit-undo="git reset --soft HEAD~1"
 
+alias :q="exit"
 
 ## History
 HISTFILE="${XDG_STATE_HOME}/zsh/history"

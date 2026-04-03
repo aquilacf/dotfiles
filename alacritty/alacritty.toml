@@ -25,8 +25,8 @@ style.blinking = "Always"
 save_to_clipboard = false
 
 
-# [terminal]
-# shell = { program = "zsh", args = ["-l", "-c", "zellij attach -c main"] }
+[terminal]
+shell = { program = "zsh", args = ["-l", "-c", "zellij attach -c main"] }
 
 
 [env]
@@ -36,5 +36,6 @@ CLICOLOR = "1"
 
 [keyboard]
 bindings = [
-    { key = "C", mods = "Command", action = "ReceiveChar" },
+    # { key = "C", mods = "Command", action = "ReceiveChar" },
+    # { key = "Return", mods = "Shift", chars = "\u001b[200~\n\u001b[201~" },
 ]

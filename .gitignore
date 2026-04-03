@@ -38,3 +38,6 @@ latex/*.fls
 latex/*.log
 latex/*.out
 latex/*.gz
+
+## Opencode
+opencode/

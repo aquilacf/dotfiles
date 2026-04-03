@@ -189,7 +189,7 @@ keybinds {
         bind "t" { NewTab; SwitchToMode "Normal"; }
         bind "," { SwitchToMode "RenameTab"; }
 
-        bind "o" { FocusNextPane; }
+        bind "o" { FocusNextPane; SwitchToMode "Normal"; }
         bind "d" { Detach; }
         bind "Space" { NextSwapLayout; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
@@ -263,3 +263,4 @@ show_startup_tips false
 
 support_kitty_keyboard_protocol true
 mouse_mode true
+session_serialization false
