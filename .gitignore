@@ -39,5 +39,6 @@ latex/*.log
 latex/*.out
 latex/*.gz
 
-## Opencode
+## AI
+.claude/
 opencode/

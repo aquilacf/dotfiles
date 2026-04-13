@@ -8,7 +8,7 @@ dynamic_title = true
 option_as_alt = "OnlyLeft"
 
 
-[scrolling] # tmux handles scrolling
+[scrolling]
 history = 0
 multiplier = 0
 
@@ -36,6 +36,6 @@ CLICOLOR = "1"
 
 [keyboard]
 bindings = [
-    # { key = "C", mods = "Command", action = "ReceiveChar" },
-    # { key = "Return", mods = "Shift", chars = "\u001b[200~\n\u001b[201~" },
+    { key = "C", mods = "Command", action = "ReceiveChar" },
+    { key = "Return", mods = "Shift", chars = "\u001B\r" },
 ]
