@@ -101,8 +101,9 @@ name = "html"
 language-servers = ["vscode-html-language-server", "superhtml", "harper-ls"]
 
 [[language]]
+auto-format = true
 name = "markdown"
-language-servers = ["marksman", "markdown-oxide", "rumdl", "harper-ls"]
+language-servers = ["markdown-oxide", "rumdl", "harper-ls", "mpls", "fs_watcher_lsp"]
 comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 
 [[language]]
@@ -159,31 +160,39 @@ config = { telemetry = { enableTelemetry = false } }
 
 [language-server.jinja-lsp]
 command = "jinja-lsp"
-timeout = 5
 
-[language-server.harper-ls.config.harper-ls]
-diagnosticSeverity = "hint"
-dialect = "British"
+[language-server.harper-ls]
+config.harper-ls.diagnosticSeverity = "hint"
+config.harper-ls.dialect = "British"
+config.harper-ls.linters.SpellCheck = true
+config.harper-ls.linters.SpelledNumbers = false
+config.harper-ls.linters.AnA = true
+config.harper-ls.linters.SentenceCapitalization = true
+config.harper-ls.linters.UnclosedQuotes = true
+config.harper-ls.linters.WrongQuotes = false
+config.harper-ls.linters.LongSentences = true
+config.harper-ls.linters.RepeatedWords = true
+config.harper-ls.linters.Spaces = true
+config.harper-ls.linters.Matcher = true
+config.harper-ls.linters.CorrectNumberSuffix = true
+config.harper-ls.codeActions.ForceStable = false
+config.harper-ls.markdown.IgnoreLinkTitle = false
 
-[language-server.harper-ls.config.harper-ls.linters]
-SpellCheck = true
-SpelledNumbers = false
-AnA = true
-SentenceCapitalization = true
-UnclosedQuotes = true
-WrongQuotes = false
-LongSentences = true
-RepeatedWords = true
-Spaces = true
-Matcher = true
-CorrectNumberSuffix = true
+[language-server.mpls]
+command = "mpls"
+args = ["--enable-emoji", "--enable-wikilinks", "--enable-footnotes"]
 
-[language-server.harper-ls.config.harper-ls.codeActions]
-ForceStable = false
+[language-server.fs_watcher_lsp]
+command = "fs_watcher_lsp"
 
-[language-server.harper-ls.config.harper-ls.markdown]
-IgnoreLinkTitle = false
+[language-server.tofu-ls]
+command = "tofu-ls"
+args = ["serve"]
 
-[language-server.terraform-ls]
-command = "terraform-ls"
-args = ["serve", "-log-file", "/dev/null"]
+[[language]]
+name = "hcl"
+language-servers = ["tofu-ls"]
+
+[[language]]
+name = "tfvars"
+language-servers = ["tofu-ls"]

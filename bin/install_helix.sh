@@ -14,6 +14,8 @@ echo "Installing additional cargo tools..."
 cargo install jinja-lsp --locked
 cargo install --path "$SCRIPT_DIR/../harper/src/harper-ls" --locked
 cargo install beancount-language-server --locked
+cargo install rumdl --locked
+cargo install kdlfmt --locked
 
 # Install global npm packages
 echo "Installing global npm packages..."
@@ -24,10 +26,9 @@ npm i -g bash-language-server
 
 # Install brew programs
 echo "Installing brew programs..."
-brew install hashicorp/tap/terraform
-brew install hashicorp/tap/terraform-ls
-brew install hougesen/tap/kdlfmt
 brew install sql-language-server
+brew install opentofu
+brew install tofu-ls
 brew install sql-formatter
 brew install shellcheck
 brew install superhtml
@@ -39,7 +40,6 @@ brew install llvm
 brew install taplo
 brew install ltex-ls-plus
 brew install markdown-oxide
-brew install marksman
 brew install beancount
 
 # Install dotnet tools
@@ -49,8 +49,3 @@ dotnet tool install --global csharp-ls
 # Autocompletions
 cd "$SCRIPT_DIR/../zsh/completions"
 ln -fs "../../helix/src/contrib/completion/hx.zsh" "_hx"
-
-# Clean up
-# Uninstall dotnet installed by marksman since we already have it installed separately
-# --ignore-dependencies prevents marksman from being uninstalled as a dependent
-brew uninstall --ignore-dependencies dotnet
