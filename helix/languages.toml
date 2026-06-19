@@ -3,6 +3,9 @@ name = "rust"
 formatter = { command = "rustfmt" }
 language-servers = ["rust-analyzer", "harper-ls"]
 
+[language-server.rust-analyzer.config]
+files.watcher = "server"
+
 [[language]]
 name = "c"
 language-servers = ["clangd", "harper-ls"]
@@ -13,7 +16,7 @@ language-servers = ["clangd", "harper-ls"]
 
 [[language]]
 name = "c-sharp"
-language-servers = ["csharp-ls", "harper-ls"]
+language-servers = ["roslyn-language-server", "harper-ls"]
 
 [[language]]
 name = "go"

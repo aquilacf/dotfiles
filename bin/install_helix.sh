@@ -44,7 +44,7 @@ brew install beancount
 
 # Install dotnet tools
 echo "Installing dotnet tools..."
-dotnet tool install --global csharp-ls
+dotnet tool install --global roslyn-language-server
 
 # Autocompletions
 cd "$SCRIPT_DIR/../zsh/completions"
