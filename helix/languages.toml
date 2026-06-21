@@ -159,9 +159,6 @@ language-servers = [
 command = "sql-language-server"
 args = ["up", "--method", "stdio"]
 
-[language-server.taplo]
-config = {} # https://github.com/helix-editor/helix/issues/3897#issuecomment-2889068677
-
 [language-server.bash-language-server]
 config = { bashIde = { enableSourceErrorDiagnostics = true, shfmt = { simplifyCode = true } } }
 
