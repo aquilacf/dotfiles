@@ -1,10 +1,10 @@
 [general]
-live_config_reload = false
+live_config_reload = true
 
 
 [window]
 title = "Terminal"
-dynamic_title = true
+dynamic_title = false
 option_as_alt = "OnlyLeft"
 
 
@@ -13,9 +13,27 @@ history = 0
 multiplier = 0
 
 [font]
-normal.family = "Fira Code"
 size = 14.5
 
+[font.offset]
+x = 0
+y = 2
+
+[font.normal]
+family = "CommitMono Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "CommitMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "CommitMono Nerd Font Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "CommitMono Nerd Font Mono"
+style = "Bold Italic"
 
 [cursor]
 style.shape = "Beam"
