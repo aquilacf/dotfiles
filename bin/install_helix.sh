@@ -16,6 +16,7 @@ cargo install --path "$SCRIPT_DIR/../harper/src/harper-ls" --locked
 cargo install beancount-language-server --locked
 cargo install rumdl --locked
 cargo install kdlfmt --locked
+cargo install fs_watcher_lsp --locked
 
 # Install global npm packages
 echo "Installing global npm packages..."
