@@ -42,6 +42,7 @@ brew install taplo
 brew install ltex-ls-plus
 brew install markdown-oxide
 brew install beancount
+brew install --cask font-commit-mono-nerd-font
 
 # Install dotnet tools
 echo "Installing dotnet tools..."
