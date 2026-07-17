@@ -13,6 +13,7 @@ export PATH="${PATH}:${HOME}/.dotnet/tools"
 export PATH="${PATH}:${HOME}/.cargo/bin"
 export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/rustup/bin"
 export PATH="${PATH}:${HOMEBREW_PREFIX}/opt/llvm/bin"
+export CARGO_TARGET_DIR="$HOME/.cargo/shared_target"
 
 ## Custom scripts
 export PATH="${PATH}:${XDG_CONFIG_HOME}/zsh/bin"

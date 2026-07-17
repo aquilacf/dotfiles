@@ -83,7 +83,7 @@ x = ["extend_line", "select_mode"]
 X = ["extend_line", "select_mode", "flip_selections"]
 
 # Git blame
-space.space.b = ":sh git blame %{buffer_name} -L %{cursor_line},+1"
+space.space.g.b = ":sh git blame %{buffer_name} -L %{cursor_line},+1"
 
 # Paragraph navigation
 "}" = ["move_next_word_end", "select_mode", "insert_at_line_start", "move_line_down", "goto_next_paragraph", "normal_mode", "goto_prev_paragraph", "goto_next_paragraph", "trim_selections"]
@@ -94,7 +94,19 @@ C-v = "hsplit_new"
 C-h = "vsplit_new"
 
 
+## mpls - Open browser
+space.space.b = ":lsp-workspace-command open-preview"
+
+space.A = ":lsp-workspace-command"
+
+space.space.c = ":sh forgelink copy \"%{file_path_absolute}:%{selection_line_start}-%{selection_line_end}\""
+space.space.o = ":sh forgelink open \"%{file_path_absolute}:%{selection_line_start}-%{selection_line_end}\""
+
+
 [keys.insert]
+# Escape
+f = { j = "normal_mode" }
+j = { f = "normal_mode" }
 # Clipboard
 Cmd-c = "yank_to_clipboard"
 Cmd-v = "replace_selections_with_clipboard"

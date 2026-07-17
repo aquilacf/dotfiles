@@ -24,7 +24,14 @@ language-servers = ["gopls", "golangci-lint-lsp", "harper-ls", "fs_watcher_lsp"]
 
 [[language]]
 name = "python"
-language-servers = ["ty", "ruff", "jedi", "pylsp", "harper-ls", "fs_watcher_lsp"]
+language-servers = [
+  "ty",
+  "ruff",
+  "jedi",
+  "pylsp",
+  "harper-ls",
+  "fs_watcher_lsp",
+]
 
 [[language]]
 name = "javascript"
@@ -92,7 +99,12 @@ language-servers = ["clojure-lsp", "harper-ls", "fs_watcher_lsp"]
 
 [[language]]
 name = "cmake"
-language-servers = ["neocmakelsp", "cmake-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = [
+  "neocmakelsp",
+  "cmake-language-server",
+  "harper-ls",
+  "fs_watcher_lsp",
+]
 
 [[language]]
 name = "toml"
@@ -101,12 +113,23 @@ language-servers = ["taplo", "tombi", "harper-ls", "fs_watcher_lsp"]
 
 [[language]]
 name = "html"
-language-servers = ["vscode-html-language-server", "superhtml", "harper-ls", "fs_watcher_lsp"]
+language-servers = [
+  "vscode-html-language-server",
+  "superhtml",
+  "harper-ls",
+  "fs_watcher_lsp",
+]
 
 [[language]]
 auto-format = true
 name = "markdown"
-language-servers = ["markdown-oxide", "rumdl", "harper-ls", "mpls", "fs_watcher_lsp"]
+language-servers = [
+  "markdown-oxide",
+  "rumdl",
+  "harper-ls",
+  "mpls",
+  "fs_watcher_lsp",
+]
 comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 
 [[language]]
@@ -152,8 +175,26 @@ language-servers = [
   "superhtml",
   "tailwindcss-ls",
   "harper-ls",
-  "fs_watcher_lsp"
+  "fs_watcher_lsp",
 ]
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server", "fs_watcher_lsp"]
+
+[[language]]
+name = "jsonc"
+file-types = [
+  "jsonc",
+  { glob = "{t,j}sconfig.json" },
+  { glob = "bun.lock" },
+  { glob = ".devcontainer.json" },
+  { glob = "devcontainer.json" },
+  { glob = ".vscode/*.json" },
+  { glob = "appsettings.json" },
+  { glob = "appsettings.*.json" },
+]
+language-servers = ["vscode-json-language-server", "fs_watcher_lsp"]
 
 [language-server.sql-language-server]
 command = "sql-language-server"
@@ -187,7 +228,14 @@ config.harper-ls.markdown.IgnoreLinkTitle = false
 
 [language-server.mpls]
 command = "mpls"
-args = ["--enable-emoji", "--enable-wikilinks", "--enable-footnotes"]
+args = [
+  "--enable-emoji",
+  "--enable-wikilinks",
+  "--enable-footnotes",
+  "--no-auto",
+  "--theme",
+  "tokyonight",
+]
 
 [language-server.fs_watcher_lsp]
 command = "fs_watcher_lsp"
@@ -195,6 +243,14 @@ command = "fs_watcher_lsp"
 [language-server.tofu-ls]
 command = "tofu-ls"
 args = ["serve"]
+
+[[language]]
+name = "yaml"
+language-servers = [
+  "yaml-language-server",
+  "ansible-language-server",
+  "fs_watcher_lsp",
+]
 
 [[language]]
 name = "hcl"

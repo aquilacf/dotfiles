@@ -28,7 +28,7 @@
 	pdfinfo={
 		Title={Curriculum Vitae - Áquila Freitas},
 		Subject={Software Engineer with experience in fintech, backend development, and infrastructure management},
-		Keywords={Áquila Freitas, Software Engineer, Fintech, Backend Development, Infrastructure, C\#, ASP.NET, React, TypeScript, AWS, Terraform, Event Sourcing, CQRS, Entrepreneurship, London},
+		Keywords={Áquila Freitas, Software Engineer, Fintech, Backend Development, Infrastructure, C\#, ASP.NET, React, TypeScript, AWS, Terraform, Event Sourcing, CQRS, Alternative Payment Methods, Pix, Stablecoins, SRE, Entrepreneurship, United Kingdom, Brazil},
 		Author={Áquila Freitas},
 	}
 }
@@ -60,7 +60,7 @@
 
 	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
 	% Other icons can be found by referring to fontawesome5.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
-	\icon{MapMarker}{12}{London, UK}\\
+	\icon{Phone}{12}{+55 (11) 99118-0906}\\
 	\icon{Phone}{12}{+44 7577 002367}\\
 	\icon{At}{12}{\href{mailto:hi@aquilafreitas.com}{hi@aquilafreitas.com}}\\
 \end{minipage}
@@ -116,7 +116,7 @@
 
 	\cvsect{About me}
 
-	A dedicated Software Engineer with experience in fintech, backend development, infrastructure management, and some entrepreneurship. My career progression reflects the feedback by the managers and mentors I had and commitment to learning. Outside of work, I maintain an active lifestyle through regular gym sessions, playing football, and supporting my family, which reinforces my disciplined approach to continuous improvement. Having recently ventured into entrepreneurship, I learned how much there still is to improve.
+	A dedicated Software Engineer with experience in fintech, backend development, infrastructure management, and some entrepreneurship. My career progression reflects the feedback by the managers and mentors I had and commitment to learning. Outside of work, I maintain an active lifestyle through regular gym sessions, Brazilian Jiu-Jitsu, playing football, and supporting my family, which reinforces my disciplined approach to continuous improvement. Having recently ventured into entrepreneurship, I learned how much there still is to improve.
 \end{minipage}
 \hfill % Automatic horizontal whitespace
 \begin{minipage}[t]{0.2\textwidth} % Right column with the skills bar chart, change the width as needed
@@ -127,6 +127,12 @@
 	\textbf{Portuguese} - native\\
 	\textbf{English} - proficient
 
+	\cvsect{Work rights}
+
+	\textbf{EU/EFTA} - citizen\\
+	\textbf{UK} - citizen\\
+	\textbf{BR} - citizen
+
 \end{minipage}
 
 %----------------------------------------------------------------------------------------
@@ -136,6 +142,32 @@
 \cvsect{Experience}
 
 \begin{entrylist}
+	\entry
+		{09/2025 - Present\\\footnotesize{São Paulo, BR}}
+		{Software Engineer, Alternative Payment Methods}
+		{CHECKOUT LTD}
+		{
+			Relocated from London to São Paulo to help bootstrap Checkout's first Brazil-based engineering team, carrying over the London engineering culture and ways of working.\\
+			Delivered core Pix building blocks, including payment, reversal and deposit clients against a banking-as-a-service provider.\\
+			Led the end-to-end delivery of a new stablecoin (crypto) payment method, covering discovery, integration, infrastructure and go-live preparation, ahead of schedule.\\
+			Engineered a non-standard recovery that saved roughly €422k, delivering zero self-inflicted high-severity incidents and no production downtime, backed by root-cause analyses and per-merchant anomaly monitors.\\
+			Drove team-wide AI adoption by introducing a shared plugin marketplace and knowledgebase, experimenting with multi-agent orchestration, and training a tiny LLM on the codebase using Roslyn-based code extraction.\\
+			\texttt{C\#}\slashsep\texttt{ASP.NET}\slashsep\texttt{CQRS}\slashsep\texttt{DynamoDB}\slashsep\texttt{AWS}\slashsep\texttt{Terraform}\slashsep\texttt{BigQuery}\slashsep\texttt{System Design}\slashsep\texttt{AI}
+		}
+	\entry
+		{07/2025 - 09/2025\\\footnotesize{London, UK}}
+		{Software Engineer (Contractor), Client Balances}
+		{CHECKOUT LTD}
+		{
+			Returned to Checkout as a contractor to help design the company's first system for managing receivables in Brazil, a regulatory prerequisite for enabling debit and credit card processing in the country.\\
+			Contributed to the discovery of installments support for the Brazilian market.\\
+			Designed and delivered reconciliation of receivables data, sourced from Google BigQuery, against internal records.\\
+			Built the merchant registration flow required to register merchants with Brazil's receivables registry ahead of processing, integrating with an internal case management tool.\\
+			Automated bureaucratic processes and scheduling to comply with complex Brazilian regulatory requirements.\\
+			Set up operational monitoring and Service Level Objectives for the new Brazil services.\\
+			Provisioned infrastructure and built systems for the new Brazil services, including the safe handling of PII data.\\
+			\texttt{C\#}\slashsep\texttt{AWS}\slashsep\texttt{DynamoDB}\slashsep\texttt{BigQuery}\slashsep\texttt{System Design}\slashsep\texttt{CI/CD}
+		}
 	\entry
 		{03/2024 - Present\\\footnotesize{London, UK}}
 		{Founder \& Software Engineer}
