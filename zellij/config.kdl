@@ -50,6 +50,14 @@ keybinds {
         bind "[" { SwitchToMode "Scroll"; }
 
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "b" {
+            LaunchOrFocusPlugin "room" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+            SwitchToMode "Normal"
+        }
         bind "t" { NewTab; SwitchToMode "Normal"; }
         bind "," { SwitchToMode "RenameTab"; }
     }
@@ -256,8 +264,8 @@ plugins {
     plugin-manager location="zellij:plugin-manager"
     about location="zellij:about"
 
-    docker location="https://github.com/dj95/zj-docker/releases/latest/download/zj-docker.wasm"
     help location="https://github.com/karimould/zellij-forgot/releases/latest/download/zellij_forgot.wasm"
+    room location="https://github.com/rvcas/room/releases/latest/download/room.wasm"
 }
 
 default_layout "compact"
