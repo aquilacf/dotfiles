@@ -42,3 +42,7 @@ latex/*.gz
 ## AI
 .claude/
 opencode/
+.pi/
+
+## Git
+git/ignore
