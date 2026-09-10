@@ -16,7 +16,6 @@ cargo install --path "$SCRIPT_DIR/../harper/src/harper-ls" --locked
 cargo install beancount-language-server --locked
 cargo install rumdl --locked
 cargo install kdlfmt --locked
-cargo install fs_watcher_lsp --locked
 cargo install gitui --locked
 cargo install hx-lsp --locked
 cargo install forgelink-cli --locked

@@ -1,170 +1,147 @@
 [[language]]
 name = "rust"
 formatter = { command = "rustfmt" }
-language-servers = ["rust-analyzer", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["rust-analyzer", "harper-ls"]
 
 [language-server.rust-analyzer.config]
 files.watcher = "server"
 
 [[language]]
 name = "c"
-language-servers = ["clangd", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["clangd", "harper-ls"]
 
 [[language]]
 name = "cpp"
-language-servers = ["clangd", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["clangd", "harper-ls"]
 
 [[language]]
 name = "c-sharp"
-language-servers = ["roslyn-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["roslyn-language-server", "harper-ls"]
 
 [[language]]
 name = "go"
-language-servers = ["gopls", "golangci-lint-lsp", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["gopls", "golangci-lint-lsp", "harper-ls"]
 
 [[language]]
 name = "python"
-language-servers = [
-  "ty",
-  "ruff",
-  "jedi",
-  "pylsp",
-  "harper-ls",
-  "fs_watcher_lsp",
-]
+language-servers = ["ty", "ruff", "jedi", "pylsp", "harper-ls"]
 
 [[language]]
 name = "javascript"
-language-servers = ["typescript-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["typescript-language-server", "harper-ls"]
 
 [[language]]
 name = "jsx"
-language-servers = ["typescript-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["typescript-language-server", "harper-ls"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["typescript-language-server", "harper-ls"]
 
 [[language]]
 name = "tsx"
-language-servers = ["typescript-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["typescript-language-server", "harper-ls"]
 
 [[language]]
 name = "java"
-language-servers = ["jdtls", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["jdtls", "harper-ls"]
 
 [[language]]
 name = "kotlin"
-language-servers = ["kotlin-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["kotlin-language-server", "harper-ls"]
 
 [[language]]
 name = "scala"
-language-servers = ["metals", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["metals", "harper-ls"]
 
 [[language]]
 name = "ruby"
-language-servers = ["ruby-lsp", "solargraph", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["ruby-lsp", "solargraph", "harper-ls"]
 
 [[language]]
 name = "php"
-language-servers = ["intelephense", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["intelephense", "harper-ls"]
 
 [[language]]
 name = "swift"
-language-servers = ["sourcekit-lsp", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["sourcekit-lsp", "harper-ls"]
 
 [[language]]
 name = "dart"
-language-servers = ["dart", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["dart", "harper-ls"]
 
 [[language]]
 name = "haskell"
-language-servers = ["haskell-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["haskell-language-server", "harper-ls"]
 
 [[language]]
 name = "lua"
-language-servers = ["lua-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["lua-language-server", "harper-ls"]
 
 [[language]]
 name = "bash"
-language-servers = ["bash-language-server", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["bash-language-server", "harper-ls"]
 
 [[language]]
 name = "nix"
-language-servers = ["nil", "nixd", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["nil", "nixd", "harper-ls"]
 
 [[language]]
 name = "clojure"
-language-servers = ["clojure-lsp", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["clojure-lsp", "harper-ls"]
 
 [[language]]
 name = "cmake"
-language-servers = [
-  "neocmakelsp",
-  "cmake-language-server",
-  "harper-ls",
-  "fs_watcher_lsp",
-]
+language-servers = ["neocmakelsp", "cmake-language-server", "harper-ls"]
 
 [[language]]
 name = "toml"
 formatter = { command = "taplo", args = ["fmt", "-"] }
-language-servers = ["taplo", "tombi", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["taplo", "harper-ls"]
 
 [[language]]
 name = "html"
-language-servers = [
-  "vscode-html-language-server",
-  "superhtml",
-  "harper-ls",
-  "fs_watcher_lsp",
-]
+language-servers = ["vscode-html-language-server", "superhtml", "harper-ls"]
 
 [[language]]
 auto-format = true
 name = "markdown"
-language-servers = [
-  "markdown-oxide",
-  "rumdl",
-  "harper-ls",
-  "mpls",
-  "fs_watcher_lsp",
-]
+language-servers = ["markdown-oxide", "rumdl", "harper-ls", "mpls", "scls"]
 comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 
 [[language]]
 name = "text"
 scope = "text.plain"
 file-types = ["txt"]
-language-servers = ["harper-ls", "fs_watcher_lsp"]
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "git-commit"
-language-servers = ["commit-lsp", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["commit-lsp", "harper-ls"]
 
 [[language]]
 name = "solidity"
-language-servers = ["solc", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["solc", "harper-ls"]
 
 [[language]]
 name = "typst"
-language-servers = ["tinymist", "harper-ls", "fs_watcher_lsp"]
+language-servers = ["tinymist", "harper-ls"]
 
 [[language]]
 name = "ink"
-language-servers = ["harper-ls", "fs_watcher_lsp"]
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "org"
-language-servers = ["harper-ls", "fs_watcher_lsp"]
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "mail"
-language-servers = ["harper-ls", "fs_watcher_lsp"]
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "sql"
-language-servers = ["sql-language-server", "fs_watcher_lsp"]
+language-servers = ["sql-language-server"]
 formatter = { command = "sql-formatter" }
 
 [[language]]
@@ -175,12 +152,11 @@ language-servers = [
   "superhtml",
   "tailwindcss-ls",
   "harper-ls",
-  "fs_watcher_lsp",
 ]
 
 [[language]]
 name = "json"
-language-servers = ["vscode-json-language-server", "fs_watcher_lsp"]
+language-servers = ["vscode-json-language-server"]
 
 [[language]]
 name = "jsonc"
@@ -194,7 +170,7 @@ file-types = [
   { glob = "appsettings.json" },
   { glob = "appsettings.*.json" },
 ]
-language-servers = ["vscode-json-language-server", "fs_watcher_lsp"]
+language-servers = ["vscode-json-language-server"]
 
 [language-server.sql-language-server]
 command = "sql-language-server"
@@ -237,8 +213,13 @@ args = [
   "tokyonight",
 ]
 
-[language-server.fs_watcher_lsp]
-command = "fs_watcher_lsp"
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+feature_words = false
+feature_snippets = true
+snippets_first = true
 
 [language-server.tofu-ls]
 command = "tofu-ls"
@@ -246,16 +227,12 @@ args = ["serve"]
 
 [[language]]
 name = "yaml"
-language-servers = [
-  "yaml-language-server",
-  "ansible-language-server",
-  "fs_watcher_lsp",
-]
+language-servers = ["yaml-language-server", "ansible-language-server"]
 
 [[language]]
 name = "hcl"
-language-servers = ["tofu-ls", "fs_watcher_lsp"]
+language-servers = ["tofu-ls"]
 
 [[language]]
 name = "tfvars"
-language-servers = ["tofu-ls", "fs_watcher_lsp"]
+language-servers = ["tofu-ls"]
