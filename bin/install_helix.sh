@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 HELIX="$SCRIPT_DIR/../helix/src"
 export HELIX_DEFAULT_RUNTIME="$HELIX/runtime/"
 
-cargo install -vv --path "$HELIX/helix-term" --locked
+(cd "$HELIX" && cargo xtask steel)
 
 # Install additional cargo tools
 echo "Installing additional cargo tools..."
