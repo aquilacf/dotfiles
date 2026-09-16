@@ -8,8 +8,8 @@
 	branch = master
 [submodule "sources/helix"]
 	path = helix/src
-	url = https://github.com/helix-editor/helix
-	branch = master
+	url = https://github.com/aquilacf/helix
+	branch = custom-helix
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
