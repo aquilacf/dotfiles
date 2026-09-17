@@ -1,10 +1,10 @@
-(require (only-in "project-hx/project.scm" project-enable-auto-save! project-ignore!))
+(require (prefix-in project-hx. "project-hx/project.scm"))
 (require (prefix-in git. "cogs/git.scm"))
 
-(provide git-blame git-diff-hunk forgelink-copy forgelink-open)
+(provide git-blame git-diff-hunk forgelink-copy forgelink-open project-picker)
 
-(project-ignore! '("*/node_modules/*" "*/target/*" "*/.cargo/*"))
-(project-enable-auto-save!)
+(project-hx.project-ignore! '("*/node_modules/*" "*/target/*" "*/.cargo/*"))
+(project-hx.project-enable-auto-save!)
 
 ;;@doc
 ;; Blame the lines covered by the primary selection
@@ -25,3 +25,8 @@
 ;; Open a forge link to the selected lines
 (define (forgelink-open)
   (git.link-open))
+
+;;@doc
+;; Pick a saved project and open it
+(define (project-picker)
+  (project-hx.project-picker))
