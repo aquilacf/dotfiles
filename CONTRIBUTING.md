@@ -41,7 +41,6 @@ The repository uses Git submodules:
 - `zsh/zsh-autosuggestions`
 - `zsh/zsh-defer`
 - `zsh/zsh-syntax-highlighting`
-- `zellij/website`
 
 Clone with submodules:
 ```sh
@@ -78,7 +77,6 @@ git submodule update --recursive --remote
 
 ## Multiplexer
 - The multiplexer of choice is Zellij. Configuration lives under `zellij/`
-- Before editing Zellij configuration files, consult the Zellij documentation in `zellij/website`
 
 ### Git and SSH
 - SSH is configured to use the GPG SSH Agent. GPG is configured for a YubiKey

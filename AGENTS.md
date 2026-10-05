@@ -83,7 +83,6 @@ For repository structure and contribution rules, see `CONTRIBUTING.md`.
   - **Helix:** Read documentation in `helix/src/book/` first
     - `helix/src/languages.toml` contains main language server definitions
     - `helix/languages.toml` is for user overrides and additions only
-  - **Zellij:** Read documentation in `zellij/website/docs/src/` first
   - **Harper:** Read documentation in `harper/src/packages/web/src/routes/docs/` first
 
 ## Cross-Reference

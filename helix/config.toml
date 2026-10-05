@@ -22,6 +22,7 @@ undercurl = true
 
 # LSP configuration
 [editor.lsp]
+auto-document-highlight = true
 auto-signature-help = true
 display-inlay-hints = true
 display-messages = true
