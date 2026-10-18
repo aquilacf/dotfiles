@@ -28,19 +28,19 @@ language-servers = ["ty", "ruff", "jedi", "pylsp", "harper-ls"]
 
 [[language]]
 name = "javascript"
-language-servers = ["typescript-language-server", "harper-ls"]
+language-servers = ["tsc", "harper-ls"]
 
 [[language]]
 name = "jsx"
-language-servers = ["typescript-language-server", "harper-ls"]
+language-servers = ["tsc", "harper-ls"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "harper-ls"]
+language-servers = ["tsc", "harper-ls"]
 
 [[language]]
 name = "tsx"
-language-servers = ["typescript-language-server", "harper-ls"]
+language-servers = ["tsc", "harper-ls"]
 
 [[language]]
 name = "java"

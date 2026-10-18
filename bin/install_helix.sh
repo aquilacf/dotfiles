@@ -35,7 +35,6 @@ brew install tofu-ls
 brew install sql-formatter
 brew install shellcheck
 brew install superhtml
-brew install typescript-language-server
 brew install typescript
 brew install yaml-language-server
 brew install vscode-langservers-extracted
