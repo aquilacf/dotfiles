@@ -1,0 +1,213 @@
+\documentclass[10pt,a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+\newcommand{\cvtitlefont}{\fontsize{26.18}{31.42}\selectfont}
+\newcommand{\cvsubtitlefont}{\fontsize{16.18}{19.42}\selectfont}
+\newcommand{\cvsectionfont}{\fontsize{12.72}{15.26}\selectfont}
+\newcommand{\cvrolefont}{\fontsize{11.28}{13.54}\selectfont}
+\newcommand{\cvbodyfont}{\fontsize{10}{12}\selectfont}
+\newcommand{\cvsecondaryfont}{\fontsize{9}{11}\selectfont}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\emergencystretch}{2em}
+
+\usepackage[a4paper, top=1cm, bottom=1cm, left=1.2cm, right=1.2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+	pdftitle={Áquila Freitas - Backend and Platform Software Engineer - CV},
+	pdfauthor={Áquila Freitas},
+	pdfsubject={Backend and platform software engineer in payments},
+	pdfkeywords={Áquila Freitas, Software Engineer, Backend, Platform Engineering, Payments, Fintech, C\#, ASP.NET, TypeScript, AWS, Terraform, DynamoDB, Event Sourcing, CQRS, Microservices, Reconciliation, Alternative Payment Methods, Pix, Stablecoins, Brazil, United Kingdom},
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newcommand{\cvsection}[1]{%
+	\par\vspace{8pt}%
+	{\cvsectionfont\bfseries\MakeUppercase{#1}\par}\nopagebreak
+	\vspace{2pt}\hrule\nopagebreak\vspace{4pt}%
+}
+
+% Title, team, company, location, period. Dates follow the location:
+% right-aligned dates are extracted out of order by some text extractors
+\newenvironment{role}[5]{%
+	\par\cvbodyfont
+	\if\relax\detokenize{#1#3}\relax
+	\else
+		{\cvrolefont\mdseries {\bfseries #1}, #3\par}\nopagebreak
+		{\cvsecondaryfont\if\relax\detokenize{#2}\relax\else #2 · \fi#4 · #5\par}\nopagebreak
+		\vspace{2pt}%
+	\fi
+}{%
+	\par\vspace{10pt}%
+}
+
+\newenvironment{bullets}{%
+	\cvbodyfont
+	\begin{list}{\textbullet}{%
+		\setlength{\leftmargin}{1.1em}%
+		\setlength{\labelwidth}{0.6em}%
+		\setlength{\labelsep}{0.5em}%
+		\setlength{\itemsep}{1.5pt}%
+		\setlength{\parsep}{0pt}%
+		\setlength{\topsep}{2pt}%
+		\setlength{\partopsep}{0pt}%
+	}%
+}{%
+	\end{list}%
+}
+
+\newcommand{\stack}[1]{\par\vspace{2pt}{\cvsecondaryfont Stack: #1}\par}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\cvbodyfont
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+{\cvtitlefont\bfseries Áquila Freitas\par}
+\vspace{4pt}
+{\cvsubtitlefont Backend and Platform Software Engineer, Payments\par}
+\vspace{5pt}
+{\cvbodyfont \href{mailto:hi@aquilafreitas.com}{hi@aquilafreitas.com} · \href{https://aquilafreitas.com}{aquilafreitas.com} · \href{https://github.com/aquilacf}{github.com/aquilacf} · \href{https://linkedin.com/in/aquilacf}{linkedin.com/in/aquilacf}}\par
+{\cvbodyfont Right to work: UK, EU and MERCOSUR}\par
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+
+\cvsection{Summary}
+
+\begin{role}{}{}{}{}{}
+Backend and platform engineer with 11 years in software, including 7 years in payments. At Checkout.com, I pitched and built payment middleware that has been in production since 2020. I coordinated 5 engineering groups to take the Coinbase stablecoin integration from design through beta sign-off. As incident commander, I led the recovery of 16,960 delayed payments worth EUR 422k before their authorisations expired. In October 2026 alone, the payment methods my team owns accounted for over 3.4M accepted transactions in production.
+\end{role}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\cvsection{Experience}
+
+\begin{role}{Senior Software Engineer}{Alternative Payment Methods}{Checkout.com}{São Paulo, Brazil}{Sep 2025 -- Present}
+
+Relocated from London to help build the São Paulo engineering team. On call for 10 alternative payment methods. In October 2026 alone, 8 accounted for over 3.4M accepted payments worth over USD 350M on production accounts. Across all 10 methods, 0 SEV1 or SEV2 incidents were recorded from September 2025 to November 2026, including the period of shared ownership.
+
+\begin{bullets}
+	\item Led stablecoin acceptance with Coinbase from design through beta sign-off, coordinating 5 engineering groups. Built partner authentication, capture flows, webhooks, and payment-status reconciliation. Piloted mutation testing in CI, prepared the operating procedures and mentored a contributing engineer.
+	\item Led the incident response to a 3-week backlog of uncaptured payments. When the partner could not capture them in bulk, built and ran a recovery that captured 16,960 payments worth EUR 422k before authorisations expired. Wrote the post-incident review and the team's incident-management guide.
+	\item Took ownership of Brazil's receivables registry integration, a prerequisite for card processing. Adapted settlement and reconciliation system to comply with BCB Resolution 514/2025 and added support for negative balance handling.
+	\item Maintain 4 queue-freshness SLOs. For each queue, the target is for its oldest message to be under 5 minutes old at least 99.99\% of the time over a rolling 30-day window.
+	\item Aligned Payments and Reconciliations on a Pix and co-designed a pipeline to turn bank API records into reconciliation files the bank didn't supply.
+	\item Created the team's AI-oriented domain knowledge base and converted shared agent configuration into an installable plugin marketplace; 16 other engineers have since extended these 2 projects.
+	\item Standardised C\# error-handling guidance in the payment methods repository, giving engineers 1 recommended result type instead of 2 competing conventions.
+\end{bullets}
+
+\stack{C\#, ASP.NET, Stryker.NET, Kafka, AWS (ECS Fargate, Lambda, SQS, DynamoDB), Terraform, Datadog, BigQuery, dbt}
+
+\end{role}
+
+\begin{role}{Contract Software Engineer}{Client Balances}{Checkout.com}{London, United Kingdom}{Jul 2025 -- Sep 2025}
+
+Returned as a contractor to help build the Brazil receivables system; joined permanently in September 2025.
+
+\begin{bullets}
+	\item Built the merchant-registration workflow for Brazil's receivables registry, integrating case-management work items and automated completion on AWS infrastructure encrypted with customer-managed keys.
+	\item Delivered 2 registry reconciliations covering file exchange, validation and business-day scheduling aligned to the registry's timetable. Introduced monitoring as code.
+\end{bullets}
+
+\stack{C\#, ASP.NET, AWS (Lambda, SQS, SNS, DynamoDB, KMS), Terraform, OpenTelemetry}
+
+\end{role}
+
+\begin{role}{Founder and Software Engineer}{}{OPENSHIRT}{London, United Kingdom}{Mar 2024 -- Jul 2025}
+
+Founded a print-on-demand apparel store, building the storefront and integrating Stripe payments with print vendors. Returned to payments industry when sales did not justify scaling.
+
+\end{role}
+
+\newpage
+
+\begin{role}{Software Engineer}{Merchant Experience}{Checkout.com}{London, United Kingdom}{Jul 2021 -- Dec 2023}
+
+Internal move to C\# development.
+
+\begin{bullets}
+	\item When Account Activation and Integrated Platforms disagreed on certain project ownership, I documented the trade-offs and proposed joint ownership. The teams chose to fork and still maintain it together. I also built reusable modules that teams within the pillar adopted and other engineers continue to extend.
+	\item Designed REST APIs for merchant activation and settlement, moving personal identifiable information (PII) handling and due diligence out of the onboarding monolith. Secured Architecture Review Board approval for the settlement API with 0 follow-up actions. Ran services in ARM64 containers on ECS Fargate and added multi-architecture builds to the shared deploy action.
+	\item Built a JSON Schema converter that let consumers use upstream bank-account requirements without changes to the source API. Established the schema-registry service, which other engineers continued to develop after my departure.
+	\item Replaced the event-store activity log with a Lambda and Elasticsearch audit service still used by 5 services. Owned the Jenkins-to-Spacelift migration and moved 2 internal services to end-to-end TLS.
+	\item Removed the need to screen merchants by hand after an initial local registry check failed. Onboarding agents could retry the automated check directly, including on existing cases. Shared engineering practices through 4 departmental technical talks and design reviews.
+\end{bullets}
+
+\stack{C\#, ASP.NET, AWS (Lambda, ECS Fargate, API Gateway, Aurora, Elasticsearch), Dapper (ORM), Terraform, GitHub Actions (CI/CD)}
+
+\end{role}
+
+\begin{role}{Senior Software Engineer}{Middleware}{Checkout.com}{London, United Kingdom}{May 2020 -- Jun 2021}
+
+Pitched the middleware to the Head of Product and secured funding for a dedicated team. Promoted 19 months after joining.
+
+\begin{bullets}
+	\item Launched the payment middleware in 2020 behind Hosted Payment Pages and the shopping cart plugins. Its Context API also served Payment Links. Added PayPal, iDEAL, SEPA and KNET, and wrote the design for horizontally scaling payment methods.
+	\item Built charge and refund flows, OAuth token handling and webhook verification for the Uber integration, and extended the Commercetools, Magento and Shopware plugins to use the middleware. Served on final interview panels for the team.
+\end{bullets}
+
+\stack{TypeScript, AWS (Lambda, API Gateway, DynamoDB, Step Functions), Terraform}
+
+\end{role}
+
+\begin{role}{PHP Developer}{E-commerce Platforms}{Checkout.com}{London, United Kingdom}{Oct 2018 -- Apr 2020}
+
+Developed SDKs and payment plugins for shopping-cart platforms.
+
+\begin{bullets}
+	\item Created the \href{https://github.com/checkout/checkout-sdk-php}{open-source PHP SDK}, released v1.0 in January 2019 and expanded support to 17 payment methods. By November 2026, the package had passed 3.9M lifetime installs across versions on Packagist.
+\end{bullets}
+
+\stack{PHP, TypeScript, AWS (Lambda, API Gateway, DynamoDB, S3)}
+
+\end{role}
+
+\begin{role}{Developer}{}{Decibel Insight}{London, United Kingdom}{Mar 2016 -- Oct 2018}
+\end{role}
+
+\begin{role}{Full Stack Developer}{}{Beltrão Coelho}{Lisbon, Portugal}{Sep 2014 -- Oct 2015}
+\end{role}
+
+\begin{role}{Web Developer Intern}{}{Caixa Mágica Software S.A.}{Lisbon, Portugal}{Jun 2014 -- Jul 2014}
+\end{role}
+
+\begin{role}{2nd Line Support Intern}{}{TAP Air Portugal S.A.}{Lisbon, Portugal}{Jun 2013 -- Jul 2013}
+\end{role}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS AND EDUCATION
+%----------------------------------------------------------------------------------------
+
+\cvsection{Skills}
+
+\textbf{Backend engineering:} C\#, ASP.NET, distributed systems, REST APIs, event sourcing, mutation testing\par
+\textbf{Data \& messaging:} Kafka, DynamoDB, BigQuery, dbt, Elasticsearch\par
+\textbf{Cloud \& operations:} AWS, GCP, Docker, Terraform, Datadog, OpenTelemetry\par
+
+\cvsection{Education}
+
+\cvbodyfont
+\textbf{AWS Certified Developer (Associate)}, Amazon Web Services · 2022\par
+\textbf{BSc (Hons) Computing}, Birkbeck, University of London · 2017 -- 2020\par
+\textbf{BEng Electrical and Electronic Engineering}, London South Bank University · 2016 -- 2017\par
+\textbf{Computer Specialist} (Level 5 Professional Certificate), Escola Secundária António Damásio · 2011 -- 2014\par
+
+\end{document}
